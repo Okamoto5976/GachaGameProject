@@ -4,6 +4,8 @@ using UnityEngine;
 public class Test : MonoBehaviour
 {
     [SerializeField] private MainDataSO m_mainData;
+    [SerializeField] private CharaWork m_charaWork;
+    private string m_text;
 
     private void Awake()
     {
@@ -12,6 +14,7 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
-        this.GetComponent<TextMeshProUGUI>().text = m_mainData.Money.ToString();
+        m_text = "Money: " + m_mainData.Money.ToString() + "\ntimer: " + m_charaWork.WorkTimer;
+        this.GetComponent<TextMeshProUGUI>().text = m_text;
     }
 }
