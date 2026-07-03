@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,16 +9,24 @@ public class GaugeSO : ScriptableObject
     [SerializeField] private int m_gaugeFrameLength = 120;
     [SerializeField] private int m_gaugeMaxLength = 116;
     [SerializeField] private int m_margin = 2;  // Frame border thickness.((m_gaugeFameLength - m_gaugeMaxLength) / 2)
+    [SerializeField] private int m_gaugeDistance;
+    [SerializeField] private Vector2 m_gaugeRateTextPos;
+    [SerializeField] private Vector2 m_stateTextPos;
 
     [Header("Object")]
     [SerializeField] private GameObject m_gaugeBackgroundImage;
     [SerializeField] private GameObject m_gaugeImage;
-    [SerializeField] private int m_gaugeDistance;
+    [SerializeField] private TextMeshProUGUI m_gaugeRateText;
+    [SerializeField] private TextMeshProUGUI m_stateText;
 
-    public int GaugeFrameLength { get => m_gaugeFrameLength; }
-    public int GaugeMaxLength { get => m_gaugeMaxLength; }
-    public int Margin { get => m_margin; }
-    public GameObject GaugeBackgroundImage { get => m_gaugeBackgroundImage; }
-    public GameObject GaugeImage { get => m_gaugeImage; }
-    public int GaugeDistance { get => m_gaugeDistance; }
+    public int GaugeFrameLength => m_gaugeFrameLength;
+    public int GaugeMaxLength => m_gaugeMaxLength;
+    public int Margin => m_margin;
+    public Vector2 GaugeRateTextPos => m_gaugeRateTextPos;
+    public Vector2 StateTextPos => m_stateTextPos;
+    public int GaugeDistance => m_gaugeDistance;
+    public GameObject GaugeBackgroundImage => m_gaugeBackgroundImage;
+    public GameObject GaugeImage => m_gaugeImage;
+    public TextMeshProUGUI GaugeRateText => m_gaugeRateText;
+    public TextMeshProUGUI StateText => m_stateText;
 }

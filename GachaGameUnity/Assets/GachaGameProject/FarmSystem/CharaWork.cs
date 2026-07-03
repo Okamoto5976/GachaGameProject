@@ -1,100 +1,108 @@
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CharaWork : MonoBehaviour
 {
-    private const int FPS = 60;
+    [SerializeField] private CharactersParamSO m_charactersParam;
+    [SerializeField] private MainDataSO m_mainData;
+    [SerializeField] private FarmManager m_farmManager;
+    [SerializeField] private GaugeSO m_gauge;
+    private Canvas m_canvas;
 
     [SerializeField] private CharaData m_charaData;
-    [SerializeField] private MainDataSO m_mainData;
-    [SerializeField] private GaugeSO m_gauge;
-    [SerializeField] private Canvas m_canvas;
-
-    [SerializeField] private int m_frame;
-    [SerializeField] private int m_workTimer;
-    public int WorkTimer => m_workTimer; // Debug
-
-    [Header("Debug")]
-    [SerializeField] private int m_money;
 
     private GameObject m_gaugeBackgroundImage;
     private GameObject m_gaugeImage;
-    private Vector3 m_gaugeLocalPos;
+    private TextMeshProUGUI m_gaugeRateText;
+    private TextMeshProUGUI m_stateText;
+    private Vector2 m_gaugeLocalPos;
+    public int CharaIndex;
 
     private void Awake()
     {
-        Application.targetFrameRate = FPS;
+        Application.targetFrameRate = m_farmManager.FPS;
 
+        m_canvas = m_farmManager.Canvas;
+
+        m_charaData = m_charactersParam.CharaDataList[CharaIndex];
         GetComponent<Image>().sprite = m_charaData.Sprite;
         InstantiateGauge();
+        this.m_charaData.InitializeState();
     }
 
     void Update()
     {
-        Timer();
         SetGaugePosition();
         GaugeRender();
-        m_money = m_mainData.Money;
+        StateRender();
     }
 
-    private void Timer()
-    {
-        if (m_frame < FPS)
-        {
-            m_frame++;
-        }
-        else
-        {
-            m_frame = 0;
-            m_workTimer++;
-        }
-
-        if (m_workTimer < m_charaData.SPW)
-        {
-            // gauge
-        }
-        else
-        {
-            m_workTimer = 0;
-            m_mainData.Money += m_charaData.MPW;
-        }
-    }
 
     private void InstantiateGauge()
     {
+        // Instantiate
         m_gaugeBackgroundImage = Instantiate(m_gauge.GaugeBackgroundImage, transform.position, Quaternion.identity);
         m_gaugeImage = Instantiate(m_gauge.GaugeImage, transform.position, Quaternion.identity);
 
+        m_gaugeRateText = Instantiate(m_gauge.GaugeRateText, transform.position, Quaternion.identity);
+        m_stateText = Instantiate(m_gauge.StateText, transform.position, Quaternion.identity);
+        
+        // SetParent
         m_gaugeBackgroundImage.transform.SetParent(m_canvas.transform, false);
         m_gaugeImage.transform.SetParent(m_canvas.transform, false);
+
+        m_gaugeRateText.transform.SetParent(m_canvas.transform, false);
+        m_stateText.transform.SetParent(m_canvas.transform, false);
 
         SetGaugePosition();
     }
 
+    // Set the gauge position at the character's local position.
     private void SetGaugePosition()
     {
-        m_gaugeLocalPos = new Vector3(transform.position.x, 
-                                      transform.position.y - m_charaData.Size - m_gauge.GaugeDistance,
-                                      transform.position.z);
+        // Gauge
+        m_gaugeLocalPos = new Vector2(transform.position.x, 
+                                      transform.position.y + m_gauge.GaugeDistance);
 
         m_gaugeBackgroundImage.transform.position = m_gaugeLocalPos;
         m_gaugeImage.transform.position = m_gaugeLocalPos;
+
+        // Text
+        m_gaugeRateText.transform.position = m_gaugeLocalPos + m_gauge.GaugeRateTextPos;
+        m_stateText.transform.position = m_gaugeLocalPos + m_gauge.StateTextPos;
     }
 
+    // Calculate the progress of the work.
     private float Progress()
     {
-        return (float)m_workTimer / m_charaData.SPW;
+        return (float)m_charaData.WorkTimer / m_charaData.SPW;
     }
 
+    // Reflect the progress in the gauge.
     private void GaugeRender()
     {
         float _progress = Progress();
         float _leftAlignetX = - m_gauge.GaugeFrameLength * 0.5f + m_gauge.Margin + _progress * 0.5f * m_gauge.GaugeMaxLength;
 
         m_gaugeImage.transform.localScale = new Vector2(_progress, m_gaugeImage.transform.localScale.y);
-        m_gaugeImage.transform.position = new Vector3(m_gaugeLocalPos.x + _leftAlignetX,
-                                                      m_gaugeLocalPos.y,
-                                                      m_gaugeLocalPos.z);
+        m_gaugeImage.transform.position = new Vector2(m_gaugeLocalPos.x + _leftAlignetX,
+                                                      m_gaugeLocalPos.y);
     }
+
+    // Display character information above the gauge.
+    private void StateRender()
+    {
+        m_gaugeRateText.text = (Progress()*100).ToString() + " / 100";
+        m_stateText.text = "Lv." + m_charaData.Level.ToString() + "    MPS " + m_charaData.MPS.ToString() + "/s";
+    }
+
+    public void SetCharaData(CharaData charaData)
+    {
+        m_charaData = charaData;
+        Debug.Log($"charaData.MPW: {charaData.MPW}");
+        Debug.Log($"m_charaData.MPW: {m_charaData.MPW}");
+    }
+
 }

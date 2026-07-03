@@ -15,6 +15,10 @@ MonoBehaviour:
   m_gaugeFrameLength: 120
   m_gaugeMaxLength: 116
   m_margin: 2
+  m_gaugeDistance: 80
+  m_gaugeRateTextPos: {x: 170, y: 0}
+  m_stateTextPos: {x: 0, y: 20}
   m_gaugeBackgroundImage: {fileID: 4508579284106598077, guid: 2df6c314eaac3e24f84db8e40e11a12b, type: 3}
   m_gaugeImage: {fileID: 5579826146096948412, guid: 58b8f4fd4baec0441bd74af547bfb9f0, type: 3}
-  m_gaugeDistance: 40
+  m_gaugeRateText: {fileID: 5326830655701110539, guid: ff4c213aa3013f846b35b2951341dc21, type: 3}
+  m_stateText: {fileID: 6114243350534925580, guid: cc41812937bd63644b07ccca58e0a166, type: 3}

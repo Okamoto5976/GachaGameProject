@@ -14,7 +14,7 @@ public class Test : MonoBehaviour
 
     private void Update()
     {
-        m_text = "Money: " + m_mainData.Money.ToString() + "\ntimer: " + m_charaWork.WorkTimer;
+        m_text = "AAAAA";
         this.GetComponent<TextMeshProUGUI>().text = m_text;
     }
 }

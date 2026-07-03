@@ -1,16 +1,12 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class CharaData : MonoBehaviour
+[System.Serializable]
+public class CharaData
 {
     [Header("Base")]
     [SerializeField] private int m_rarity;
     [SerializeField] private string m_name;
     [SerializeField] private Sprite m_sprite;
-
-    [Header("Detail")]
-    [SerializeField] private float m_size;  // radius of the sprite size
 
     [Header("Default state")]
     [SerializeField] private int m_maxLevel;
@@ -18,22 +14,38 @@ public class CharaData : MonoBehaviour
     [SerializeField] private int m_defaultSPW;
 
     [Header("State")]
-    [SerializeField] private int m_level;
+    [SerializeField] private int m_level = 1;
     [SerializeField] private int m_mPW; // money per work
     [SerializeField] private int m_sPW; // second per work
+    [SerializeField] private float m_mPS; // money per second
 
-    internal Sprite Sprite => m_sprite;
-    internal float Size { get => m_size; }
-    internal int Level => m_level;
-    internal int MPW => m_mPW;
-    internal int SPW => m_sPW;
+    public int WorkTimer;
 
-    private void Awake()
+    public Sprite Sprite => m_sprite;
+    public int Level => m_level;
+    public int MPW => m_mPW;
+    public int SPW => m_sPW;
+    public float MPS => m_mPS;
+
+    public void UpdateMPS()
     {
-        m_level = 1;
+        m_mPS = (float)m_mPW / m_sPW;
+    }
+
+    public int GetDefaultMPW()
+    {
+        return m_defaultMPW;
+    }
+
+    public int GetDefaultSPW()
+    {
+        return m_defaultSPW;
+    }
+
+    public void InitializeState()
+    {
+        Debug.Log("Initialize");
         m_mPW = m_defaultMPW;
         m_sPW = m_defaultSPW;
-
-        m_size = m_sprite.bounds.size.y * 0.5f;
     }
 }
