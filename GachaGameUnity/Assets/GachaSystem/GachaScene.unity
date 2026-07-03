@@ -755,6 +755,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaSysteme
   RarityData: {fileID: 4900000, guid: a6465a2236b58df47bcdc30c090825be, type: 3}
+  CharacterData: {fileID: 4900000, guid: 60f12bfb5d0b13b4c917ef7b6861ffed, type: 3}
 --- !u!114 &1930394496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,6 +903,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaSysteme
   RarityData: {fileID: 4900000, guid: a6465a2236b58df47bcdc30c090825be, type: 3}
+  CharacterData: {fileID: 4900000, guid: 60f12bfb5d0b13b4c917ef7b6861ffed, type: 3}
 --- !u!114 &2123834892
 MonoBehaviour:
   m_ObjectHideFlags: 0
