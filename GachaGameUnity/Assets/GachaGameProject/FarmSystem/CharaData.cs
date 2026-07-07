@@ -44,7 +44,6 @@ public class CharaData
 
     public void InitializeState()
     {
-        Debug.Log("Initialize");
         m_mPW = m_defaultMPW;
         m_sPW = m_defaultSPW;
     }

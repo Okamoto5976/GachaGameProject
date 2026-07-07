@@ -9,24 +9,24 @@ public class CharaWork : MonoBehaviour
     [SerializeField] private MainDataSO m_mainData;
     [SerializeField] private FarmManager m_farmManager;
     [SerializeField] private GaugeSO m_gauge;
-    private Canvas m_canvas;
+    [SerializeField] private Canvas m_canvas;
 
-    [SerializeField] private CharaData m_charaData;
+    private CharaData m_charaData;
 
     private GameObject m_gaugeBackgroundImage;
     private GameObject m_gaugeImage;
     private TextMeshProUGUI m_gaugeRateText;
     private TextMeshProUGUI m_stateText;
     private Vector2 m_gaugeLocalPos;
-    public int CharaIndex;
 
     private void Awake()
     {
         Application.targetFrameRate = m_farmManager.FPS;
+    }
 
-        m_canvas = m_farmManager.Canvas;
-
-        m_charaData = m_charactersParam.CharaDataList[CharaIndex];
+    // First, set up the CharaWork's m_canvas in FarmManager.
+    private void Start()
+    {
         GetComponent<Image>().sprite = m_charaData.Sprite;
         InstantiateGauge();
         this.m_charaData.InitializeState();
@@ -94,6 +94,7 @@ public class CharaWork : MonoBehaviour
     // Display character information above the gauge.
     private void StateRender()
     {
+        m_charaData.UpdateMPS();
         m_gaugeRateText.text = (Progress()*100).ToString() + " / 100";
         m_stateText.text = "Lv." + m_charaData.Level.ToString() + "    MPS " + m_charaData.MPS.ToString() + "/s";
     }
@@ -101,8 +102,10 @@ public class CharaWork : MonoBehaviour
     public void SetCharaData(CharaData charaData)
     {
         m_charaData = charaData;
-        Debug.Log($"charaData.MPW: {charaData.MPW}");
-        Debug.Log($"m_charaData.MPW: {m_charaData.MPW}");
     }
 
+    public void SetCanvas(Canvas canvas)
+    {
+        m_canvas = canvas;
+    }
 }

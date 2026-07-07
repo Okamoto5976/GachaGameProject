@@ -92,6 +92,7 @@ MonoBehaviour:
   m_mainData: {fileID: 11400000, guid: 2d4116ffdbbe4e343a782ac56fba0a43, type: 2}
   m_farmManager: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
   m_gauge: {fileID: 11400000, guid: b5d9006e72dceb24387287ff6ae661c7, type: 2}
+  m_canvas: {fileID: 7750753943718543429, guid: 58b0b9882637dda44a5af95ca3e38a4c, type: 3}
   m_charaData:
     m_rarity: 1
     m_name: goast
@@ -100,7 +101,8 @@ MonoBehaviour:
     m_defaultMPW: 12
     m_defaultSPW: 5
     m_level: 1
-    MPW: 0
-    SPW: 0
-    MPS: 0
+    m_mPW: 0
+    m_sPW: 0
+    m_mPS: 0
     WorkTimer: 0
+  CharaIndex: 0

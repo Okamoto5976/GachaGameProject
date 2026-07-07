@@ -23,11 +23,10 @@ public class FarmManager : MonoBehaviour
         m_canvas = Instantiate(m_canvas);
         for (int i = 0; i < m_charactersParam.CharaDataList.Count; i++)
         {
-            Debug.Log($"[FM] i: {i}");
             m_charaObjs.Add(Instantiate(m_charaPrefab));
             m_charaWorks.Add(m_charaObjs[i].GetComponent<CharaWork>());
-            //m_charaWorks[i].SetCharaData(m_charactersParam.CharaDataList[i]);
-            m_charaWorks[i].CharaIndex = i;
+            m_charaWorks[i].SetCharaData(m_charactersParam.CharaDataList[i]);
+            m_charaWorks[i].SetCanvas(m_canvas);
             m_charaObjs[i].transform.SetParent(m_canvas.transform, false);
         }
     }
