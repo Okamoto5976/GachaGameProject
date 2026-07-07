@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class GachaSysteme : MonoBehaviour
 {
+
     private class CharaData
     {
 
@@ -20,19 +21,20 @@ public class GachaSysteme : MonoBehaviour
     }
 
     [SerializeField]
-    TextAsset RarityData = default;
+    private TextAsset RarityData = default;
     [SerializeField]
-    TextAsset CharacterData = default;
+    private TextAsset CharacterData = default;
 
     private float[,] m_RarityInfo;
     private string[,] m_CharInfo;
     private int m_RollNum = 0;
     private int m_LotteryType;//0=1,1=10
     private List<CharaData> m_DropChara = new();
-    string[] m_Raw;
-    string[] m_Column;
-    
-
+    private string[] m_Raw;
+    private string[] m_Column;
+    private float m_tickets = 20;
+    private float m_Coine=0;
+    private float m_Gettickets = 0;
     private void Start()
     {
         //Loading text
@@ -60,16 +62,25 @@ public class GachaSysteme : MonoBehaviour
 
     private void Update()
     {
+
         for (int i = 0; i < m_RollNum; i++)
         {
+
             if (i % 10 == 9)
+            {
                 m_LotteryType = 1;
-            else
+
+            }
+            else if (m_RollNum == 1)
+            {
                 m_LotteryType = 0;
+            }
 
             GetDropChara();
+            Debug.Log($"現在のチケット枚数は{m_tickets}枚です。");
         }
         m_RollNum = 0;
+        return;
     }
 
     private void GetDropChara()
@@ -84,8 +95,8 @@ public class GachaSysteme : MonoBehaviour
         if (m_DropChara.Exists(chara => chara.m_name == m_CharInfo[(int)Character.Name, charaId]))
         {
             Debug.Log($"既に取得済みのキャラクター: {m_CharInfo[(int)Character.Name, charaId]}");
-
-            //Debug.Log("ガチャチケットを獲得しました！");
+            ChiketsGet();
+            Debug.Log("ガチャチケットを獲得しました！" );
         }
         else
         {
@@ -101,7 +112,9 @@ public class GachaSysteme : MonoBehaviour
             Debug.Log($"新キャラ {m_CharInfo[(int)Character.Name, charaId]}が追加されました。");
            
         }
-
+        m_tickets += m_Gettickets;
+        Debug.Log($"チケットを{m_Gettickets}枚手に入れた。");
+        m_Gettickets = 0f;
     }
 
     private int ChooseRarity()
@@ -157,17 +170,49 @@ public class GachaSysteme : MonoBehaviour
         }
         return 0;
     }
-
-
-
+    public void ChiketsGet()
+    {
+        //m_GetChikets += 1;
+        m_tickets += 1;
+        return;
+    }
     public void LotteryTypeOne()
     {
-        m_RollNum = 1;
+
+        if (m_tickets >= 2)
+        {
+            m_tickets -= 2;
+            m_RollNum = 1;
+        }
+        else if (m_Coine >= 10)
+        {
+            m_Coine -= 10;
+            m_RollNum = 1;
+        }
+        else
+        {
+            Debug.Log("チケットまたはコインが足りません");
+        }
+        
     }
 
     public void LotteryTypeTen()
     {
-        m_RollNum = 10;
+        if (m_tickets >= 20)
+        {
+            m_tickets -= 20;
+            m_RollNum = 10;
+        }
+        else if (m_Coine >= 100)
+        {
+            m_Coine -= 100;
+            m_RollNum = 10;
+        }
+        else
+        {
+            Debug.Log("チケットまたはコインが足りません");
+        }
+
     }
 
 }
