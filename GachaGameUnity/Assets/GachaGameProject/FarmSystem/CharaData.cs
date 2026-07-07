@@ -10,41 +10,45 @@ public class CharaData
 
     [Header("Default state")]
     [SerializeField] private int m_maxLevel;
-    [SerializeField] private int m_defaultMPW;
-    [SerializeField] private int m_defaultSPW;
+    [SerializeField] private float m_defaultMPS;
+    [SerializeField] private float m_mPW;   // money per work
 
     [Header("State")]
     [SerializeField] private int m_level = 1;
-    [SerializeField] private int m_mPW; // money per work
-    [SerializeField] private int m_sPW; // second per work
-    [SerializeField] private float m_mPS; // money per second
-
-    public int WorkTimer;
+    [SerializeField] private float m_mPS;   // money per second
+    [SerializeField] private float m_wPS;   // work per second
+    [SerializeField] private float m_progress;
 
     public Sprite Sprite => m_sprite;
+    public float DefaultMPS => m_defaultMPS;
     public int Level => m_level;
-    public int MPW => m_mPW;
-    public int SPW => m_sPW;
     public float MPS => m_mPS;
+    public float WPS => m_wPS;
+    public float MPW => m_mPW;
+    public float Progress => m_progress;
 
-    public void UpdateMPS()
+    public void SetMPS(float value)
     {
-        m_mPS = (float)m_mPW / m_sPW;
+        m_mPS = value;
     }
 
-    public int GetDefaultMPW()
+    public void UpdateWPS()
     {
-        return m_defaultMPW;
+        m_wPS = m_mPW / m_mPS;
     }
 
-    public int GetDefaultSPW()
+    public void SetMPW(int value)
     {
-        return m_defaultSPW;
+        m_mPW = value;
     }
 
-    public void InitializeState()
+    public void SetProgress(float value)
     {
-        m_mPW = m_defaultMPW;
-        m_sPW = m_defaultSPW;
+        m_progress = value;
+    }
+
+    public void AddProgress(float value)
+    {
+        m_progress += value;
     }
 }

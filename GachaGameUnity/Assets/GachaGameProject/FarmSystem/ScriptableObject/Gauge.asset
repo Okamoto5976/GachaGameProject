@@ -16,6 +16,7 @@ MonoBehaviour:
   m_gaugeMaxLength: 116
   m_margin: 2
   m_gaugeDistance: 80
+  m_updateIntervalFrame: 10
   m_gaugeRateTextPos: {x: 170, y: 0}
   m_stateTextPos: {x: 0, y: 20}
   m_gaugeBackgroundImage: {fileID: 4508579284106598077, guid: 2df6c314eaac3e24f84db8e40e11a12b, type: 3}

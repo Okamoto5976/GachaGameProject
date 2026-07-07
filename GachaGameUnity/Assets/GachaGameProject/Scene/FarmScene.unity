@@ -426,6 +426,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
+      propertyPath: m_gauge
+      value: 
+      objectReference: {fileID: 11400000, guid: b5d9006e72dceb24387287ff6ae661c7, type: 2}
+    - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
       propertyPath: m_charaPrefab
       value: 
       objectReference: {fileID: 6587849307045948838, guid: 90df0a721f68ac44288ab56f8623c43c, type: 3}

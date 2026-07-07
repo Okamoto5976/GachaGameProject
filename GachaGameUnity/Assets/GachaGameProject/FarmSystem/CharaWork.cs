@@ -18,6 +18,7 @@ public class CharaWork : MonoBehaviour
     private TextMeshProUGUI m_gaugeRateText;
     private TextMeshProUGUI m_stateText;
     private Vector2 m_gaugeLocalPos;
+    [SerializeField] private float m_progress;
 
     private void Awake()
     {
@@ -27,9 +28,10 @@ public class CharaWork : MonoBehaviour
     // First, set up the CharaWork's m_canvas in FarmManager.
     private void Start()
     {
-        GetComponent<Image>().sprite = m_charaData.Sprite;
+        this.GetComponent<Image>().sprite = m_charaData.Sprite;
         InstantiateGauge();
-        this.m_charaData.InitializeState();
+        this.m_charaData.SetMPS(this.m_charaData.DefaultMPS);
+        this.m_charaData.SetProgress(0);
     }
 
     void Update()
@@ -74,19 +76,13 @@ public class CharaWork : MonoBehaviour
         m_stateText.transform.position = m_gaugeLocalPos + m_gauge.StateTextPos;
     }
 
-    // Calculate the progress of the work.
-    private float Progress()
-    {
-        return (float)m_charaData.WorkTimer / m_charaData.SPW;
-    }
-
     // Reflect the progress in the gauge.
     private void GaugeRender()
     {
-        float _progress = Progress();
-        float _leftAlignetX = - m_gauge.GaugeFrameLength * 0.5f + m_gauge.Margin + _progress * 0.5f * m_gauge.GaugeMaxLength;
+        float _leftAlignetX = - m_gauge.GaugeFrameLength * 0.5f + m_gauge.Margin + m_progress * 0.5f * m_gauge.GaugeMaxLength;
+        //Debug.Log($"_leftAlignetX: {_leftAlignetX}");
 
-        m_gaugeImage.transform.localScale = new Vector2(_progress, m_gaugeImage.transform.localScale.y);
+        m_gaugeImage.transform.localScale = new Vector2(m_progress, m_gaugeImage.transform.localScale.y);
         m_gaugeImage.transform.position = new Vector2(m_gaugeLocalPos.x + _leftAlignetX,
                                                       m_gaugeLocalPos.y);
     }
@@ -94,8 +90,7 @@ public class CharaWork : MonoBehaviour
     // Display character information above the gauge.
     private void StateRender()
     {
-        m_charaData.UpdateMPS();
-        m_gaugeRateText.text = (Progress()*100).ToString() + " / 100";
+        m_gaugeRateText.text = (m_progress * 100).ToString() + " / 100";
         m_stateText.text = "Lv." + m_charaData.Level.ToString() + "    MPS " + m_charaData.MPS.ToString() + "/s";
     }
 
@@ -107,5 +102,10 @@ public class CharaWork : MonoBehaviour
     public void SetCanvas(Canvas canvas)
     {
         m_canvas = canvas;
+    }
+
+    public void SetProgress(float value)
+    {
+        m_progress = value;
     }
 }
