@@ -9,7 +9,8 @@ public class CharaWork : MonoBehaviour
     [SerializeField] private MainDataSO m_mainData;
     [SerializeField] private FarmManager m_farmManager;
     [SerializeField] private GaugeSO m_gauge;
-    [SerializeField] private Canvas m_canvas;
+    private Canvas m_canvas;
+    private Transform m_charaTransform;
 
     private CharaData m_charaData;
 
@@ -30,7 +31,7 @@ public class CharaWork : MonoBehaviour
     {
         this.GetComponent<Image>().sprite = m_charaData.Sprite;
         InstantiateGauge();
-        this.m_charaData.SetMPS(this.m_charaData.DefaultMPS);
+        this.m_charaData.SetMPS();
         this.m_charaData.SetProgress(0);
     }
 
@@ -102,6 +103,11 @@ public class CharaWork : MonoBehaviour
     public void SetCanvas(Canvas canvas)
     {
         m_canvas = canvas;
+    }
+
+    public void SetCharaTransform(Transform charaTransform)
+    {
+        m_charaTransform = charaTransform;
     }
 
     public void SetProgress(float value)

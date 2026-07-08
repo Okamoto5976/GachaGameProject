@@ -27,9 +27,15 @@ public class CharaData
     public float MPW => m_mPW;
     public float Progress => m_progress;
 
-    public void SetMPS(float value)
+    public void UpLevel(int value)
     {
-        m_mPS = value;
+        m_level += value;
+        SetMPS();
+    }
+
+    public void SetMPS()
+    {
+        m_mPS = DefaultMPS * m_level;
     }
 
     public void UpdateWPS()

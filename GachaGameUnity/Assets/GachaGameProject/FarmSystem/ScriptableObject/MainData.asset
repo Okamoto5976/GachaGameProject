@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e1ed21d35577c94291c535e50904256, type: 3}
   m_Name: MainData
   m_EditorClassIdentifier: Assembly-CSharp::MainDataSO
-  Money: 690
+  Money: 550

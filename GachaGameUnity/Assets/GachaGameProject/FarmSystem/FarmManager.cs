@@ -32,6 +32,7 @@ public class FarmManager : MonoBehaviour
             m_charaWorks.Add(m_charaObjs[i].GetComponent<CharaWork>());
             m_charaWorks[i].SetCharaData(m_charactersParam.CharaDataList[i]);
             m_charaWorks[i].SetCanvas(m_canvas);
+            m_charaWorks[i].SetCharaTransform(m_charaObjs[i].transform);
             m_charaObjs[i].transform.SetParent(m_canvas.transform, false);
             if (m_charactersParam.CharaDataList[i].MPW == 0)
             {
@@ -94,5 +95,19 @@ public class FarmManager : MonoBehaviour
 
         _charaData.SetProgress(_charaData.Progress % 1.0f);
         return _charaData.Progress % 1.0f;
+    }
+
+    private void AddCharacter(int index, Vector2 setPos)
+    {
+        m_charaObjs.Add(Instantiate(m_charaPrefab));
+        m_charaWorks.Add(m_charaObjs[index].GetComponent<CharaWork>());
+        m_charaWorks[index].SetCharaData(m_charactersParam.CharaDataList[index]);
+        m_charaWorks[index].SetCanvas(m_canvas);
+        m_charaWorks[index].SetCharaTransform(m_charaObjs[index].transform);
+        m_charaObjs[index].transform.SetParent(m_canvas.transform, false);
+        if (m_charactersParam.CharaDataList[index].MPW == 0)
+        {
+            m_charactersParam.CharaDataList[index].SetMPW(1);   // initialize
+        }
     }
 }
