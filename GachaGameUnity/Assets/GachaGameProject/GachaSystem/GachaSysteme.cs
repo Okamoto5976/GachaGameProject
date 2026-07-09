@@ -101,7 +101,7 @@ public class GachaSysteme : MonoBehaviour
         else
         {
             //GetList
-            CharaData newChara = new CharaData
+            CharaData newChara = new ()
             {
                 //m_id = int.Parse(m_CharInfo[(int)Character.id, charaId]),
                 m_glade = int.Parse(m_CharInfo[(int)Character.Glade, charaId]),
@@ -213,6 +213,17 @@ public class GachaSysteme : MonoBehaviour
             Debug.Log("チケットまたはコインが足りません");
         }
 
+    }
+
+    public void GachaGetOnw()
+    {
+        m_RollNum = 1;
+        return;
+    }
+    public void GachaGetTen()
+    {
+        m_RollNum = 10;
+        return;
     }
 
 }

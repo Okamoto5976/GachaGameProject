@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class GachaBottun : MonoBehaviour
 {
-
+    [SerializeField]
+    private GachaSysteme gacha;
     public void OnClickOne()
     {
-        GetComponent<GachaSysteme>();
+        gacha.LotteryTypeOne();  
     }
-    // Update is called once per frame
+   
     public void OnClickTen()
     {
-        GetComponent<GachaSysteme>();
+        gacha.LotteryTypeTen();
     }
 }
