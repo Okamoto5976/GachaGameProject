@@ -1,28 +1,7 @@
 using System.Security;
 using UnityEngine;
 
-public enum TestType
-{
-    Grass,
-    Onsen
-}
 
-public enum TestRarity
-{
-    C
-}
-
-public class CharaStateData
-{
-    public int ID;
-    public string Name;
-    public TestType Type;
-    public TestRarity Rarity;
-    public int Value;
-    public Texture2D Image;
-
-    public int Level;
-}
 
 public class TestCharacterData : MonoBehaviour
 {
