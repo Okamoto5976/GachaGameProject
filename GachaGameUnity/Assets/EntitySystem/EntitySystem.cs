@@ -8,7 +8,6 @@ public class RandomEntityMove : MonoBehaviour
 
     private Vector3 m_moveDirection;
     private float m_timer;
-    private Rigidbody m_rb;
     private SpriteRenderer m_renderer;
 
     private float m_moveSpeed;
@@ -23,7 +22,6 @@ public class RandomEntityMove : MonoBehaviour
 
     void Start()
     {
-        m_rb = GetComponent<Rigidbody>();
         m_renderer = GetComponentInChildren<SpriteRenderer>();
 
         if (m_entityData == null)
@@ -40,15 +38,16 @@ public class RandomEntityMove : MonoBehaviour
         Debug.Log("タイプ : " + m_entityData.Type);
         Debug.Log("レア度 : " + m_entityData.Rarity);
 
-        // Texture表示
+        // Sprite表示
         if (m_entityData.Sprite != null)
         {
             m_renderer.sprite = m_entityData.Sprite;
         }
 
-
         m_state = EntityState.Idle;
         m_timer = 3f;
+
+
     }
 
     void Update()
@@ -61,6 +60,7 @@ public class RandomEntityMove : MonoBehaviour
 
                 if (m_timer <= 0f)
                 {
+                    // ランダムな方向を決定
                     m_moveDirection = new Vector3(
                         Random.Range(-1f, 1f),
                         0f,
@@ -75,6 +75,10 @@ public class RandomEntityMove : MonoBehaviour
 
             case EntityState.Move:
 
+                // 移動
+                transform.position +=
+                    m_moveDirection * m_moveSpeed * Time.deltaTime;
+
                 if (m_timer <= 0f)
                 {
                     m_state = EntityState.Idle;
@@ -85,18 +89,8 @@ public class RandomEntityMove : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    public EntityData GetEntityData()
     {
-        switch (m_state)
-        {
-            case EntityState.Idle:
-                m_rb.linearVelocity = Vector3.zero;
-                break;
-
-            case EntityState.Move:
-                m_rb.linearVelocity =
-                    m_moveDirection * m_moveSpeed;
-                break;
-        }
+        return m_entityData;
     }
 }
