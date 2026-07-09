@@ -8,7 +8,7 @@ public class CharaData
     public int CharaLevel;
 }
 
-public class GameData
+public class SaveDataFile
 {
     //save timing
     //5m

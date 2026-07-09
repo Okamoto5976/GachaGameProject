@@ -11,13 +11,4 @@ public class CharTestDB : ScriptableObject
     public int image;
 }
 
-public enum TestType
-{
-    Grass,
-    Onsen
-}
 
-public enum TestRarity
-{
-    C
-}

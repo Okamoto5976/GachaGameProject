@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -15,15 +16,27 @@ public class ADBRegister : MonoBehaviour
 {
     private string m_ServerAddress = "http://localhost/PHPGameProject/ADB/register.php";
 
-    [SerializeField] private string m_userName;
-    [SerializeField] private string m_password;
+    [SerializeField] private TMP_InputField m_userName;
+    [SerializeField] private TMP_InputField m_password;
 
     [SerializeField] private LoginCash m_cash;
     [SerializeField] private AccountData m_accountData;
 
     public void OnClick()
     {
-        CreateAccount(m_userName, m_password);
+        if(m_userName == null)
+        {
+            Debug.Log("userName‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+
+            return;
+        }
+
+        if(m_password == null)
+        {
+            Debug.Log("password‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+        }
+
+        CreateAccount(m_userName.text, m_password.text);
     }
 
     public void CreateAccount(string user, string password)
