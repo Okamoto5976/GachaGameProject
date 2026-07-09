@@ -10,25 +10,30 @@ public class FarmManager : MonoBehaviour
     [SerializeField] private MainDataSO m_mainData;
     [SerializeField] private GaugeSO m_gauge;
     [SerializeField] private Canvas m_canvas;
-    [SerializeField] private GameObject m_charaPrefab;
+    [SerializeField] private List<GameObject> m_charaObjs;
+    // Use only when generating using a script.
+    //[SerializeField] private GameObject m_charaPrefab;
     public Canvas Canvas => m_canvas;
 
     [Header("State")]
     [SerializeField] private int m_frame;
     [SerializeField] private float m_fMoney; // Maintained while FarmManager is active
 
-    [SerializeField] private List<GameObject> m_charaObjs = new();
-    [SerializeField] private List<CharaWork> m_charaWorks = new();
+    private List<CharaWork> m_charaWorks = new();
     //[SerializeField] private List<float> m_progressList = new();
 
     private void Awake()
     {
-        m_canvas = Instantiate(m_canvas);
         m_fMoney = 0;
+        //m_canvas = Instantiate(m_canvas);
+
         for (int i = 0; i < m_charactersParam.CharaDataList.Count; i++)
         {
-            AddCharacter(Instantiate(m_charaPrefab));
+            SetParam(m_charaObjs[i]);
+            // Use only when generating using a script.
+            //AddCharacter(Instantiate(m_charaPrefab));
         }
+
     }
 
     private void Update()
@@ -58,6 +63,8 @@ public class FarmManager : MonoBehaviour
         for (int i = 0; i < m_charactersParam.CharaDataList.Count; i++)
         {
             _charaData = m_charactersParam.CharaDataList[i];
+            if (_charaData.Owned == false) continue;
+
             _charaData.UpdateWPS();
             int _completeCount;
 
@@ -87,6 +94,19 @@ public class FarmManager : MonoBehaviour
         return _charaData.Progress % 1.0f;
     }
 
+    // Use this only when objects have already been placed in the scene.
+    private void SetParam(GameObject _charaObj)
+    {
+        m_charaWorks.Add(_charaObj.GetComponent<CharaWork>());
+        int index = m_charaWorks.Count - 1;
+        m_charaWorks[index].SetCharaData(m_charactersParam.CharaDataList[index]);
+        if (m_charactersParam.CharaDataList[index].MPW == 0)
+        {
+            m_charactersParam.CharaDataList[index].SetMPW(1);   // initialize
+        }
+    }
+
+    /*
     private void AddCharacter(GameObject _charaObj)
     {
         m_charaObjs.Add(_charaObj);
@@ -99,4 +119,5 @@ public class FarmManager : MonoBehaviour
             m_charactersParam.CharaDataList[index].SetMPW(1);   // initialize
         }
     }
+    */
 }

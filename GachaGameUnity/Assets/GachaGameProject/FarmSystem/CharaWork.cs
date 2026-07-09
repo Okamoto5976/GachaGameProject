@@ -26,7 +26,8 @@ public class CharaWork : MonoBehaviour
     // First, set up the CharaWork's m_canvas in FarmManager.
     private void Start()
     {
-        this.GetComponent<Image>().sprite = m_charaData.Sprite;
+        // Use only when generating using a script.
+        //this.GetComponent<Image>().sprite = m_charaData.Sprite;
         InstantiateGauge();
         this.m_charaData.SetMPS();
         this.m_charaData.SetProgress(0);
