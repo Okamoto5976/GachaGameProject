@@ -1,13 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class CharaData
-{
-    public int CharaID;
-    public int CharaLevel;
-}
-
 public class SaveDataFile
 {
     //save timing
@@ -17,7 +10,7 @@ public class SaveDataFile
     //level
 
     //saveData=============================
-    public List<CharaData> m_charaDatas = new();
+    public List<CharacterData> m_charaDatas = new();
 
     public int m_money;
 
@@ -27,11 +20,11 @@ public class SaveDataFile
 
     public void SaveCharaData(int id, int level)
     {
-        CharaData chara = m_charaDatas.Find(x => x.CharaID == id);
+        CharacterData chara = m_charaDatas.Find(x => x.ID== id);
 
         if(chara != null)
         {
-            chara.CharaLevel = level;
+            chara.Level = level;
         }
         else
         {
@@ -41,10 +34,10 @@ public class SaveDataFile
 
     public void SetCharaData(int id, int level)
     {
-        CharaData newChara = new CharaData();
+        CharacterData newChara = new CharacterData();
 
-        newChara.CharaID = id;
-        newChara.CharaLevel = level;
+        newChara.ID = id;
+        newChara.Level = level;
 
         m_charaDatas.Add(newChara);
     }

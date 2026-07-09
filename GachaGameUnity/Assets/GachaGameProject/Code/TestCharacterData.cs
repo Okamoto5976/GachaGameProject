@@ -14,7 +14,7 @@ public class TestCharacterData : MonoBehaviour
 
     private int m_level;
 
-    public void SetData(CharacterDataBase data)
+    public void SetData(CharacterMasterData data)
     {
         m_id = data.ID;
         m_name = data.Name;
@@ -22,7 +22,5 @@ public class TestCharacterData : MonoBehaviour
         m_rarity = data.Rarity;
         m_value = data.Value;
         m_image = data.Image;
-
-        m_level = data.Level;
     }
 }

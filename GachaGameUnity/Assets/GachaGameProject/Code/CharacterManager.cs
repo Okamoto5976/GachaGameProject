@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class CharacterDataBase
+public class CharacterMasterData
 {
     public int ID;
     public string Name;
@@ -9,8 +9,6 @@ public class CharacterDataBase
     public Enum_RarityType Rarity;
     public int Value;
     public Texture2D Image;
-
-    public int Level;
 }
 
 public class CharacterData
@@ -24,7 +22,7 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Instance;
 
-    private List<CharacterDataBase> m_dataList = new();
+    private List<CharacterData> m_dataList = new();
 
     private SaveDataFile m_saveFile = new();
 
@@ -40,20 +38,20 @@ public class CharacterManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void AdddataList(CharacterDataBase data)
+    public void AdddataList(CharacterData data)
     {
         m_dataList.Add(data);
         //•À‚×‘Ö‚¦‚éiˆê‰j
     }
 
     //id‚©‚çdata‚ğ“n‚·
-    public CharacterDataBase GetCharaData(int id)
+    public CharacterData GetCharaData(int id)
     {
         return null;
     }
 
     //icon + id ƒLƒƒƒ‰‘I‘ğ‚â@}ŠÓ‚Ì‚½‚ß
-    public CharacterDataBase GetCharaImage(int id)
+    public CharacterData GetCharaImage(int id)
     {
         //‚P‚©‚ç‡‚Éæ‚Á‚Ä‚¢‚«A
         //ó‚¯æ‚èè‚ªid‚Æimage‚ğ‚à‚Â‚±‚Æ‚Å}ŠÓ‚ª‚Å‚«‚é

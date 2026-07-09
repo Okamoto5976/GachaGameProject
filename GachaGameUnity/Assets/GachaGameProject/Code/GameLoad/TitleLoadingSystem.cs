@@ -12,6 +12,8 @@ public class TitleLoadingSystem : MonoBehaviour
         if(!m_debug.debugMode)
         {
             //ADBのfilepathからSaveをロード
+            //data is SaveDataFile class
+            //have chara or money in data
             m_postSaveFile.LoadFile(data =>
             {
                 if (data == null)
@@ -20,11 +22,15 @@ public class TitleLoadingSystem : MonoBehaviour
                     return;
                 }
 
-                //CreatePlayer();
-
                 foreach(var chara in data.m_charaDatas)
                 {
-                    //CharacterManager.Instance.S
+                    CharacterData charadata = new CharacterData
+                    {
+                        ID = chara.ID,
+                        Level = chara.Level,
+                    };
+
+                    CharacterManager.Instance.AdddataList(charadata);
                 }
 
                 //マスターデータをデータベースから引く
