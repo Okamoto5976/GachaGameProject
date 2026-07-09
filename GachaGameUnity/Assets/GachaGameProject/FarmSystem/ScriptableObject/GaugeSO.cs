@@ -1,6 +1,5 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "GaugeSO", menuName = "Scriptable Objects/GaugeSO")]
 public class GaugeSO : ScriptableObject
@@ -9,7 +8,7 @@ public class GaugeSO : ScriptableObject
     [SerializeField] private int m_gaugeFrameLength = 120;
     [SerializeField] private int m_gaugeMaxLength = 116;
     [SerializeField] private int m_margin = 2;  // Frame border thickness.((m_gaugeFameLength - m_gaugeMaxLength) / 2)
-    [SerializeField] private int m_gaugeDistance;
+    [SerializeField] private int m_gaugePosUp;
     [SerializeField] private int m_updateIntervalFrame = 30;    //Gauge update frequency.
     [SerializeField] private Vector2 m_gaugeRateTextPos;
     [SerializeField] private Vector2 m_stateTextPos;
@@ -26,7 +25,7 @@ public class GaugeSO : ScriptableObject
     public int UpdateIntervalFrame => m_updateIntervalFrame;
     public Vector2 GaugeRateTextPos => m_gaugeRateTextPos;
     public Vector2 StateTextPos => m_stateTextPos;
-    public int GaugeDistance => m_gaugeDistance;
+    public int GaugePosUp => m_gaugePosUp;
     public GameObject GaugeBackgroundImage => m_gaugeBackgroundImage;
     public GameObject GaugeImage => m_gaugeImage;
     public TextMeshProUGUI GaugeRateText => m_gaugeRateText;

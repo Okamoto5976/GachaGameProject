@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections.Generic;
-using NUnit.Framework.Constraints;
 
 public class FarmManager : MonoBehaviour
 {
@@ -28,16 +27,7 @@ public class FarmManager : MonoBehaviour
         m_fMoney = 0;
         for (int i = 0; i < m_charactersParam.CharaDataList.Count; i++)
         {
-            m_charaObjs.Add(Instantiate(m_charaPrefab));
-            m_charaWorks.Add(m_charaObjs[i].GetComponent<CharaWork>());
-            m_charaWorks[i].SetCharaData(m_charactersParam.CharaDataList[i]);
-            m_charaWorks[i].SetCanvas(m_canvas);
-            m_charaWorks[i].SetCharaTransform(m_charaObjs[i].transform);
-            m_charaObjs[i].transform.SetParent(m_canvas.transform, false);
-            if (m_charactersParam.CharaDataList[i].MPW == 0)
-            {
-                m_charactersParam.CharaDataList[i].SetMPW(1);   // initialize
-            }
+            AddCharacter(Instantiate(m_charaPrefab));
         }
     }
 
@@ -97,13 +87,12 @@ public class FarmManager : MonoBehaviour
         return _charaData.Progress % 1.0f;
     }
 
-    private void AddCharacter(int index, Vector2 setPos)
+    private void AddCharacter(GameObject _charaObj)
     {
-        m_charaObjs.Add(Instantiate(m_charaPrefab));
-        m_charaWorks.Add(m_charaObjs[index].GetComponent<CharaWork>());
+        m_charaObjs.Add(_charaObj);
+        m_charaWorks.Add(_charaObj.GetComponent<CharaWork>());
+        int index = m_charaWorks.Count - 1;
         m_charaWorks[index].SetCharaData(m_charactersParam.CharaDataList[index]);
-        m_charaWorks[index].SetCanvas(m_canvas);
-        m_charaWorks[index].SetCharaTransform(m_charaObjs[index].transform);
         m_charaObjs[index].transform.SetParent(m_canvas.transform, false);
         if (m_charactersParam.CharaDataList[index].MPW == 0)
         {

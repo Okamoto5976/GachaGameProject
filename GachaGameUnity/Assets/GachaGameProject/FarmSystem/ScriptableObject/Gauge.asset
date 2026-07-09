@@ -15,7 +15,7 @@ MonoBehaviour:
   m_gaugeFrameLength: 120
   m_gaugeMaxLength: 116
   m_margin: 2
-  m_gaugeDistance: 80
+  m_gaugePosUp: 80
   m_updateIntervalFrame: 10
   m_gaugeRateTextPos: {x: 170, y: 0}
   m_stateTextPos: {x: 0, y: 20}
