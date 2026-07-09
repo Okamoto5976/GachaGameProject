@@ -5,7 +5,7 @@ using TMPro;
 public class EntityUI : MonoBehaviour
 {
     [SerializeField]
-    private EntityData m_entityData;
+    private EntityDataSO m_entityData;
 
     [SerializeField]
     private Image m_image;

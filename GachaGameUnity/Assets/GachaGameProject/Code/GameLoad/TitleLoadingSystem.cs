@@ -21,9 +21,20 @@ public class TitleLoadingSystem : MonoBehaviour
                 }
 
                 //CreatePlayer();
+
+                foreach(var chara in data.m_charaDatas)
+                {
+                    //CharacterManager.Instance.S
+                }
+
+                //マスターデータをデータベースから引く
+                //このデータは使わない　図鑑のみに使う
+
+
+
             });
 
-            //キャラデータを生成
+            //EntityDataManagerにセット
             //データをDataBaseから引いて　Set
             //キャラlevelSet
             //お金etc...セット

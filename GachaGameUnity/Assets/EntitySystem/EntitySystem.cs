@@ -4,7 +4,7 @@ using System.Collections;
 public class RandomEntityMove : MonoBehaviour
 {
     [SerializeField]
-    private EntityData m_entityData;
+    private EntityDataSO m_entityData;
 
     private Vector3 m_moveDirection;
     private float m_timer;
@@ -89,7 +89,7 @@ public class RandomEntityMove : MonoBehaviour
         }
     }
 
-    public EntityData GetEntityData()
+    public EntityDataSO GetEntityData()
     {
         return m_entityData;
     }

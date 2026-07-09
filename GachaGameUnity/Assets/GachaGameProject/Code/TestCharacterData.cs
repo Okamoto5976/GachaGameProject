@@ -7,14 +7,14 @@ public class TestCharacterData : MonoBehaviour
 {
     [SerializeField] private int m_id;
     [SerializeField] private string m_name;
-    [SerializeField] private TestType m_type;
-    [SerializeField] private TestRarity m_rarity;
+    [SerializeField] private Enum_CharaType m_type;
+    [SerializeField] private Enum_RarityType m_rarity;
     [SerializeField] private int m_value;
     [SerializeField] private Texture2D m_image;
 
     private int m_level;
 
-    public void SetData(CharaStateData data)
+    public void SetData(CharacterDataBase data)
     {
         m_id = data.ID;
         m_name = data.Name;
