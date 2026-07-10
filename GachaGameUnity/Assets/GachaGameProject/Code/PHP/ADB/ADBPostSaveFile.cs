@@ -15,7 +15,8 @@ public class ADBPostSaveFile : MonoBehaviour
 
     //private string m_filePath;
 
-    private string m_ServerAddress = "http://localhost/PHPGameProject/ADB/jsonfile.php";
+    private string m_SaveServerAddress = "http://10.219.32.121/PHPGameProject/ADB/savejsonfile.php";
+    private string m_LoadServerAddress = "http://10.219.32.121/PHPGameProject/ADB/loadjsonfile.php";
 
 
     private void Awake()
@@ -23,9 +24,8 @@ public class ADBPostSaveFile : MonoBehaviour
         //m_filePath = Application.persistentDataPath + "/";
     }
 
-    public void SaveFile(int id)
+    public void SaveFile(int id, SaveDataFile data)
     {
-        SaveDataFile data = new();
         //data setting
         
         string json = JsonUtility.ToJson(data, true);
@@ -35,10 +35,10 @@ public class ADBPostSaveFile : MonoBehaviour
         
     }
 
-    public void LoadFile(System.Action<SaveDataFile> callback)
-    {
-        StartCoroutine(LoadFileCoroutine(callback));
-    }
+    //public void LoadFile()
+    //{
+    //    StartCoroutine(LoadFileCoroutine());
+    //}
 
     private IEnumerator SaveFileCoroutine(string json, int id)
     {
@@ -46,7 +46,7 @@ public class ADBPostSaveFile : MonoBehaviour
         form.AddField("userId", id);
         form.AddField("saveData", json);
 
-        UnityWebRequest request = UnityWebRequest.Post(m_ServerAddress, form);
+        UnityWebRequest request = UnityWebRequest.Post(m_SaveServerAddress, form);
 
         yield return request.SendWebRequest();
 
@@ -71,26 +71,29 @@ public class ADBPostSaveFile : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadFileCoroutine(System.Action<SaveDataFile> callback)
+    public SaveDataFile LoadSaveDataFile { get; private set; }
+
+
+    public IEnumerator LoadFileCoroutine(int id)
     {
         WWWForm form = new WWWForm();
-        form.AddField("userId", "1001");
+        form.AddField("userId", id);
 
-        UnityWebRequest request = UnityWebRequest.Post(m_ServerAddress, form);
+        UnityWebRequest request = UnityWebRequest.Post(m_LoadServerAddress, form);
 
         yield return request.SendWebRequest();
 
         if (request.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("Failure: " + request.error);
+            LoadSaveDataFile = null;
         }
         else
         {
-            SaveDataFile data =
-                JsonUtility.FromJson<SaveDataFile>(
+            LoadSaveDataFile = JsonUtility.FromJson<SaveDataFile>(
                     request.downloadHandler.text);
 
-            callback(data);
+            Debug.Log("get save file");
         }
     }
 }

@@ -14,7 +14,7 @@ public class RegisterResult
 
 public class ADBRegister : MonoBehaviour
 {
-    private string m_ServerAddress = "http://localhost/PHPGameProject/ADB/register.php";
+    private string m_ServerAddress = "http://10.219.32.121/PHPGameProject/ADB/register.php";
 
     [SerializeField] private TMP_InputField m_userName;
     [SerializeField] private TMP_InputField m_password;

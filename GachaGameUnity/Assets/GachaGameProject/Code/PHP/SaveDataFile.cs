@@ -1,6 +1,15 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+[System.Serializable]
+public class CharacterData
+{
+    public int ID;
+    public int Level;
+    public Enum_PlaceType PlaceType;
+}
+
+[System.Serializable]//if serializable not, can not json
 public class SaveDataFile
 {
     //save timing
@@ -18,28 +27,30 @@ public class SaveDataFile
 
     //Data method==========================
 
-    public void SaveCharaData(int id, int level)
+    public void SaveCharaData(CharacterData data)
     {
-        CharacterData chara = m_charaDatas.Find(x => x.ID== id);
+        CharacterData chara = m_charaDatas.Find(x => x.ID== data.ID);
 
-        if(chara != null)
+        if (chara != null)
         {
-            chara.Level = level;
+            chara.Level = data.Level;
         }
         else
         {
-            SetCharaData(id, level);
+            SetCharaData(data);
         }
+
+
     }
 
-    public void SetCharaData(int id, int level)
+    public void SetCharaData(CharacterData data)
     {
-        CharacterData newChara = new CharacterData();
+        //CharacterData newChara = new CharacterData();
 
-        newChara.ID = id;
-        newChara.Level = level;
+        //newChara.ID = id;
+        //newChara.Level = level;
 
-        m_charaDatas.Add(newChara);
+        m_charaDatas.Add(data);
     }
 
     public void SetMoney(int money)

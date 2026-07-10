@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class ADBLogin : MonoBehaviour
 {
-    private string m_ServerAddressLogin = "http://localhost/PHPGameProject/ADB/login.php";
-    private string m_ServerAddressCash = "http://localhost/PHPGameProject/ADB/cashlogin.php";
+    //10.219.32.121
 
-    [SerializeField] private string m_userName;
-    [SerializeField] private string m_password;
+    private string m_ServerAddressLogin = "http://10.219.32.121/PHPGameProject/ADB/login.php";
+    private string m_ServerAddressCash = "http://10.219.32.121/PHPGameProject/ADB/cashlogin.php";
+
+    [SerializeField] private TMP_InputField m_userName;
+    [SerializeField] private TMP_InputField m_password;
 
     [SerializeField] private LoginCash m_cash;
     [SerializeField] private AccountData m_accountData;
@@ -39,7 +42,7 @@ public class ADBLogin : MonoBehaviour
 
     public void OnClick()
     {
-        OnLogIn(m_userName, m_password);
+        OnLogIn(m_userName.text, m_password.text);
     }
 
     //normal login or change account login => no token

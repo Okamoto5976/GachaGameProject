@@ -44,7 +44,7 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         SetVolume(m_AudioVolume.Value);
-        m_audioSlider.value = m_AudioVolume.Value;
+        //m_audioSlider.value = m_AudioVolume.Value;
     }
 
     private void PlaySE(AudioData data)

@@ -23,13 +23,10 @@ public class CDBGacha : MonoBehaviour
         public GachaResult[] results;
     }
 
-    public TextMeshProUGUI m_text;
+    [SerializeField] private int m_rarity;
 
-    [SerializeField] private int m_id;
 
-    [SerializeField] private RawImage displlayImage;
-
-    private string m_ServerAddress = "http://localhost/PHPGameProject/CDB/gacha.php";
+    private string m_ServerAddress = "http://10.219.32.121/PHPGameProject/CDB/gacha.php";
 
     //onclick event
     public void OnSendSignel()
@@ -40,21 +37,19 @@ public class CDBGacha : MonoBehaviour
     private IEnumerator Access()
     {
 
-        StartCoroutine(Post(m_id));
+        StartCoroutine(Post(m_rarity));
 
         yield return 0;
     }
 
-    private IEnumerator Post(int id)
+    //use Gacha view
+    public GachaResults Results { get; private set; }
+
+    private IEnumerator Post(int rarity)
     {
         WWWForm form = new();
      
-        form.AddField("rarities[0]", 1);
-        form.AddField("rarities[1]", 1);
-        form.AddField("rarities[2]", 1);
-        form.AddField("rarities[3]", 1);
-        form.AddField("rarities[4]", 1);
-        form.AddField("rarities[5]", 1);
+        form.AddField("rarities[0]", rarity);
 
         UnityWebRequest www = UnityWebRequest.Post(m_ServerAddress,form);
 
@@ -72,7 +67,12 @@ public class CDBGacha : MonoBehaviour
             foreach (GachaResult result in data.results)
             {
                 Debug.Log("Žæ“¾ID : " + result.id);
+                CharacterManager.Instance.AddGachaChara(result.id);
+
             }
+
+            Results = data;
+
         }
     }
 }

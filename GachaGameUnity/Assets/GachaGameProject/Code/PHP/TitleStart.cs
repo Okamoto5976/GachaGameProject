@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleStart : MonoBehaviour
 {
     [SerializeField] private AccountData m_accountData;
+    [SerializeField] private StringEventSO m_loadEventSO;
 
     [SerializeField] private DebugMode m_debug;
 
@@ -26,5 +28,8 @@ public class TitleStart : MonoBehaviour
         }
 
         Debug.Log("ログインできているね！ゲームをスタートします！");
+
+        //SceneManager.LoadScene("MainScene");
+        m_loadEventSO.Raise("MainScene");
     }
 }

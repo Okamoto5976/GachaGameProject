@@ -1,38 +1,35 @@
 using TMPro;
 using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.IO;
 using UnityEngine.UI;
+[System.Serializable]
+public class MasterCharacterData
+{
+    public int id;
+    public string name;
+    public string type;
+    public string rarity;
+    public int value;
+    public string image_url;
+    public Sprite gachaImage;
+    public Sprite image;
+}
 
+
+[System.Serializable]
+public class CharacterList
+{
+    public MasterCharacterData[] characters;
+}
 public class CDBMaster : MonoBehaviour
 {
-    [System.Serializable]
-    public class CharacterData
-    {
-        public int id;
-        public string name;
-        public string type;
-        public string rarity;
-        public int value;
-        public string image_url;
-    }
+    
 
+    private string m_ServerAddress = "http://10.219.32.121/PHPGameProject/CDB/getMasterCDB.php";
 
-    [System.Serializable]
-    public class CharacterList
-    {
-        public CharacterData[] characters;
-    }
-
-    public TextMeshProUGUI m_text;
-
-    [SerializeField] private int m_id;
-
-    [SerializeField] private RawImage displlayImage;
-
-    private string m_ServerAddress = "http://localhost/PHPGameProject/CDB/getMasterCDB.php";
+    public CharacterList MasterDataList { get; private set; }
 
     //onclick event
     public void OnSendSignel()
@@ -40,7 +37,7 @@ public class CDBMaster : MonoBehaviour
         StartCoroutine(Post());
     }
 
-    private IEnumerator Post()
+    public IEnumerator Post()
     {
         WWWForm form = new();
 
@@ -56,18 +53,24 @@ public class CDBMaster : MonoBehaviour
         }
         else if(www.isDone)
         {
-            //m_text.GetComponent<TextMeshProUGUI>().text = www.downloadHandler.text;
+            //Debug.Log(www.downloadHandler.text);
             CharacterList list = JsonUtility.FromJson<CharacterList>(www.downloadHandler.text);
 
-            foreach(CharacterData c in list.characters)
+            foreach(MasterCharacterData c in list.characters)
             {
-                Debug.Log(
-                    c.id + " "+
-                    c.name + " "+
-                    c.type + " "+
-                    c.rarity + " "+
-                    c.value);
+                //Debug.Log(
+                //    c.id + " "+
+                //    c.name + " "+
+                //    c.type + " "+
+                //    c.rarity + " "+
+                //    c.value);
+
+                yield return StartCoroutine(LoadImage(c));
             }
+
+            MasterDataList = list;
+
+            CharacterManager.Instance.SetMasterData(MasterDataList);
 
             //EntityData charaData = new();
 
@@ -100,16 +103,18 @@ public class CDBMaster : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadImage(string url)
+    private IEnumerator LoadImage(MasterCharacterData c)
     {
-        Debug.Log("Image URL :" + url);
+        string url = c.image_url;
+
+        //Debug.Log("Image URL :" + url);
 
         UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
         yield return request.SendWebRequest();
 
-        Debug.Log($"Result : {request.result}");
-        Debug.Log($"Error  : {request.error}");
-        Debug.Log($"Code   : {request.responseCode}");
+        //Debug.Log($"Result : {request.result}");
+        //Debug.Log($"Error  : {request.error}");
+        //Debug.Log($"Code   : {request.responseCode}");
 
         if (request.result != UnityWebRequest.Result.Success)
         {
@@ -119,7 +124,12 @@ public class CDBMaster : MonoBehaviour
 
         Texture2D texture = DownloadHandlerTexture.GetContent(request);
 
-        displlayImage.texture = texture;
+        //c.texture = texture;
+
+        c.image = Sprite.Create(
+            texture,
+            new Rect(0, 0, texture.width, texture.height),
+            new Vector2(0.5f, 0.5f));
 
     }
 }

@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using TMPro;
+using UnityEditor;
 
 public class LoadManager : MonoBehaviour
 {
@@ -10,7 +12,13 @@ public class LoadManager : MonoBehaviour
     //can click UI raytarget
     [SerializeField] private GameObject m_PanelObj;
 
+    [SerializeField] private GameInitializer m_gameInitializer;
+
     [SerializeField] private StringEventSO m_loadEvent;
+
+    [SerializeField] private LoadMessageEventSO m_loadMessageEvent;
+
+    [SerializeField] private TextMeshProUGUI m_textMessage;
 
     private Coroutine m_loadCoroutine;
 
@@ -34,12 +42,15 @@ public class LoadManager : MonoBehaviour
     private void OnEnable()
     {
         m_loadEvent.Register(OnLoad);
+        m_loadMessageEvent.Register(OnLoadingMessage);
         m_PanelObj.SetActive(false);
     }
 
     private void OnDisable()
     {
         m_loadEvent.Unregister(OnLoad);
+        m_loadMessageEvent.Unregiste(OnLoadingMessage);
+
     }
 
     public void OnLoad(string scenename)
@@ -48,6 +59,25 @@ public class LoadManager : MonoBehaviour
         {
             m_loadCoroutine = StartCoroutine(LoadSceneCoroutine(scenename));
             m_PanelObj.SetActive(true);
+        }
+    }
+
+    public void OnLoadingMessage(LoadingStep step, float ber)
+    {
+        switch(step)
+        {
+            case LoadingStep.LoadingSave:
+                m_textMessage.text = "save file loading";
+                break;
+            case LoadingStep.ApplyingSave:
+                m_textMessage.text = "apply save file";
+                break;
+            case LoadingStep.LoadingMaster:
+                m_textMessage.text = "master data loading";
+                break;
+            case LoadingStep.Complete:
+                m_textMessage.text = "complete";
+                break;
         }
     }
 
@@ -82,6 +112,8 @@ public class LoadManager : MonoBehaviour
         }
 
         asyncLoad.allowSceneActivation = true;
+
+        yield return StartCoroutine(m_gameInitializer.OnLoadingData());
 
         Time.timeScale = 1f;
 
