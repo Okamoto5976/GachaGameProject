@@ -47,6 +47,7 @@ public class TouchEffect : MonoBehaviour
             Vector3 effectPos = m_camera.ScreenToWorldPoint(mousePos);
             m_visualEffect.transform.position = effectPos;
             m_visualEffect.SendEvent("OnClick");
+            
         }
     }
 }
