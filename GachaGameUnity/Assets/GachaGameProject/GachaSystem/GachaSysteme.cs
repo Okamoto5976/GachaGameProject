@@ -3,13 +3,7 @@ using System.Collections.Generic;
 
 public class GachaSysteme : MonoBehaviour
 {
-    public enum Grade
-    {
-        c = 1,
-        r = 2,
-        sr = 3
-    }
-
+  
     public enum Rarity
     {
         C = 60,
@@ -32,12 +26,13 @@ public class GachaSysteme : MonoBehaviour
         Name,
         Rate,
     }
-    //public List<CharaData> m_AraadyData = new();
+    private Character m_character;
     public List<Rarity> m_RarityList = new();
     private int m_RollNum = 0;
     private int m_LotteryType;//0=1,1=10
-    public List<Grade> m_GradeList = new();
+    public List<int> m_GradeList = new();
     private List<CharaData> m_DropChara = new();
+    private List<CharaData> m_AradyList = new();
     private int m_Coine;
     private float m_tickets = 20;
     private float m_Gettickets = 0;
@@ -68,45 +63,40 @@ public class GachaSysteme : MonoBehaviour
 
     private void GetDropChara()
     {
-        //int Rate = GetRarity();
-        //m_RarityList.Add(GetRarity);
-
-
-
-
-
+        int charaId = GetRarity();
+        GetCharaSorting(charaId);
         m_tickets += m_Gettickets;
         Debug.Log($"チケットを{m_Gettickets}枚手に入れた。");
         m_Gettickets = 0f;
     }
 
-    public void GetCharaSorting()
+    public void GetCharaSorting(int charaId)
     {
 
-        //Debug.Log($"'{m_CharInfo[(int)Character.Name, charaId]}が出ました！");
+        Debug.Log($"[]が出ました！");
         //already Charactur check
         // Compare the characters you have here with the ones you got from the gacha.
-        //if (m_DropChara.Exists(chara => chara.m_name ==/* m_[(int)Character.Name, charaId]*/))
-        //{
+     /*   if (m_DropChara.Exists(m_id))
+        {
 
-            //    Debug.Log($"Already acquired character: {[(int)Character.Name, charaId]}");
-            //ChiketsGet();
+            //Debug.Log($"Already acquired character: {[(int)Character.Name, charaId]}");
+            ChiketsGet();
             Debug.Log("It has been converted into a gacha ticket!" );
-        //}
-        //else
-        //{
+        }
+        else
+        {
             CharaData newChara = new()
             {
-                //m_id = int.Parse(m_CharInfo[(int)Character.id, charaId]),
-                    //m_rarity=string.IsNullOrEmpty(m_CharInfo[(int)Character.Rarity, charaId]),
-                    //m_name = m_CharInfo[(int)Character.Name, charaId],
-                    //m_grade = int.Parse(m_CharInfo[(int)Character.Glade, charaId]),
-                    //m_rate = float.Parse(m_CharInfo[(int)Character.Rate, charaId])
+                //m_id = int.Parse(),
+                //    m_rarity=string.IsNullOrEmpty(),
+                //    m_name = ,
+                //    m_grade = int.Parse(),
+                //    m_rate = float.Parse()
             };
-            //m_DropChara.Add(newChara);
-            //
+            m_DropChara.Add(newChara);
+            
             //Debug.Log($"newCharactur {Character.Name, charaId]}が追加されました。");
-        //}
+        }*/
 
     }
 
@@ -117,25 +107,30 @@ public class GachaSysteme : MonoBehaviour
         float total = 0;
 
         //確率を合計する
-        //for (int i = 0; i <m_RarityList[i]; i++)
-        //{   //total += m_RarityList[i, ];
+        //for (int i = 0; i < m_GradeList(); i++)
+        //{   
+        //    //total += m_RarityList[];
         //}
         //Random.valueでは1から3までのfloat値を返すので
         //そこにドロップ率の合計を掛ける
-        //float randomPoint = Random.value * total;
+        float randomPoint = Random.value * total;
 
-        //randomPointの位置に該当するキーを返す
-        //for (int i = 0; i < m_RarityList[i]; i++)
-        //{
-        //    if (randomPoint < m_RartiyList[i, m_LotteryType])
-        //    {
-        //        return i;
-        //    }
-        //    else
-        //    {
-        //        randomPoint -= m_RarityList[i, m_LotteryType];
-        //    }
-        //}
+        for (int i = 0; i < m_RollNum; i++)
+        {
+            if (randomPoint <= 10)
+            {
+                m_GradeList.Add(3);
+            }
+            else if (randomPoint <= 30)
+            {
+                m_GradeList.Add(2);
+            }
+            else
+            {
+                m_GradeList.Add(1);
+            }
+        }
+
         return 0;
     }
 
