@@ -3,70 +3,53 @@ using System.Collections.Generic;
 
 public class GachaSysteme : MonoBehaviour
 {
+    public enum Grade
+    {
+        c = 1,
+        r = 2,
+        sr = 3
+    }
 
+    public enum Rarity
+    {
+        C = 60,
+        R = 30,
+        SR = 10
+    }
     private class CharaData
     {
-
-        public int m_glade;
+        public int m_id;
+        public int m_grade;
         public string m_rarity;
         public string m_name;
         public float m_rate;
     }
     private enum Character
     {
+        ID,
         Glade,
         Rarity,
         Name,
         Rate,
     }
-
-    [SerializeField]
-    private TextAsset RarityData = default;
-    [SerializeField]
-    private TextAsset CharacterData = default;
-
-    private float[,] m_RarityInfo;
-    private string[,] m_CharInfo;
+    //public List<CharaData> m_AraadyData = new();
+    public List<Rarity> m_RarityList = new();
     private int m_RollNum = 0;
     private int m_LotteryType;//0=1,1=10
+    public List<Grade> m_GradeList = new();
     private List<CharaData> m_DropChara = new();
-    private string[] m_Raw;
-    private string[] m_Column;
+    private int m_Coine;
     private float m_tickets = 20;
-    private float m_Coine=0;
     private float m_Gettickets = 0;
-    private void Start()
-    {
-        //Loading text
 
-        m_Raw = RarityData.text.Split('\n');
-        m_Column = m_Raw[0].Split(',');
-        m_RarityInfo = new float[m_Column.Length, m_Raw.Length];
-        for (int i = 0; i < m_Raw.Length; i++)
-        {
-            m_Column = m_Raw[i].Split(',');
-            for (int j = 0; j < m_Column.Length; j++)
-                m_RarityInfo[j, i] = float.Parse(m_Column[j]);
-        }
-       
-        m_Raw = CharacterData.text.Split(char.Parse("\n"));
-        m_Column = m_Raw[0].Split(char.Parse(","));
-        m_CharInfo = new string[m_Column.Length, m_Raw.Length];
-        for (int i = 0; i < m_Raw.Length; i++)
-        {
-            m_Column = m_Raw[i].Split(char.Parse(","));
-            for (int j = 0; j < m_Column.Length; j++)
-                m_CharInfo[j, i] = m_Column[j];
-        }
-    }
 
-    private void Update()
+    private void GhachaGet()
     {
 
         for (int i = 0; i < m_RollNum; i++)
         {
 
-            if (i % 10 == 9)
+            if (i%10 == 9)
             {
                 m_LotteryType = 1;
 
@@ -77,7 +60,7 @@ public class GachaSysteme : MonoBehaviour
             }
 
             GetDropChara();
-            Debug.Log($"現在のチケット枚数は{m_tickets}枚です。");
+            Debug.Log($"You currently have {m_tickets} tickets.");
         }
         m_RollNum = 0;
         return;
@@ -85,94 +68,79 @@ public class GachaSysteme : MonoBehaviour
 
     private void GetDropChara()
     {
-        //Rarity lottery
-        int CharRarity = ChooseRarity();
+        //int Rate = GetRarity();
+        //m_RarityList.Add(GetRarity);
 
-        //Character lottery
-        int charaId = ChooseChar(CharRarity);
-        Debug.Log($"'{m_CharInfo[(int)Character.Name, charaId]}が出ました！");
-        //already Charactur check
-        if (m_DropChara.Exists(chara => chara.m_name == m_CharInfo[(int)Character.Name, charaId]))
-        {
-            Debug.Log($"既に取得済みのキャラクター: {m_CharInfo[(int)Character.Name, charaId]}");
-            ChiketsGet();
-            Debug.Log("ガチャチケットを獲得しました！" );
-        }
-        else
-        {
-            //GetList
-            CharaData newChara = new ()
-            {
-                //m_id = int.Parse(m_CharInfo[(int)Character.id, charaId]),
-                m_glade = int.Parse(m_CharInfo[(int)Character.Glade, charaId]),
-                m_name = m_CharInfo[(int)Character.Name, charaId],
-                m_rate = float.Parse(m_CharInfo[(int)Character.Rate, charaId])
-            };
-            m_DropChara.Add(newChara);
-            Debug.Log($"新キャラ {m_CharInfo[(int)Character.Name, charaId]}が追加されました。");
-           
-        }
+
+
+
+
         m_tickets += m_Gettickets;
         Debug.Log($"チケットを{m_Gettickets}枚手に入れた。");
         m_Gettickets = 0f;
     }
 
-    private int ChooseRarity()
+    public void GetCharaSorting()
     {
-        //prot total
+
+        //Debug.Log($"'{m_CharInfo[(int)Character.Name, charaId]}が出ました！");
+        //already Charactur check
+        // Compare the characters you have here with the ones you got from the gacha.
+        //if (m_DropChara.Exists(chara => chara.m_name ==/* m_[(int)Character.Name, charaId]*/))
+        //{
+
+            //    Debug.Log($"Already acquired character: {[(int)Character.Name, charaId]}");
+            //ChiketsGet();
+            Debug.Log("It has been converted into a gacha ticket!" );
+        //}
+        //else
+        //{
+            CharaData newChara = new()
+            {
+                //m_id = int.Parse(m_CharInfo[(int)Character.id, charaId]),
+                    //m_rarity=string.IsNullOrEmpty(m_CharInfo[(int)Character.Rarity, charaId]),
+                    //m_name = m_CharInfo[(int)Character.Name, charaId],
+                    //m_grade = int.Parse(m_CharInfo[(int)Character.Glade, charaId]),
+                    //m_rate = float.Parse(m_CharInfo[(int)Character.Rate, charaId])
+            };
+            //m_DropChara.Add(newChara);
+            //
+            //Debug.Log($"newCharactur {Character.Name, charaId]}が追加されました。");
+        //}
+
+    }
+
+
+    public int GetRarity()
+    {
+        //確率の合計値を格納
         float total = 0;
 
-        //total probability 
-        for (int i = 0; i < m_RarityInfo.GetLength(0); i++)
-            total += m_RarityInfo[i, m_LotteryType];
-
-        //Random.valueでは0から1までのfloat値を返すので
+        //確率を合計する
+        //for (int i = 0; i <m_RarityList[i]; i++)
+        //{   //total += m_RarityList[i, ];
+        //}
+        //Random.valueでは1から3までのfloat値を返すので
         //そこにドロップ率の合計を掛ける
-        float randomPoint = Random.value * total;
+        //float randomPoint = Random.value * total;
 
         //randomPointの位置に該当するキーを返す
-        for (int i = 0; i < m_RarityInfo.GetLength(0); i++)
-        {
-            if (randomPoint < m_RarityInfo[i, m_LotteryType])
-            {
-                return i;
-            }
-            else
-            {
-                randomPoint -= m_RarityInfo[i, m_LotteryType];
-            }
-        }
+        //for (int i = 0; i < m_RarityList[i]; i++)
+        //{
+        //    if (randomPoint < m_RartiyList[i, m_LotteryType])
+        //    {
+        //        return i;
+        //    }
+        //    else
+        //    {
+        //        randomPoint -= m_RarityList[i, m_LotteryType];
+        //    }
+        //}
         return 0;
     }
-    private int ChooseChar(int rarity)
-    {
-        float total = 0;
 
-        for (int i = 0; i < m_CharInfo.GetLength(1); i++)
-            if (int.Parse(m_CharInfo[(int)Character.Glade, i]).Equals(rarity))
-                total += float.Parse(m_CharInfo[(int)Character.Rate, i]);
-
-        float randomPoint = Random.value * total;
-
-        for (int i = 0; i < m_CharInfo.GetLength(1); i++)
-        {
-            if (int.Parse(m_CharInfo[(int)Character.Glade, i]).Equals(rarity))
-            {
-                if (randomPoint < float.Parse(m_CharInfo[(int)Character.Rate, i]))
-                {
-                    return i;
-                }
-                else
-                {
-                    randomPoint -= float.Parse(m_CharInfo[(int)Character.Rate, i]);
-                }
-            }
-        }
-        return 0;
-    }
     public void ChiketsGet()
     {
-        //m_GetChikets += 1;
         m_tickets += 1;
         return;
     }
@@ -184,16 +152,11 @@ public class GachaSysteme : MonoBehaviour
             m_tickets -= 2;
             m_RollNum = 1;
         }
-        else if (m_Coine >= 10)
-        {
-            m_Coine -= 10;
-            m_RollNum = 1;
-        }
         else
         {
-            Debug.Log("チケットまたはコインが足りません");
+            Debug.Log("チケットが足りません");
         }
-        
+
     }
 
     public void LotteryTypeTen()
@@ -203,28 +166,18 @@ public class GachaSysteme : MonoBehaviour
             m_tickets -= 20;
             m_RollNum = 10;
         }
-        else if (m_Coine >= 100)
-        {
-            m_Coine -= 100;
-            m_RollNum = 10;
-        }
         else
         {
-            Debug.Log("チケットまたはコインが足りません");
+            Debug.Log("チケットが足りません");
         }
 
     }
+    public void PayTicket(int pay)
+    {
+        m_tickets -= pay;
+        return;
+    }
 
-    public void GachaGetOnw()
-    {
-        m_RollNum = 1;
-        return;
-    }
-    public void GachaGetTen()
-    {
-        m_RollNum = 10;
-        return;
-    }
 
 }
 
