@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154e974e73bbc8a4ba798f66094c9d0a, type: 3}
+  m_Name: Gauge
+  m_EditorClassIdentifier: Assembly-CSharp::GaugeSO
+  m_gaugeFrameLength: 120
+  m_gaugeMaxLength: 116
+  m_margin: 2
+  m_gaugePosUp: 80
+  m_updateIntervalFrame: 10
+  m_gaugeRateTextPos: {x: 170, y: 0}
+  m_stateTextPos: {x: 0, y: 20}
+  m_gaugeBackgroundImage: {fileID: 4508579284106598077, guid: 2df6c314eaac3e24f84db8e40e11a12b, type: 3}
+  m_gaugeImage: {fileID: 5579826146096948412, guid: 58b8f4fd4baec0441bd74af547bfb9f0, type: 3}
+  m_gaugeRateText: {fileID: 5326830655701110539, guid: ff4c213aa3013f846b35b2951341dc21, type: 3}
+  m_stateText: {fileID: 6114243350534925580, guid: cc41812937bd63644b07ccca58e0a166, type: 3}

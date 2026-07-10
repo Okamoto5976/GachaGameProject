@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09d2baa08bf941b40912622616b607a7, type: 3}
+  m_Name: CharactersParam
+  m_EditorClassIdentifier: Assembly-CSharp::CharactersParamSO
+  CharaDataList:
+  - m_rarity: 1
+    m_name: goast
+    m_maxLevel: 100
+    m_defaultMPS: 10
+    m_mPW: 30
+    m_owned: 0
+    m_level: 1
+    m_mPS: 10
+    m_wPS: 3
+    m_progress: 0.66666675
+  - m_rarity: 1
+    m_name: cloud
+    m_maxLevel: 100
+    m_defaultMPS: 10
+    m_mPW: 20
+    m_owned: 0
+    m_level: 1
+    m_mPS: 10
+    m_wPS: 2
+    m_progress: 0.6666666
