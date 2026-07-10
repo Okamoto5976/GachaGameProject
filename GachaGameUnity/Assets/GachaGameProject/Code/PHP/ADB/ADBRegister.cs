@@ -10,6 +10,7 @@ public class RegisterResult
     public string message;
     public int userId;
     public string token;
+    public SaveDataFile saveData;
 }
 
 public class ADBRegister : MonoBehaviour

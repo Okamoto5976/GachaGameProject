@@ -90,10 +90,22 @@ public class ADBPostSaveFile : MonoBehaviour
         }
         else
         {
-            LoadSaveDataFile = JsonUtility.FromJson<SaveDataFile>(
+            RegisterResult result = JsonUtility.FromJson<RegisterResult>(
                     request.downloadHandler.text);
 
-            Debug.Log("get save file");
+            if (result.success)
+            {
+                Debug.Log("get save file");
+                LoadSaveDataFile = result.saveData;
+
+            }
+            else
+            {
+                Debug.Log("sava file not found, new Data get");
+                LoadSaveDataFile = result.saveData;
+            }
+            
+
         }
     }
 }
