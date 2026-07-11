@@ -22,6 +22,9 @@ public class LoadManager : MonoBehaviour
 
     private Coroutine m_loadCoroutine;
 
+    //----Debug--------
+    [SerializeField] private DebugMode m_debug;
+
     private void Awake()
     {
         if (Instance != null)
@@ -113,7 +116,11 @@ public class LoadManager : MonoBehaviour
 
         asyncLoad.allowSceneActivation = true;
 
-        yield return StartCoroutine(m_gameInitializer.OnLoadingData());
+        if(m_debug.debugMode)
+        {
+            yield return StartCoroutine(m_gameInitializer.OnLoadingData());
+
+        }
 
         Time.timeScale = 1f;
 

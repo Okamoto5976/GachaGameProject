@@ -17,4 +17,15 @@ public class testimage : MonoBehaviour
 
         m_renderer.sprite = sprite;
     }
+
+    public void OnViewImage(Texture2D texture)
+    {
+        Sprite sprite = Sprite.Create(
+            texture,
+            new Rect((texture.width - 300) / 2, 0, 300, texture.height),
+            new Vector2(0.5f, 0.5f)
+            );
+
+        m_renderer.sprite = sprite;
+    }
 }
