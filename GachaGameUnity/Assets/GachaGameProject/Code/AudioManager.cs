@@ -15,7 +15,7 @@ public class AudioManager : MonoBehaviour
     //RuntimeSO
     [SerializeField] private FloatRunTime m_AudioVolume;
     //option slider
-    [SerializeField] private Slider m_audioSlider;
+    //[SerializeField] private Slider m_audioSlider;
 
     private float m_masterVolume;
 
