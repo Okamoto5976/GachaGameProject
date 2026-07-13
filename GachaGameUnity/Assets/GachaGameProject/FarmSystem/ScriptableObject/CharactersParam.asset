@@ -18,11 +18,11 @@ MonoBehaviour:
     m_maxLevel: 100
     m_defaultMPS: 10
     m_mPW: 30
-    m_owned: 0
+    m_owned: 1
     m_level: 1
     m_mPS: 10
     m_wPS: 3
-    m_progress: 0.66666675
+    m_progress: 0.3888901
   - m_rarity: 1
     m_name: cloud
     m_maxLevel: 100
@@ -32,4 +32,4 @@ MonoBehaviour:
     m_level: 1
     m_mPS: 10
     m_wPS: 2
-    m_progress: 0.6666666
+    m_progress: 0
