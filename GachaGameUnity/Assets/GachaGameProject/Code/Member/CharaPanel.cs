@@ -24,7 +24,7 @@ public class CharaPanel : MonoBehaviour
             case Enum_CharaUIShow.ToMain:
                 break;
             case Enum_CharaUIShow.ToMember:
-                m_charaUIEvent.Raise(Enum_CharaUIShow.ToMember);
+                m_charaUIEvent.Raise(Enum_CharaUIShow.ToMember, ID);
 
                 break;
             case Enum_CharaUIShow.ToChara:

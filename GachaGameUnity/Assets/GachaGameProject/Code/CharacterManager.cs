@@ -120,12 +120,18 @@ public class CharacterManager : MonoBehaviour
     //idからdataを渡す
     public CharacterData GetCharaData(int id)
     {
+        var data = DataList.Find(x => x.ID == id);
+
+        if (data != null) return data;
+
         return null;
     }
 
     //icon + id キャラ選択や　図鑑のため
-    public CharacterData GetCharaImage(int id)
+    public MasterCharacterData GetMasterCharaData(int id)
     {
+        var data = MasterDataList.Find(x => x.ID == id);
+
         //１から順に取っていき、
         //受け取り手がidとimageをもつことで図鑑ができる
         //ないときは受け取り手が真っ黒にする図鑑を
@@ -133,6 +139,8 @@ public class CharacterManager : MonoBehaviour
         //キャラ選択のとき
         //図鑑のときもそうだけど更新のとき
         //Coroutine（非同期処理）でimageとデータを更新しよう
+
+        if (data != null) return data;
 
         return null;
     }

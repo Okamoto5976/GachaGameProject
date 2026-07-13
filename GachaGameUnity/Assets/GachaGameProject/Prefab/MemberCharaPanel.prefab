@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6053732914891463406}
   - component: {fileID: 3566312821222594942}
   m_Layer: 5
-  m_Name: MemberImage
+  m_Name: MemberCharaPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
