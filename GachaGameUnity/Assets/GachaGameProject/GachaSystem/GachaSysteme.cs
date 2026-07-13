@@ -10,7 +10,7 @@ public class GachaSysteme : MonoBehaviour
         R = 30,
         SR = 10
     }
-    private class CharaData
+    public class CharaData
     {
         public int m_id;
         public int m_grade;
@@ -28,13 +28,13 @@ public class GachaSysteme : MonoBehaviour
     }
     private Character m_character;
     public List<Rarity> m_RarityList = new();
+
     private int m_RollNum = 0;
     private int m_LotteryType;//0=1,1=10
     public List<int> m_GradeList = new();
-    private List<CharaData> m_DropChara = new();
-    private List<CharaData> m_AradyList = new();
+    public List<CharaData> m_DropChara = new();
     private int m_Coine;
-    private float m_tickets = 20;
+    private float m_tickets = 0;
     private float m_Gettickets = 0;
 
 
@@ -44,7 +44,7 @@ public class GachaSysteme : MonoBehaviour
         for (int i = 0; i < m_RollNum; i++)
         {
 
-            if (i%10 == 9)
+            if (i % 10 == 9)
             {
                 m_LotteryType = 1;
 
@@ -63,53 +63,49 @@ public class GachaSysteme : MonoBehaviour
 
     private void GetDropChara()
     {
-        int charaId = GetRarity();
-        GetCharaSorting(charaId);
+        int chara = GetRarity(GetM_GradeList());
+
+        GetCharaSorting(chara);
         m_tickets += m_Gettickets;
         Debug.Log($"チケットを{m_Gettickets}枚手に入れた。");
         m_Gettickets = 0f;
     }
 
-    public void GetCharaSorting(int charaId)
+    public void GetCharaSorting(int Index)
     {
-
-        Debug.Log($"[]が出ました！");
+        CharaData chara= m_DropChara[Index];
         //already Charactur check
         // Compare the characters you have here with the ones you got from the gacha.
-     /*   if (m_DropChara.Exists(m_id))
-        {
+        //if (m_DropChara.Exists(name==chara.m_name))
+        //{
 
-            //Debug.Log($"Already acquired character: {[(int)Character.Name, charaId]}");
-            ChiketsGet();
-            Debug.Log("It has been converted into a gacha ticket!" );
-        }
-        else
-        {
-            CharaData newChara = new()
-            {
-                //m_id = int.Parse(),
-                //    m_rarity=string.IsNullOrEmpty(),
-                //    m_name = ,
-                //    m_grade = int.Parse(),
-                //    m_rate = float.Parse()
-            };
-            m_DropChara.Add(newChara);
+        ////    //Debug.Log($"Already acquired character: {[(int)Character.Name, charaId]}");
+        //    ChiketsGet();
+        ////    Debug.Log("It has been converted into a gacha ticket!" );
+        //}
+        //else
+        //{
+        //    m_DropChara.Add(chara);
             
-            //Debug.Log($"newCharactur {Character.Name, charaId]}が追加されました。");
-        }*/
+        //    //Debug.Log($"newCharactur {}が追加されました。");
+        //}
 
     }
 
+    public List<int> GetM_GradeList()
+    {
+        return m_GradeList;
+    }
 
-    public int GetRarity()
+    public int GetRarity(List<int> m_GradeList)
     {
         //確率の合計値を格納
         float total = 0;
 
         //確率を合計する
-        //for (int i = 0; i < m_GradeList(); i++)
+        //for (int i = 0; i < m_GradeList(i); i++)
         //{   
-        //    //total += m_RarityList[];
+            //total += m_GradeList[i,rate];
         //}
         //Random.valueでは1から3までのfloat値を返すので
         //そこにドロップ率の合計を掛ける
@@ -117,9 +113,9 @@ public class GachaSysteme : MonoBehaviour
 
         for (int i = 0; i < m_RollNum; i++)
         {
-            if (randomPoint <= 10)
+            if (randomPoint <=10)
             {
-                m_GradeList.Add(3);
+                m_GradeList.Add(1);
             }
             else if (randomPoint <= 30)
             {
@@ -127,7 +123,7 @@ public class GachaSysteme : MonoBehaviour
             }
             else
             {
-                m_GradeList.Add(1);
+                m_GradeList.Add(3);
             }
         }
 
@@ -147,9 +143,14 @@ public class GachaSysteme : MonoBehaviour
             m_tickets -= 2;
             m_RollNum = 1;
         }
+        else if(m_Coine>=10)
+        {
+            m_RollNum = 1;
+            m_Coine -= 10;
+        }
         else
         {
-            Debug.Log("チケットが足りません");
+            Debug.Log("チケットまたはコインが足りません");
         }
 
     }
@@ -161,10 +162,16 @@ public class GachaSysteme : MonoBehaviour
             m_tickets -= 20;
             m_RollNum = 10;
         }
-        else
+        else if(m_Coine>=100)
         {
-            Debug.Log("チケットが足りません");
+            m_Coine = 100;
+            m_RollNum = 10;
+
         }
+        else
+                {
+                    Debug.Log("チケットまたはコインが足りません");
+                }
 
     }
     public void PayTicket(int pay)

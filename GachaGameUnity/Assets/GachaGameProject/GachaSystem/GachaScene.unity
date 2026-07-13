@@ -170,8 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf524db6db03350418684a5a4b4b9d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaSysteme
-  m_RarityList: 
-  m_GradeList: 
+  m_RarityList: 3c0000001e0000000000000000000000
+  m_GradeList: 00000000
 --- !u!1 &202574380
 GameObject:
   m_ObjectHideFlags: 0
