@@ -1,13 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[System.Serializable]
-public class CharacterData
-{
-    public int ID;
-    public int Level;
-    public Enum_PlaceType PlaceType;
-}
+
 
 [System.Serializable]//if serializable not, can not json
 public class SaveDataFile

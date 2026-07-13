@@ -1,0 +1,242 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7244391951379938474
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3427104455255790918}
+  - component: {fileID: 74618543234950092}
+  - component: {fileID: 2331683409350424796}
+  m_Layer: 0
+  m_Name: DebugCharaManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3427104455255790918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244391951379938474}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &74618543234950092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244391951379938474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f8204333a4c73a42a31b00ad8dfa86d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugCharaManager
+  m_masterDataList:
+  - ID: 1
+    Name: mugi
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: 3b4d99ea65c9eda4f839105a150badd9, type: 3}
+  - ID: 2
+    Name: ushi
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: 1106586cd0d957742a41cf3f5535e1f4, type: 3}
+  - ID: 3
+    Name: neko
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: dba1d19105bf61e4f9f5625478c25b93, type: 3}
+  - ID: 4
+    Name: same
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: bdba955b50cd63743ab3a40ebb29709c, type: 3}
+  - ID: 5
+    Name: tako
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: f63a17846de499c4e8912fc719645a34, type: 3}
+  - ID: 6
+    Name: surako
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: dafb24434f617dc4aabbb4b46446711e, type: 3}
+  - ID: 7
+    Name: bunny
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: f5df55cd5115a9644a9d49d524ebf4c0, type: 3}
+  - ID: 8
+    Name: boy
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: 894e11012ab56ae43846338a5053552e, type: 3}
+  - ID: 9
+    Name: piero
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: 90b5d61bffb3c394b8a16d6f451d9caa, type: 3}
+  - ID: 10
+    Name: majo
+    CharaType: 0
+    RarityType: 0
+    Value: 0
+    Texture: {fileID: 2800000, guid: 244d5a67f0405b44aa159f905da1ef71, type: 3}
+  - ID: 11
+    Name: bouken
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: dcd8e0139c3d4024eb8999800bb00951, type: 3}
+  - ID: 12
+    Name: kemo
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: bd9f3665673162240b88f0fdcfe22801, type: 3}
+  - ID: 13
+    Name: panku
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: 7fc9fabfc5525cb4d98f829fb0932b38, type: 3}
+  - ID: 14
+    Name: rock
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: 595d25734113a5147aa98bfb77d07189, type: 3}
+  - ID: 15
+    Name: gyaru
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: 9830ed4ec60f4924dadb7cde93811e7c, type: 3}
+  - ID: 16
+    Name: zombi
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: 959a8d18591baa74b9ed129b878a25f9, type: 3}
+  - ID: 17
+    Name: ghost
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: 603abee89cae6384ca8779eafe62b3d0, type: 3}
+  - ID: 18
+    Name: akuma
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: c89ac9dbbd9743845a06d6d435ed2631, type: 3}
+  - ID: 19
+    Name: dragon
+    CharaType: 0
+    RarityType: 1
+    Value: 0
+    Texture: {fileID: 2800000, guid: 3d1873ae77d4ac649877a8477ad4e636, type: 3}
+  - ID: 20
+    Name: farao
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: 1aad2ec800f2a1849a9853bd853fcc46, type: 3}
+  - ID: 21
+    Name: kemogirl
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: 2b4a67cb6140d244c83cda91e3db4bb1, type: 3}
+  - ID: 22
+    Name: robot
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: 2795ac3d191b65a468b5113a5087ea46, type: 3}
+  - ID: 23
+    Name: mecha
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: c65500e78456748408ca94326d6325b6, type: 3}
+  - ID: 24
+    Name: sience
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: 371e41559d85ffa43bf38e191dbb9266, type: 3}
+  - ID: 25
+    Name: meido
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: 525b74885cd688f4584a3aca6a83120e, type: 3}
+  - ID: 26
+    Name: ninja
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: dc5b7620f9f7b4643843d8f0b63c2704, type: 3}
+  - ID: 27
+    Name: samurai
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: 845f27e5058f02944a8b3219d207708f, type: 3}
+  - ID: 28
+    Name: homun
+    CharaType: 0
+    RarityType: 2
+    Value: 0
+    Texture: {fileID: 2800000, guid: e71a3c731d1b701489a130b9fef5cfe6, type: 3}
+--- !u!114 &2331683409350424796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7244391951379938474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4862c1fe1e34aa48be4b83133e3b477, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DebugGachaSystem
+  m_debugManager: {fileID: 74618543234950092}
+  m_gachanumber: 01000000010000000100000001000000020000000200000002000000020000000300000003000000
+  m_gachaImage:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  m_pullGacha: 10

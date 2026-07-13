@@ -9,13 +9,9 @@ public enum CurrentSceneUI
     Gacha
 }
 
-public class UIManager : MonoBehaviour
+public class UIManagerToMain : MonoBehaviour
 {
     [SerializeField] private GameObject m_configUI;
-
-    [SerializeField] private GameObject m_loginUI;
-
-    [SerializeField] private GameObject m_registerUI;
 
     [SerializeField] private GameObject m_mainUI;
 
@@ -29,9 +25,23 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject m_pullGachaUI;
 
+    //Event
+    [Header("Event")]
+    [SerializeField] private CharaUIEventSO m_charaUIEvent;
+
     private void Start()
     {
         OnViewMainUI();
+    }
+
+    private void OnEnable()
+    {
+        m_charaUIEvent.Register(OnViewCharaUI);
+    }
+
+    private void OnDisable()
+    {
+        m_charaUIEvent.Unregister(OnViewCharaUI);
     }
 
     public void OnViewConfigUI()
@@ -43,16 +53,6 @@ public class UIManager : MonoBehaviour
     //{
 
     //}
-
-    public void OnViewLoginUI()
-    {
-
-    }
-
-    public void OnViewRegisterUI()
-    {
-
-    }
 
     public void OnViewMainUI()
     {
@@ -86,21 +86,25 @@ public class UIManager : MonoBehaviour
         ViewPullGachaUI(true);
     }
 
+    public void OnViewCharaUI(Enum_CharaUIShow type)
+    {
+        switch(type)
+        {
+            case Enum_CharaUIShow.ToMain:
+
+                break;
+            case Enum_CharaUIShow.ToMember:
+                break;
+            case Enum_CharaUIShow.ToChara:
+                break;
+        }
+    }
+
     //-----UI SetActive--------------
 
     private void ViewConfigUI(bool value)
     {
         m_configUI.SetActive(value);
-    }
-
-    private void ViewLoginUI(bool value)
-    {
-        m_loginUI.SetActive(value);
-    }
-
-    private void ViewRegisterUI(bool value)
-    {
-        m_registerUI.SetActive(value);
     }
 
     private void ViewMainUI(bool value)

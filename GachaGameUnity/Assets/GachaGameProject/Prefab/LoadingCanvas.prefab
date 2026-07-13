@@ -214,6 +214,8 @@ MonoBehaviour:
   m_loadEvent: {fileID: 11400000, guid: 69d6df314675b084cad6cb9dbf4cdc4d, type: 2}
   m_loadMessageEvent: {fileID: 11400000, guid: c8a65a90bc00ce7498cae97358ee7878, type: 2}
   m_textMessage: {fileID: 6568551018660541746}
+  m_initializeEvent: {fileID: 11400000, guid: b33ad178f3ddfd04a9e88ff11d55f8bd, type: 2}
+  m_debug: {fileID: 11400000, guid: 9b2075a9be25d87478f27a6f53095f5c, type: 2}
 --- !u!1 &3603315422289684980
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +267,6 @@ MonoBehaviour:
   m_postSaveFile: {fileID: 4355100397475803686}
   m_accountData: {fileID: 11400000, guid: e06c20bcd79b6a549ae2ac9f7c5c6ffc, type: 2}
   m_masterDB: {fileID: 5103951709806784798}
-  m_debug: {fileID: 11400000, guid: 9b2075a9be25d87478f27a6f53095f5c, type: 2}
 --- !u!1 &4616365709161375735
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24672ff97f4f41c4bbe7cbf1e10ff4b3, type: 3}
-  m_Name: DebugMode
-  m_EditorClassIdentifier: Assembly-CSharp::DebugMode
-  m_debugMode: 1
+  m_Script: {fileID: 11500000, guid: b4014e68db8851c4ab25e96cdc458743, type: 3}
+  m_Name: CharaUIEventSO
+  m_EditorClassIdentifier: Assembly-CSharp::CharaUIEventSO

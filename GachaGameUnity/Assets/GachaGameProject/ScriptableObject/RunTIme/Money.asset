@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24672ff97f4f41c4bbe7cbf1e10ff4b3, type: 3}
-  m_Name: DebugMode
-  m_EditorClassIdentifier: Assembly-CSharp::DebugMode
-  m_debugMode: 1
+  m_Script: {fileID: 11500000, guid: bd335f18fc4b9ab439aa544fd31ebc54, type: 3}
+  m_Name: Money
+  m_EditorClassIdentifier: Assembly-CSharp::IntRunTime
+  m_value: 0

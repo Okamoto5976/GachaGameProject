@@ -1,11 +1,11 @@
-using TMPro;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Networking;
 using System.IO;
 using UnityEngine.UI;
 [System.Serializable]
-public class MasterCharacterData
+public class PHPGetCharaData
 {
     public int id;
     public string name;
@@ -13,15 +13,16 @@ public class MasterCharacterData
     public string rarity;
     public int value;
     public string image_url;
+    public Texture2D texture;
     public Sprite gachaImage;
     public Sprite image;
 }
 
 
 [System.Serializable]
-public class CharacterList
+public class PHPGetCharaDataList
 {
-    public MasterCharacterData[] characters;
+    public PHPGetCharaData[] characters;
 }
 public class CDBMaster : MonoBehaviour
 {
@@ -29,7 +30,7 @@ public class CDBMaster : MonoBehaviour
 
     private string m_ServerAddress = "http://10.219.32.121/PHPGameProject/CDB/getMasterCDB.php";
 
-    public CharacterList MasterDataList { get; private set; }
+    public List<MasterCharacterData> MasterDataList { get; private set; }
 
     //onclick event
     public void OnSendSignel()
@@ -54,9 +55,11 @@ public class CDBMaster : MonoBehaviour
         else if(www.isDone)
         {
             //Debug.Log(www.downloadHandler.text);
-            CharacterList list = JsonUtility.FromJson<CharacterList>(www.downloadHandler.text);
+            PHPGetCharaDataList list = JsonUtility.FromJson<PHPGetCharaDataList>(www.downloadHandler.text);
 
-            foreach(MasterCharacterData c in list.characters)
+            MasterDataList = new List<MasterCharacterData>();
+
+            foreach (PHPGetCharaData c in list.characters)
             {
                 //Debug.Log(
                 //    c.id + " "+
@@ -66,9 +69,42 @@ public class CDBMaster : MonoBehaviour
                 //    c.value);
 
                 yield return StartCoroutine(LoadImage(c));
+
+
+                MasterCharacterData data = new();
+
+                data.ID = c.id;
+                data.Name = c.name;
+
+                if (System.Enum.TryParse(c.type, true, out Enum_CharaType typeState))
+                {
+                    data.CharaType = typeState;
+                }
+                else
+                {
+                    Debug.LogWarning($"Failure:'{c.type}'not existent in TestType");
+                }
+
+                if (System.Enum.TryParse(c.rarity, true, out Enum_RarityType rarityState))
+                {
+                    data.RarityType = rarityState;
+                }
+                else
+                {
+                    Debug.LogWarning($"Failure:'{c.rarity}'not existent in TestRarity");
+                }
+
+                data.Value = c.value;
+                data.Texture = c.texture;
+                data.image = c.image;
+
+                MasterDataList.Add(data);
             }
 
-            MasterDataList = list;
+
+
+
+
 
             CharacterManager.Instance.SetMasterData(MasterDataList);
 
@@ -103,7 +139,7 @@ public class CDBMaster : MonoBehaviour
         }
     }
 
-    private IEnumerator LoadImage(MasterCharacterData c)
+    private IEnumerator LoadImage(PHPGetCharaData c)
     {
         string url = c.image_url;
 
@@ -124,7 +160,7 @@ public class CDBMaster : MonoBehaviour
 
         Texture2D texture = DownloadHandlerTexture.GetContent(request);
 
-        //c.texture = texture;
+        c.texture = texture;
 
         c.image = Sprite.Create(
             texture,

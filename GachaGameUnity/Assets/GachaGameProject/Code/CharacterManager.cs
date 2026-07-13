@@ -1,6 +1,27 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
 
+[System.Serializable]
+public class CharacterData
+{
+    public int ID;
+    public int Level;
+    public Enum_PlaceType PlaceType;
+}
+
+[System.Serializable]
+public class MasterCharacterData
+{
+    public int ID;
+    public string Name;
+    public Enum_CharaType CharaType;
+    public Enum_RarityType RarityType;
+    public int Value;
+    public Texture2D Texture;
+    //public Sprite gachaImage;
+    public Sprite image;
+}
 
 public class CharacterManager : MonoBehaviour
 {
@@ -8,13 +29,23 @@ public class CharacterManager : MonoBehaviour
 
     private List<CharacterData> m_dataList = new();
 
+    public List<MasterCharacterData> m_masterDataList = new();
+
     //SO
-    private int m_money;
+    [SerializeField] private IntRunTime m_money;
 
     //--------propaty-----------
     public List<CharacterData> DataList => m_dataList;
 
-    public CharacterList MasterData {  get; private set; }
+    public List<MasterCharacterData> MasterDataList => m_masterDataList;
+    //--------Debug------------
+    [SerializeField] private DebugMode m_debug;
+
+    [SerializeField] private List<CharacterData> m_debugCharacterDataList;
+
+    [SerializeField] private List<MasterCharacterData> m_debugMasterDataList;
+
+    [SerializeField] private EventSO m_initializeEvent;
 
     private void Awake()
     {
@@ -26,6 +57,24 @@ public class CharacterManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        if(m_debug.debugMode)
+        {
+            m_dataList = m_debugCharacterDataList;
+
+            m_masterDataList = m_debugMasterDataList;
+
+            m_initializeEvent.Raise();
+        }
+    }
+
+    private void Start()
+    {
+        if (m_debug.debugMode)
+        {
+
+            m_initializeEvent.Raise();
+        }
     }
 
     //get save file data
@@ -53,6 +102,7 @@ public class CharacterManager : MonoBehaviour
         m_dataList.Add(data);
     }
 
+    [ContextMenu("Now check Data")]
     public void CheckHaveCharacter()
     {
         Debug.Log("以下持ってるキャラ:");
@@ -61,9 +111,9 @@ public class CharacterManager : MonoBehaviour
             Debug.Log($"ID:{data.ID} Level:{data.Level}");
         }
         Debug.Log("以下マスターデータ:");
-        foreach(var data in MasterData.characters)
+        foreach(var data in m_masterDataList)
         {
-            Debug.Log($"ID:{data.id} Name:{data.name}");
+            Debug.Log($"ID:{data.ID} Name:{data.Name}");
         }
     }
 
@@ -87,8 +137,17 @@ public class CharacterManager : MonoBehaviour
         return null;
     }
 
-    public void SetMasterData(CharacterList list)
+    public MasterCharacterData GachaGetChara(Enum_RarityType rarity)
     {
-        MasterData = list;
+        var dates = MasterDataList.Where(x => x.RarityType != rarity).ToList();
+
+        if (dates.Count <= 0) return null;
+
+        return dates[Random.Range(0, dates.Count)];
+    }
+
+    public void SetMasterData(List<MasterCharacterData> list)
+    {
+        m_masterDataList = list;
     }
 }

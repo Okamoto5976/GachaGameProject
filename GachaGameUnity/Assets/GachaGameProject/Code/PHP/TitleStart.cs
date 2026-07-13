@@ -18,6 +18,8 @@ public class TitleStart : MonoBehaviour
         if(m_debug.debugMode == true)
         {
             Debug.Log("DebugMode: 強制的に始めます。セーブデータは作られません");
+            m_loadEventSO.Raise("MainScene");
+
             return;
         }
 

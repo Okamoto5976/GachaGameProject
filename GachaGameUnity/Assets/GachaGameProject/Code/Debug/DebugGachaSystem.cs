@@ -3,8 +3,6 @@ using System.Collections.Generic;
 
 public class DebugGachaSystem : MonoBehaviour
 {
-    [SerializeField] private DebugCharaManager m_debugManager;
-
     [SerializeField] private List<int> m_gachanumber;
 
     [SerializeField] private List<testimage> m_gachaImage;
@@ -19,7 +17,7 @@ public class DebugGachaSystem : MonoBehaviour
 
     public void OnGacha(int pull)
     {
-        List<DebugMasterData> list = new();
+        List<MasterCharacterData> list = new();
 
         for(int i = 0;i < pull;i++)
         {
@@ -54,17 +52,17 @@ public class DebugGachaSystem : MonoBehaviour
 
             }
 
-            DebugMasterData data = m_debugManager.GachaGetChara(rarity);
+            MasterCharacterData data = CharacterManager.Instance.GachaGetChara(rarity);
 
             list.Add(data);
         }
 
         OnViewChara(pull, list);
-        
+
 
     }
 
-    public void OnViewChara(int index, List<DebugMasterData> list)
+    public void OnViewChara(int index, List<MasterCharacterData> list)
     {
         for(int i = 0; i < index; i++)
         {
