@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 6053732914891463406}
   - component: {fileID: 3566312821222594942}
   m_Layer: 5
-  m_Name: MemberCharaPanel
+  m_Name: PlacementCharaPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -222,5 +222,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MemberImage
   m_charaUIEvent: {fileID: 11400000, guid: e312b4e6102f3d043a4566993435a280, type: 2}
-  m_type: 0
+  m_type: 2
   m_image: {fileID: 7200675615537355802}

@@ -22,12 +22,16 @@ public class CharaPanel : MonoBehaviour
         switch(m_type)
         {
             case Enum_CharaUIShow.ToMain:
+                m_charaUIEvent.Raise(Enum_CharaUIShow.ToMain, ID);
+
                 break;
             case Enum_CharaUIShow.ToMember:
                 m_charaUIEvent.Raise(Enum_CharaUIShow.ToMember, ID);
 
                 break;
             case Enum_CharaUIShow.ToChara:
+                m_charaUIEvent.Raise(Enum_CharaUIShow.ToChara, ID);
+
                 break;
         }
 

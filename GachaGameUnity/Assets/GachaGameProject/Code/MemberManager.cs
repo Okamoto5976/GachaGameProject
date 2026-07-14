@@ -12,7 +12,7 @@ public class MemberManager : MonoBehaviour
     private List<CharaPanel> m_PanelList = new();
 
     //----debug--------
-    [SerializeField] private DebugMode m_debug;
+    //[SerializeField] private DebugMode m_debug;
 
     private void OnEnable()
     {

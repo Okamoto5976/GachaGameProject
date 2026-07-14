@@ -64,7 +64,6 @@ public class CharacterManager : MonoBehaviour
 
             m_masterDataList = m_debugMasterDataList;
 
-            m_initializeEvent.Raise();
         }
     }
 
