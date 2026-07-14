@@ -6,11 +6,11 @@ public class GachaBottun : MonoBehaviour
     private GachaSysteme gacha;
     public void OnClickOne()
     {
-        gacha.LotteryTypeOne();  
+        //gacha.LotteryTypeOne();  
     }
    
     public void OnClickTen()
     {
-        gacha.LotteryTypeTen();
+        //gacha.LotteryTypeTen();
     }
 }

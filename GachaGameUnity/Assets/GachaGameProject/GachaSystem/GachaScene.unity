@@ -148,8 +148,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2123834890}
   - {fileID: 1930394494}
+  - {fileID: 2123834890}
   - {fileID: 2086955664}
   m_Father: {fileID: 1068088320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,8 +170,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf524db6db03350418684a5a4b4b9d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaSysteme
-  m_RarityList: 3c0000001e0000000000000000000000
-  m_GradeList: 00000000
+  m_RarityList: 
+  rate:
+    rateC: 30
+    rateU: 55.55
+    rateR: 95
+  m_NeedMoney: 20
+  m_NeedTicket: 2
+  m_Coine: 500
+  m_Ticket: 50
 --- !u!1 &202574380
 GameObject:
   m_ObjectHideFlags: 0
@@ -771,7 +778,7 @@ GameObject:
   - component: {fileID: 1930394500}
   - component: {fileID: 1930394501}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: OneGacha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -841,9 +848,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1930394500}
-        m_TargetAssemblyTypeName: GachaBottun, Assembly-CSharp
-        m_MethodName: OnClickOne
+      - m_Target: {fileID: 80049327}
+        m_TargetAssemblyTypeName: GachaSysteme, Assembly-CSharp
+        m_MethodName: OneGacha
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -917,7 +924,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GachaSysteme
   m_RarityList: 
-  m_GradeList: 
+  rate:
+    rateC: 0
+    rateU: 0
+    rateR: 0
+  m_NeedMoney: 0
+  m_NeedTicket: 0
+  m_Coine: 0
+  m_Ticket: 0
 --- !u!1 &2086955663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1083,7 +1097,7 @@ GameObject:
   - component: {fileID: 2123834892}
   - component: {fileID: 2123834896}
   m_Layer: 5
-  m_Name: Button
+  m_Name: TenGacha
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1153,9 +1167,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2123834896}
-        m_TargetAssemblyTypeName: GachaBottun, Assembly-CSharp
-        m_MethodName: OnClickTen
+      - m_Target: {fileID: 80049327}
+        m_TargetAssemblyTypeName: GachaSysteme, Assembly-CSharp
+        m_MethodName: TenGacha
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

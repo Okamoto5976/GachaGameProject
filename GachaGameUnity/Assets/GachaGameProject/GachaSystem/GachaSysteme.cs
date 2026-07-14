@@ -1,186 +1,180 @@
-using UnityEngine;
+using JetBrains.Annotations;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
+using UnityEngine;
+
+[System.Serializable]
+public class Rate
+{
+    public float rateC;
+    public float rateU;
+    public float rateR;
+}
 
 public class GachaSysteme : MonoBehaviour
 {
-  
-    public enum Rarity
-    {
-        C = 60,
-        R = 30,
-        SR = 10
-    }
-    public class CharaData
-    {
-        public int m_id;
-        public int m_grade;
-        public string m_rarity;
-        public string m_name;
-        public float m_rate;
-    }
-    private enum Character
-    {
-        ID,
-        Glade,
-        Rarity,
-        Name,
-        Rate,
-    }
-    private Character m_character;
-    public List<Rarity> m_RarityList = new();
+    //[SerializeField] private int m_RollNum = 0;
+    public List<int> m_RarityList = new();
+    [SerializeField] public Rate rate;
 
-    private int m_RollNum = 0;
-    private int m_LotteryType;//0=1,1=10
-    public List<int> m_GradeList = new();
-    public List<CharaData> m_DropChara = new();
-    private int m_Coine;
-    private float m_tickets = 0;
-    private float m_Gettickets = 0;
+    [SerializeField] private int m_NeedMoney;
+    [SerializeField] private int m_NeedTicket;
+    //SO
+    [SerializeField] private int m_Coine;
+    [SerializeField]private float m_Ticket;
 
-
-    private void GhachaGet()
+    public void OneGacha()
     {
 
-        for (int i = 0; i < m_RollNum; i++)
+
+        if (m_NeedTicket <= m_Ticket)
         {
-
-            if (i % 10 == 9)
+            if (!IsCheakTicket(m_NeedTicket))
             {
-                m_LotteryType = 1;
-
+                Debug.Log("you do not have ticket");
+                return;
             }
-            else if (m_RollNum == 1)
-            {
-                m_LotteryType = 0;
-            }
-
-            GetDropChara();
-            Debug.Log($"You currently have {m_tickets} tickets.");
+            GachaGet(1);
         }
-        m_RollNum = 0;
-        return;
-    }
-
-    private void GetDropChara()
-    {
-        int chara = GetRarity(GetM_GradeList());
-
-        GetCharaSorting(chara);
-        m_tickets += m_Gettickets;
-        Debug.Log($"チケットを{m_Gettickets}枚手に入れた。");
-        m_Gettickets = 0f;
-    }
-
-    public void GetCharaSorting(int Index)
-    {
-        CharaData chara= m_DropChara[Index];
-        //already Charactur check
-        // Compare the characters you have here with the ones you got from the gacha.
-        //if (m_DropChara.Exists(name==chara.m_name))
-        //{
-
-        ////    //Debug.Log($"Already acquired character: {[(int)Character.Name, charaId]}");
-        //    ChiketsGet();
-        ////    Debug.Log("It has been converted into a gacha ticket!" );
-        //}
-        //else
-        //{
-        //    m_DropChara.Add(chara);
-            
-        //    //Debug.Log($"newCharactur {}が追加されました。");
-        //}
-
-    }
-
-    public List<int> GetM_GradeList()
-    {
-        return m_GradeList;
-    }
-
-    public int GetRarity(List<int> m_GradeList)
-    {
-        //確率の合計値を格納
-        float total = 0;
-
-        //確率を合計する
-        //for (int i = 0; i < m_GradeList(i); i++)
-        //{   
-            //total += m_GradeList[i,rate];
-        //}
-        //Random.valueでは1から3までのfloat値を返すので
-        //そこにドロップ率の合計を掛ける
-        float randomPoint = Random.value * total;
-
-        for (int i = 0; i < m_RollNum; i++)
+        else if (m_NeedMoney <= m_Coine)
         {
-            if (randomPoint <=10)
+            if (!IsCheakMoney(m_NeedMoney))
             {
-                m_GradeList.Add(1);
+                Debug.Log("you do not have money");
+                return;
             }
-            else if (randomPoint <= 30)
+            GachaGet(1);
+        }
+        else
+        {
+            Debug.Log("you do not have to ticket and Coine");
+        }
+            
+    }
+
+    public void TenGacha()
+    {
+        //Do you have Money?
+        //LotteryTypeTen();
+        if (m_NeedTicket * 10 <= m_Ticket)
+        {
+            if (!IsCheakTicket(m_NeedTicket * 10))
             {
-                m_GradeList.Add(2);
+                Debug.Log("you do not have ticket");
+                return;
+            }
+            GachaGet(10);
+        }
+        else if (m_NeedMoney * 10 <= m_Coine)
+        {
+            if (!IsCheakMoney(m_NeedMoney * 10))
+            {
+                Debug.Log("you do not have money");
+                return;
+            }
+            GachaGet(10);
+        }
+        else
+        {
+            Debug.Log("you do not have to ticket and Coine");
+        }
+
+
+    }
+
+
+
+    private void GachaGet(int num)
+    {
+        m_RarityList.Clear();
+
+        for(int i  = 0; i < num; i++)
+        {
+            float randomPoint = Random.Range(0, 100);
+            int rarity = 0;
+
+
+            if(randomPoint >rate.rateR )
+            {
+                rarity = 3;
+            }
+            else if( randomPoint>rate.rateU )
+            {
+                rarity = 2;
             }
             else
             {
-                m_GradeList.Add(3);
+                rarity = 1;
             }
+
+            Debug.Log($"{rarity}");
+
+            m_RarityList.Add(rarity);
+
         }
 
-        return 0;
+        //Post PHP data "m_RarityList";
+
     }
 
     public void ChiketsGet()
     {
-        m_tickets += 1;
-        return;
-    }
-    public void LotteryTypeOne()
-    {
+        m_Ticket += 1;
 
-        if (m_tickets >= 2)
+    }
+
+    private bool IsCheakMoney(int money)
+    {
+        if(m_Coine < money)
         {
-            m_tickets -= 2;
-            m_RollNum = 1;
-        }
-        else if(m_Coine>=10)
-        {
-            m_RollNum = 1;
-            m_Coine -= 10;
+            return false;
         }
         else
         {
-            Debug.Log("チケットまたはコインが足りません");
+            m_Coine -= money;
+            return true;
         }
-
     }
 
-    public void LotteryTypeTen()
+    private bool IsCheakTicket(int ticket)
     {
-        if (m_tickets >= 20)
+        if (m_Ticket < ticket)
         {
-            m_tickets -= 20;
-            m_RollNum = 10;
-        }
-        else if(m_Coine>=100)
-        {
-            m_Coine = 100;
-            m_RollNum = 10;
-
+            return false;
         }
         else
-                {
-                    Debug.Log("チケットまたはコインが足りません");
-                }
-
-    }
-    public void PayTicket(int pay)
-    {
-        m_tickets -= pay;
-        return;
+        {
+            m_Ticket -= ticket;
+            return true;
+        }
     }
 
 
+    //public void PayTicket(int pay)
+    //{
+    //    m_Ticket -= pay;
+    //    return;
+    //}
+
+    //public void GetCharaSorting(int Index)
+    //{
+    //    CharaData chara = m_DropChara[Index];
+    //    already Charactur check
+    //     Compare the characters you have here with the ones you got from the gacha.
+    //        if (m_DropChara.Exists(name == chara.m_name))
+    //    {
+
+    //        //    //Debug.Log($"Already acquired character: {[(int)Character.Name, charaId]}");
+    //        ChiketsGet();
+    //        //    Debug.Log("It has been converted into a gacha ticket!" );
+    //    }
+    //    else
+    //    {
+    //        m_DropChara.Add(chara);
+
+    //        //Debug.Log($"newCharactur {}が追加されました。");
+    //    }
+
+    //}
 }
-
 
