@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+
     [SerializeField] private AudioEventSO m_audioBGMEvent;
     [SerializeField] private AudioEventSO m_audioSEEvent;
 
@@ -13,7 +15,9 @@ public class AudioManager : MonoBehaviour
     private Dictionary<AudioClip, float> m_lastPlayTimes = new();
 
     //RuntimeSO
-    [SerializeField] private FloatRunTime m_AudioVolume;
+    [SerializeField] private FloatRunTime m_AudioBGMVolume;
+    [SerializeField] private FloatRunTime m_AudioSEVolume;
+
     //option slider
     //[SerializeField] private Slider m_audioSlider;
 
@@ -33,6 +37,9 @@ public class AudioManager : MonoBehaviour
     {
         m_audioSEEvent.Register(PlaySE);
         m_audioBGMEvent.Register(PlayBGM);
+
+        SetBGMVolume(m_AudioBGMVolume.Value);
+        SetSEVolume(m_AudioSEVolume.Value);
     }
 
     private void OnDisable()
@@ -43,7 +50,15 @@ public class AudioManager : MonoBehaviour
 
     private void Awake()
     {
-        SetVolume(m_AudioVolume.Value);
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+
         //m_audioSlider.value = m_AudioVolume.Value;
     }
 
@@ -121,13 +136,17 @@ public class AudioManager : MonoBehaviour
     //âπó ïœçX
     //=================================================================================
 
-    public void SetVolume(float volume)
+    public void SetBGMVolume(float volume)
     {
         m_masterVolume = volume;
         m_BGMSource.volume = m_masterVolume;
-        m_SESource.volume = m_masterVolume;
-        m_AudioVolume.SetValue(volume);
+        m_AudioBGMVolume.SetValue(volume);
     }
 
-   
+    public void SetSEVolume(float volume)
+    {
+        m_masterVolume = volume;
+        m_SESource.volume = m_masterVolume;
+        m_AudioSEVolume.SetValue(volume);
+    }
 }

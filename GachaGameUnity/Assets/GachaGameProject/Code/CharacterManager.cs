@@ -82,6 +82,7 @@ public class CharacterManager : MonoBehaviour
     {
         m_dataList.Add(data);
         //•À‚×‘Ö‚¦‚éiˆê‰žj
+        m_dataList.Sort((a,b) => a.ID.CompareTo(b.ID));
     }
 
     public void AddGachaChara(int id)
