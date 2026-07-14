@@ -5,33 +5,28 @@ public class FarmManager : MonoBehaviour
 {
     public int FPS { get => 60; }
 
-    //[SerializeField] private CharaData m_charaData;
     [SerializeField] private CharactersParamSO m_charactersParam;
     [SerializeField] private MainDataSO m_mainData;
     [SerializeField] private GaugeSO m_gauge;
     [SerializeField] private Canvas m_canvas;
     [SerializeField] private List<GameObject> m_charaObjs;
-    // Use only when generating using a script.
-    //[SerializeField] private GameObject m_charaPrefab;
     public Canvas Canvas => m_canvas;
 
     [Header("State")]
     [SerializeField] private int m_frame;
     [SerializeField] private float m_fMoney; // Maintained while FarmManager is active
+    [SerializeField] private int m_saving;  // Uncollected money.
 
     private List<CharaWork> m_charaWorks = new();
-    //[SerializeField] private List<float> m_progressList = new();
 
     private void Awake()
     {
         m_fMoney = 0;
-        //m_canvas = Instantiate(m_canvas);
+        m_saving = 0;
 
         for (int i = 0; i < m_charactersParam.CharaDataList.Count; i++)
         {
             SetParam(m_charaObjs[i]);
-            // Use only when generating using a script.
-            //AddCharacter(Instantiate(m_charaPrefab));
         }
 
     }
@@ -77,7 +72,7 @@ public class FarmManager : MonoBehaviour
             }
         }
         int _increase = (int)m_fMoney;  // (int)Mathf.Floor(m_fMoney)
-        m_mainData.Money += _increase;
+        m_saving += _increase;
         if (_increase != 0)
         {
             m_fMoney %= _increase;
@@ -104,6 +99,13 @@ public class FarmManager : MonoBehaviour
         {
             m_charactersParam.CharaDataList[index].SetMPW(1);   // initialize
         }
+    }
+
+    // Press button to call.
+    public void CollectedMoney()
+    {
+        m_mainData.Money += m_saving;
+        m_saving = 0;
     }
 
     /*
