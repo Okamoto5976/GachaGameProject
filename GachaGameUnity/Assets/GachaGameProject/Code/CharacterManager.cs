@@ -21,6 +21,7 @@ public class MasterCharacterData
     public Texture2D Texture;
     //public Sprite gachaImage;
     public Sprite image;
+    public Sprite PanelImage;
 }
 
 public class CharacterManager : MonoBehaviour

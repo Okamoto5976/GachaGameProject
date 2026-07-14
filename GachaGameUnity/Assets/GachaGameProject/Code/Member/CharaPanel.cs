@@ -41,6 +41,6 @@ public class CharaPanel : MonoBehaviour
     public void SetCharaData(MasterCharacterData data)
     {
         ID = data.ID;
-        m_image.sprite = data.image;
+        m_image.sprite = data.PanelImage;
     }
 }
