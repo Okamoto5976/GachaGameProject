@@ -530,7 +530,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Back
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1097,52 +1099,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 418839468}
   m_CullTransparentMesh: 1
---- !u!1 &497644553
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 497644555}
-  - component: {fileID: 497644554}
-  m_Layer: 0
-  m_Name: stageButtonUI
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &497644554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497644553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68278a5a261ebb34499a44e51034c8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StageButtonUI
-  m_isUnlocked: 0
-  m_uiManager: {fileID: 561560668}
---- !u!4 &497644555
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 497644553}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 168.865, y: -0, z: 288.3595}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &500835664
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,7 +1156,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Back
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1778,7 +1736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2134,7 +2092,6 @@ GameObject:
   - component: {fileID: 1010047151}
   - component: {fileID: 1010047150}
   - component: {fileID: 1010047149}
-  - component: {fileID: 1010047152}
   m_Layer: 5
   m_Name: stageButton2
   m_TagString: Untagged
@@ -2206,9 +2163,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 497644554}
-        m_TargetAssemblyTypeName: StageButtonUI, Assembly-CSharp
-        m_MethodName: OnClickStage
+      - m_Target: {fileID: 561560668}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ShowUnlockPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2256,20 +2213,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010047147}
   m_CullTransparentMesh: 1
---- !u!114 &1010047152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1010047147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68278a5a261ebb34499a44e51034c8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StageButtonUI
-  m_isUnlocked: 0
-  m_uiManager: {fileID: 561560668}
 --- !u!1 &1074220506
 GameObject:
   m_ObjectHideFlags: 0
@@ -2669,7 +2612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2806,7 +2749,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2898,7 +2841,6 @@ GameObject:
   - component: {fileID: 1360480347}
   - component: {fileID: 1360480346}
   - component: {fileID: 1360480345}
-  - component: {fileID: 1360480348}
   m_Layer: 5
   m_Name: stageButton1
   m_TagString: Untagged
@@ -3020,20 +2962,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1360480343}
   m_CullTransparentMesh: 1
---- !u!114 &1360480348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1360480343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68278a5a261ebb34499a44e51034c8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StageButtonUI
-  m_isUnlocked: 0
-  m_uiManager: {fileID: 561560668}
 --- !u!1 &1376794972
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,7 +3186,6 @@ GameObject:
   - component: {fileID: 1707685392}
   - component: {fileID: 1707685391}
   - component: {fileID: 1707685390}
-  - component: {fileID: 1707685393}
   m_Layer: 5
   m_Name: stageButton3
   m_TagString: Untagged
@@ -3330,9 +3257,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 497644554}
-        m_TargetAssemblyTypeName: StageButtonUI, Assembly-CSharp
-        m_MethodName: OnClickStage
+      - m_Target: {fileID: 561560668}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ShowUnlockPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3380,20 +3307,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707685388}
   m_CullTransparentMesh: 1
---- !u!114 &1707685393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1707685388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68278a5a261ebb34499a44e51034c8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StageButtonUI
-  m_isUnlocked: 0
-  m_uiManager: {fileID: 561560668}
 --- !u!1 &1715794191
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,7 +3452,6 @@ GameObject:
   - component: {fileID: 1875234850}
   - component: {fileID: 1875234849}
   - component: {fileID: 1875234848}
-  - component: {fileID: 1875234851}
   m_Layer: 5
   m_Name: stageButton4
   m_TagString: Untagged
@@ -3611,9 +3523,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 497644554}
-        m_TargetAssemblyTypeName: StageButtonUI, Assembly-CSharp
-        m_MethodName: OnClickStage
+      - m_Target: {fileID: 561560668}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: ShowUnlockPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3661,20 +3573,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875234846}
   m_CullTransparentMesh: 1
---- !u!114 &1875234851
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875234846}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68278a5a261ebb34499a44e51034c8d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::StageButtonUI
-  m_isUnlocked: 0
-  m_uiManager: {fileID: 561560668}
 --- !u!1 &1936884755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,7 +3763,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: '1
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4002,7 +3902,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: 'Back
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4228,4 +4130,3 @@ SceneRoots:
   - {fileID: 761193570}
   - {fileID: 1376794975}
   - {fileID: 561560669}
-  - {fileID: 497644555}
