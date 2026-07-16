@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class DebugGachaSystem : MonoBehaviour
+public class GachaViewChara : MonoBehaviour
 {
     [SerializeField] private List<int> m_gachanumber;
 
