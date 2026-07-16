@@ -3,11 +3,17 @@ using UnityEngine;
 [System.Serializable]
 public class CharaData
 {
+    //example
+    //enum Map
+    //{
+    //  Pasture,
+    //  Volcano
+    //}
     [Header("Base")]
-    [SerializeField] private int m_rarity;
-    [SerializeField] private string m_name;
-    // Use only when generating using a script.
-    //[SerializeField] private Sprite m_sprite;
+    [SerializeField] int m_id;
+    //[SerializeField] private Map m_workplace; // It might be used during map transitions.
+    //public Map Workplace => m_workplace
+    [SerializeField] private Sprite m_sprite;
 
     [Header("Default state")]
     [SerializeField] private int m_maxLevel;
@@ -16,12 +22,13 @@ public class CharaData
 
     [Header("State")]
     [SerializeField] private bool m_owned;
-    [SerializeField] private int m_level = 1;
+    [SerializeField] private int m_level = 0;
     [SerializeField] private float m_mPS;   // money per second
     [SerializeField] private float m_wPS;   // work per second
     [SerializeField] private float m_progress;
 
-    //public Sprite Sprite => m_sprite;
+    public int ID => m_id;
+    public Sprite Sprite => m_sprite;
     public float DefaultMPS => m_defaultMPS;
     public bool Owned => m_owned;
     public int Level => m_level;
@@ -35,9 +42,19 @@ public class CharaData
         m_owned = value;
     }
 
+    public void SetLevel(int value)
+    {
+        m_level = value;
+        SetMPS();
+    }
+
     public void UpLevel(int value)
     {
         m_level += value;
+        if (m_level > m_maxLevel)
+        {
+            m_level = m_maxLevel;
+        }
         SetMPS();
     }
 
@@ -49,11 +66,6 @@ public class CharaData
     public void UpdateWPS()
     {
         m_wPS = m_mPW / m_mPS;
-    }
-
-    public void SetMPW(int value)
-    {
-        m_mPW = value;
     }
 
     public void SetProgress(float value)

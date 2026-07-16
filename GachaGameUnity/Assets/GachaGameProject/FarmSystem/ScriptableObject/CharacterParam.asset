@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03ebf0eefe47410418a24d3d717e2a8f, type: 3}
+  m_Name: CharacterParam
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterParamSO
+  m_charaPrefab: {fileID: 6587849307045948838, guid: 90df0a721f68ac44288ab56f8623c43c, type: 3}
+  CharaDataList:
+  - m_id: 0
+    m_sprite: {fileID: 21300000, guid: ba08e2a521c08004c9bc7d21a34632b0, type: 3}
+    m_maxLevel: 9999
+    m_defaultMPS: 1
+    m_mPW: 1
+    m_owned: 1
+    m_level: 1
+    m_mPS: 1
+    m_wPS: 1
+    m_progress: 0.8333334
+  - m_id: 1
+    m_sprite: {fileID: 21300000, guid: a0ca1d23996ce7340b0fee188dd279e6, type: 3}
+    m_maxLevel: 9999
+    m_defaultMPS: 1.5
+    m_mPW: 1
+    m_owned: 1
+    m_level: 1
+    m_mPS: 1.5
+    m_wPS: 0.6666667
+    m_progress: 0.8333334
