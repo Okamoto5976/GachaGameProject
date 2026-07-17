@@ -4,83 +4,49 @@ using UnityEngine.UI;
 
 public class CharaWork : MonoBehaviour
 {
-    [SerializeField] private CharactersParamSO m_charactersParam;
-    [SerializeField] private MainDataSO m_mainData;
     [SerializeField] private FarmManager m_farmManager;
     [SerializeField] private GaugeSO m_gauge;
 
+    [Header("GaugeObject")]
+    [SerializeField] private GameObject m_gaugeBackgroundImage;
+    [SerializeField] private GameObject m_gaugeImage;
+    [SerializeField] private TextMeshProUGUI m_gaugeRateText;
+    [SerializeField] private TextMeshProUGUI m_stateText;
+
+    private Canvas m_canvas;
     private CharaData m_charaData;
 
-    private GameObject m_gaugeBackgroundImage;
-    private GameObject m_gaugeImage;
-    private TextMeshProUGUI m_gaugeRateText;
-    private TextMeshProUGUI m_stateText;
-    [SerializeField] private Vector2 m_gaugeLocalPos;
-    [SerializeField] private float m_progress;
+    public CharaData CharaData => m_charaData;
+
+    private float m_progress;
 
     private void Awake()
     {
         Application.targetFrameRate = m_farmManager.FPS;
     }
 
-    // First, set up the CharaWork's m_canvas in FarmManager.
+    //First, set up the CharaWork's m_canvas in FarmManager.
     private void Start()
     {
-        // Use only when generating using a script.
-        //this.GetComponent<Image>().sprite = m_charaData.Sprite;
-        InstantiateGauge();
-        this.m_charaData.SetMPS();
-        this.m_charaData.SetProgress(0);
-        SetGaugePosition();
+        GetComponent<Image>().sprite = m_charaData.Sprite;
+        gameObject.transform.SetParent(m_canvas.transform, false);
     }
 
     void Update()
     {
         GaugeRender();
         StateRender();
+        m_progress = m_charaData.Progress;
     }
 
-
-    private void InstantiateGauge()
-    {
-        // Instantiate
-        m_gaugeBackgroundImage = Instantiate(m_gauge.GaugeBackgroundImage, transform.position, Quaternion.identity);
-        m_gaugeImage = Instantiate(m_gauge.GaugeImage, transform.position, Quaternion.identity);
-
-        m_gaugeRateText = Instantiate(m_gauge.GaugeRateText, transform.position, Quaternion.identity);
-        m_stateText = Instantiate(m_gauge.StateText, transform.position, Quaternion.identity);
-        
-        // SetParent
-        m_gaugeBackgroundImage.transform.SetParent(this.transform, false);
-        m_gaugeImage.transform.SetParent(this.transform, false);
-
-        m_gaugeRateText.transform.SetParent(this.transform, false);
-        m_stateText.transform.SetParent(this.transform, false);
-
-        SetGaugePosition();
-    }
-
-    // Set the gauge position at the character's local position.
-    private void SetGaugePosition()
-    {
-        // Gauge
-        m_gaugeLocalPos = new Vector2(0.0f, m_gauge.GaugePosUp);
-
-        m_gaugeBackgroundImage.transform.localPosition = m_gaugeLocalPos;
-        m_gaugeImage.transform.localPosition = m_gaugeLocalPos;
-
-        // Text
-        m_gaugeRateText.transform.localPosition = m_gaugeLocalPos + m_gauge.GaugeRateTextPos;
-        m_stateText.transform.localPosition = m_gaugeLocalPos + m_gauge.StateTextPos;
-    }
 
     // Reflect the progress in the gauge.
     private void GaugeRender()
     {
-        float _leftAlignetX = - m_gauge.GaugeFrameLength * 0.5f + m_gauge.Margin + m_progress * m_gauge.GaugeMaxLength * 0.5f;
+        float _leftAlignetX = - m_gauge.GaugeFrameLength * 0.5f + m_gauge.LeftMargin + m_progress * m_gauge.GaugeMaxLength * 0.5f;
 
         m_gaugeImage.transform.localScale = new Vector2(m_progress, m_gaugeImage.transform.localScale.y);
-        m_gaugeImage.transform.localPosition = new Vector2(_leftAlignetX, m_gaugeLocalPos.y);
+        m_gaugeImage.transform.localPosition = new Vector2(_leftAlignetX, m_gaugeImage.transform.localPosition.y);
     }
 
     // Display character information above the gauge.
@@ -90,13 +56,18 @@ public class CharaWork : MonoBehaviour
         m_stateText.text = "Lv." + m_charaData.Level.ToString() + "    MPS " + m_charaData.MPS.ToString() + "/s";
     }
 
-    public void SetCharaData(CharaData charaData)
+    public void SetCharaData(CharaData _charaData)
     {
-        m_charaData = charaData;
+        m_charaData = _charaData;
     }
 
-    public void SetProgress(float value)
+    public void SetLocalPosition(Vector2 _position)
     {
-        m_progress = value;
+        this.transform.localPosition = _position;
+    }
+
+    public void SetCanvas(Canvas canvas)
+    {
+        m_canvas = canvas;
     }
 }

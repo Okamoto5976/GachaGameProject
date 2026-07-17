@@ -44,11 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b55ee62a33cb5804b819fa23d5c29a8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FarmManager
-  m_charactersParam: {fileID: 11400000, guid: 917500369c42da143a0658a897d8d18d, type: 2}
   m_mainData: {fileID: 11400000, guid: 2d4116ffdbbe4e343a782ac56fba0a43, type: 2}
+  m_characterParam: {fileID: 11400000, guid: e2747e485399d1f4199c77a101e544bb, type: 2}
   m_gauge: {fileID: 11400000, guid: b5d9006e72dceb24387287ff6ae661c7, type: 2}
   m_canvas: {fileID: 7750753943718543429, guid: 58b0b9882637dda44a5af95ca3e38a4c, type: 3}
-  m_charaObjs: []
   m_frame: 0
   m_fMoney: 0
   m_saving: 0
