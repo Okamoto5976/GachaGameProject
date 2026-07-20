@@ -6,7 +6,9 @@ public class RandomEntityMove : MonoBehaviour
 {
     //[SerializeField] private EntityDataSO m_entityData;
 
-    public int ID { get; private set; }
+    [SerializeField] private int m_id;
+
+    public int ID => m_id;
 
     private Vector3 m_moveDirection;
     private float m_timer;
@@ -22,10 +24,13 @@ public class RandomEntityMove : MonoBehaviour
 
     private EntityState m_state;
 
+    private void Awake()
+    {
+        m_image = GetComponent<Image>();
+    }
+
     void Start()
     {
-        m_image = GetComponentInChildren<Image>();
-
         //if (m_entityData == null)
         //{
         //    Debug.LogError("EntityData‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
@@ -98,7 +103,7 @@ public class RandomEntityMove : MonoBehaviour
 
     public void SetData(MasterCharacterData data)
     {
-        ID = data.ID;
+        m_id = data.ID;
         m_image.sprite = data.image;
     }
 }
