@@ -1,6 +1,18 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public class CharaWork
+{
+    public int ID;
+    public int Value;
+}
+
+public class Modifier
+{
+    public List<CharaData> m_charaWorkers;
+}
+
+
 public class FarmManager : MonoBehaviour
 {
     public int FPS { get => 60; }
@@ -8,30 +20,33 @@ public class FarmManager : MonoBehaviour
     [SerializeField] private MainDataSO m_mainData;
     [SerializeField] private CharacterParamSO m_characterParam;
     [SerializeField] private GaugeSO m_gauge;
-    [SerializeField] private Canvas m_canvas;
+    //[SerializeField] private Canvas m_canvas;
 
     [Header("State")]
     [SerializeField] private int m_frame;
     [SerializeField] private float m_fMoney; // Maintained while FarmManager is active
     [SerializeField] private int m_saving;  // Uncollected money.
 
-    [Header("Debug")]
+
+    [SerializeField] private List<CharaData> m_charaDataList = new();
+
+    //[Header("Debug")]
     //[SerializeField] private List<CharaData> m_charaDataList = new();
-    private List<CharaWork> m_charaWorkList = new();
+    //private List<CharaWork> m_charaWorkList = new();
 
     private void Awake()
     {
         m_fMoney = 0;
         m_saving = 0;
-        m_canvas = Instantiate(m_canvas);
+        //m_canvas = Instantiate(m_canvas);
 
-        for (int i = 0; i < m_characterParam.CharaDataList.Count; i++)
-        {
-            if (m_characterParam.CharaDataList[i].Owned)
-            {
-                SetCharacter(i);
-            }
-        }
+        //for (int i = 0; i < m_characterParam.CharaDataList.Count; i++)
+        //{
+        //    if (m_characterParam.CharaDataList[i].Owned)
+        //    {
+        //        SetCharacter(i);
+        //    }
+        //}
 
     }
 
@@ -93,16 +108,26 @@ public class FarmManager : MonoBehaviour
     }
 
     // Use this only when objects have already been placed in the scene.
-    private void SetCharacter(int id)
+    //public void SetCharacter(int id)
+    //{
+    //    GameObject obj = Instantiate(m_characterParam.CharaPrefab);
+
+    //    CharaWork charaWork = obj.GetComponent<CharaWork>();
+    //    //charaWork.SetCanvas(m_canvas);
+    //    //m_charaWorkList.Add(charaWork);
+
+    //    charaWork.SetCharaData(m_characterParam.CharaDataList[id]);
+    //    m_characterParam.CharaDataList[id].SetLevel(1);   // initialize
+
+    //}
+
+    public void AddCharacter(CharacterData data)
     {
-        GameObject obj = Instantiate(m_characterParam.CharaPrefab);
 
-        CharaWork charaWork = obj.GetComponent<CharaWork>();
-        charaWork.SetCanvas(m_canvas);
-        m_charaWorkList.Add(charaWork);
+    }
 
-        charaWork.SetCharaData(m_characterParam.CharaDataList[id]);
-        m_characterParam.CharaDataList[id].SetLevel(1);   // initialize
+    public void RemoveCharacter(int id)
+    {
 
     }
 

@@ -1,7 +1,8 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CharaPanel : MonoBehaviour
+public class CharaPlacePanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private CharaUIEventSO m_charaUIEvent;
 
@@ -10,9 +11,28 @@ public class CharaPanel : MonoBehaviour
     [SerializeField] private Image m_image;
     public int ID { get; private set; }
 
+    [SerializeField] private PlaceSelectSO m_placeSelectSO;
+
     private Sprite m_sprite;
 
-    
+    private float m_pressTime;
+    private bool m_isPressing;
+
+    [SerializeField] private float m_longPressTime = 1.0f;
+
+    private void Update()
+    {
+        if (m_isPressing)
+        {
+            m_pressTime += Time.deltaTime;
+
+            if (m_pressTime >= m_longPressTime)
+            {
+                OnClickViewCharaUI();
+                m_isPressing = false; // 1âÒÇæÇØé¿çs
+            }
+        }
+    }
 
     //Back Scene have
 
@@ -44,22 +64,19 @@ public class CharaPanel : MonoBehaviour
         m_image.sprite = data.PanelImage;
     }
 
-    //---use Gacha chara view---------
-
-    public void SetGachaCharaData(MasterCharacterData data)
+    public void OnPointerDown(PointerEventData eventData)
     {
-        ID = data.ID;
-        OnViewImage(data.Texture);
+        m_pressTime = 0;
+        m_isPressing = true;
     }
 
-    public void OnViewImage(Texture2D texture)
+    public void OnPointerUp(PointerEventData eventData)
     {
-        Sprite sprite = Sprite.Create(
-            texture,
-            new Rect((texture.width - 300) / 2, 0, 300, texture.height),
-            new Vector2(0.5f, 0.5f)
-            );
+        if (m_pressTime < m_longPressTime)
+        {
+            m_placeSelectSO.GetID(ID);
+        }
 
-        m_image.sprite = sprite;
+        m_isPressing = false;
     }
 }

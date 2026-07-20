@@ -23,6 +23,9 @@ public class GachaSysteme : MonoBehaviour
     [SerializeField] private int m_Coine;
     [SerializeField]private float m_Ticket;
 
+    [SerializeField] private GachaManager m_gachaView;
+    [SerializeField] private UIManagerToMain m_UIManager;
+
     public void OneGacha()
     {
 
@@ -94,11 +97,11 @@ public class GachaSysteme : MonoBehaviour
             int rarity = 0;
 
 
-            if(randomPoint >rate.rateR )
+            if(randomPoint  < rate.rateR )
             {
                 rarity = 3;
             }
-            else if( randomPoint>rate.rateU )
+            else if( rate.rateR < randomPoint && randomPoint < rate.rateU )
             {
                 rarity = 2;
             }
@@ -107,7 +110,7 @@ public class GachaSysteme : MonoBehaviour
                 rarity = 1;
             }
 
-            Debug.Log($"{rarity}");
+            Debug.Log($"{randomPoint}");
 
             m_RarityList.Add(rarity);
 
@@ -115,6 +118,9 @@ public class GachaSysteme : MonoBehaviour
 
         //Post PHP data "m_RarityList";
 
+        m_gachaView.GetGachaList(m_RarityList);
+
+        m_UIManager.OnViewGachaUI();
     }
 
     public void ChiketsGet()

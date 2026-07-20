@@ -283,3 +283,4 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: e71a3c731d1b701489a130b9fef5cfe6, type: 3}
     PanelImage: {fileID: 21300000, guid: 6470f420c87c36b4b8e4b917996065eb, type: 3}
   m_initializeEvent: {fileID: 11400000, guid: b33ad178f3ddfd04a9e88ff11d55f8bd, type: 2}
+  m_getCharaEvent: {fileID: 11400000, guid: dfe0e0dc9d8153747880ddb94f4c1eb3, type: 2}

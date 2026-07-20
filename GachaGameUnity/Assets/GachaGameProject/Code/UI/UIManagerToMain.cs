@@ -14,6 +14,7 @@ public class UIManagerToMain : MonoBehaviour
     [SerializeField] private GameObject m_configUI;
 
     [SerializeField] private GameObject m_mainUI;
+    [SerializeField] private MainManager m_mainManager;
 
     [SerializeField] private GameObject m_memberUI;
     [SerializeField] private MemberManager m_memberManager;
@@ -60,6 +61,7 @@ public class UIManagerToMain : MonoBehaviour
     public void OnViewMainUI()
     {
         ViewMainUI(true);
+        m_mainManager.SetCharacter();
         ViewMemberUI(false);
         ViewPlacementUI(false);
         ViewPullGachaUI(false);
@@ -81,6 +83,11 @@ public class UIManagerToMain : MonoBehaviour
         ViewPlacementUI(true);
         m_placementManager.OnViewPanel();
         ViewPullGachaUI(false);
+    }
+
+    public void OnViewGachaUI()
+    {
+        ViewGachaUI(true);
     }
 
     public void OnViewPullGachaUI()
@@ -122,6 +129,11 @@ public class UIManagerToMain : MonoBehaviour
     private void ViewPlacementUI(bool value)
     {
         m_placementUI.SetActive(value);
+    }
+
+    private void ViewGachaUI(bool value)
+    {
+        m_gachaUI.SetActive(value);
     }
 
     private void ViewPullGachaUI(bool value)

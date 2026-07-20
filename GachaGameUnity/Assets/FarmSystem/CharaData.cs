@@ -13,7 +13,7 @@ public class CharaData
     [SerializeField] int m_id;
     //[SerializeField] private Map m_workplace; // It might be used during map transitions.
     //public Map Workplace => m_workplace
-    [SerializeField] private Sprite m_sprite;
+    //[SerializeField] private Sprite m_sprite;
 
     [Header("Default state")]
     [SerializeField] private int m_maxLevel;
@@ -28,7 +28,7 @@ public class CharaData
     [SerializeField] private float m_progress;
 
     public int ID => m_id;
-    public Sprite Sprite => m_sprite;
+    //public Sprite Sprite => m_sprite;
     public float DefaultMPS => m_defaultMPS;
     public bool Owned => m_owned;
     public int Level => m_level;

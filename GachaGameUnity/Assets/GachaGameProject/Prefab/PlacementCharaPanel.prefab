@@ -86,8 +86,8 @@ GameObject:
   - component: {fileID: 1250272107506820695}
   - component: {fileID: 4416903493843733289}
   - component: {fileID: 3631100070490057987}
-  - component: {fileID: 6053732914891463406}
-  - component: {fileID: 3566312821222594942}
+  - component: {fileID: 1696413412704570737}
+  - component: {fileID: 8592933497551039001}
   m_Layer: 5
   m_Name: PlacementCharaPanel
   m_TagString: Untagged
@@ -153,7 +153,24 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6053732914891463406
+--- !u!114 &1696413412704570737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604200094978123078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d0b0ae4f68e32c4fb0aa54af8d5517b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharaPlacePanel
+  m_charaUIEvent: {fileID: 11400000, guid: e312b4e6102f3d043a4566993435a280, type: 2}
+  m_type: 2
+  m_image: {fileID: 3631100070490057987}
+  m_placeSelectSO: {fileID: 11400000, guid: 90abac8938cd29245844f6327b2315da, type: 2}
+  m_longPressTime: 1
+--- !u!114 &8592933497551039001
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,31 +213,4 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3631100070490057987}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 3566312821222594942}
-        m_TargetAssemblyTypeName: MemberImage, Assembly-CSharp
-        m_MethodName: OnClickViewCharaUI
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3566312821222594942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8604200094978123078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7cb05fb1d9af46449eb039d06db3a7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MemberImage
-  m_charaUIEvent: {fileID: 11400000, guid: e312b4e6102f3d043a4566993435a280, type: 2}
-  m_type: 2
-  m_image: {fileID: 3631100070490057987}
+      m_Calls: []

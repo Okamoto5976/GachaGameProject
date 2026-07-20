@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharaWork : MonoBehaviour
+public class FieldWork : MonoBehaviour
 {
     [SerializeField] private FarmManager m_farmManager;
     [SerializeField] private GaugeSO m_gauge;
@@ -13,12 +13,18 @@ public class CharaWork : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_gaugeRateText;
     [SerializeField] private TextMeshProUGUI m_stateText;
 
-    private Canvas m_canvas;
+    //private Canvas m_canvas;
     private CharaData m_charaData;
 
     public CharaData CharaData => m_charaData;
 
     private float m_progress;
+
+
+    //キャラレベル
+    //キャラデータのデータ
+    //
+
 
     private void Awake()
     {
@@ -28,8 +34,8 @@ public class CharaWork : MonoBehaviour
     //First, set up the CharaWork's m_canvas in FarmManager.
     private void Start()
     {
-        GetComponent<Image>().sprite = m_charaData.Sprite;
-        gameObject.transform.SetParent(m_canvas.transform, false);
+        //GetComponent<Image>().sprite = m_charaData.Sprite;
+        //gameObject.transform.SetParent(m_canvas.transform, false);
     }
 
     void Update()
@@ -66,8 +72,8 @@ public class CharaWork : MonoBehaviour
         this.transform.localPosition = _position;
     }
 
-    public void SetCanvas(Canvas canvas)
-    {
-        m_canvas = canvas;
-    }
+    //public void SetCanvas(Canvas canvas)
+    //{
+    //    m_canvas = canvas;
+    //}
 }

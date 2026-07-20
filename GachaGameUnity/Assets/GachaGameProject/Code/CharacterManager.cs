@@ -35,8 +35,13 @@ public class CharacterManager : MonoBehaviour
     //SO
     [SerializeField] private IntRunTime m_money;
 
+    //placement now set main chara
+    [SerializeField] private List<int> m_mainCharacters = new();
+
     //--------propaty-----------
     public List<CharacterData> DataList => m_dataList;
+
+    public List<int> MainCharacters => m_mainCharacters;
 
     public List<MasterCharacterData> MasterDataList => m_masterDataList;
     //--------Debug------------
@@ -47,6 +52,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private List<MasterCharacterData> m_debugMasterDataList;
 
     [SerializeField] private EventSO m_initializeEvent;
+
+    [SerializeField] private EventSO m_getCharaEvent;
 
     private void Awake()
     {
@@ -93,6 +100,7 @@ public class CharacterManager : MonoBehaviour
             return;
         }
 
+        m_getCharaEvent.Raise();
 
         CharacterData data = new CharacterData
         {
@@ -101,6 +109,8 @@ public class CharacterManager : MonoBehaviour
         };
 
         m_dataList.Add(data);
+        m_dataList.Sort((a, b) => a.ID.CompareTo(b.ID));
+
     }
 
     [ContextMenu("Now check Data")]
@@ -158,5 +168,10 @@ public class CharacterManager : MonoBehaviour
     public void SetMasterData(List<MasterCharacterData> list)
     {
         m_masterDataList = list;
+    }
+
+    public void SetMainCharacters(List<int> list)
+    {
+        m_mainCharacters = list;
     }
 }

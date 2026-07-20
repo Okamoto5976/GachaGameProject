@@ -11,16 +11,20 @@ public class MemberManager : MonoBehaviour
 
     private List<CharaPanel> m_PanelList = new();
 
+    [SerializeField] private EventSO m_getCharaEvent;
+
     //----debug--------
     //[SerializeField] private DebugMode m_debug;
 
     private void OnEnable()
     {
+        m_getCharaEvent.Register(AddMemberPanel);
         m_initializeEvent.Register(Initialize);
     }
 
     private void OnDisable()
     {
+        m_getCharaEvent.Unregister(AddMemberPanel);
         m_initializeEvent.Unregister(Initialize);
     }
 

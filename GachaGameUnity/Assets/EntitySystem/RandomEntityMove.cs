@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class RandomEntityMove : MonoBehaviour
 {
-    [SerializeField]
-    private EntityDataSO m_entityData;
+    //[SerializeField] private EntityDataSO m_entityData;
+
+    public int ID { get; private set; }
 
     private Vector3 m_moveDirection;
     private float m_timer;
-    private SpriteRenderer m_renderer;
+    private Image m_image;
 
     private float m_moveSpeed;
 
@@ -22,27 +24,27 @@ public class RandomEntityMove : MonoBehaviour
 
     void Start()
     {
-        m_renderer = GetComponentInChildren<SpriteRenderer>();
+        m_image = GetComponentInChildren<Image>();
 
-        if (m_entityData == null)
-        {
-            Debug.LogError("EntityDataが設定されていません");
-            return;
-        }
+        //if (m_entityData == null)
+        //{
+        //    Debug.LogError("EntityDataが設定されていません");
+        //    return;
+        //}
 
         // EntityDataから値を取得
-        m_moveSpeed = m_entityData.Value;
+        //m_moveSpeed = m_entityData.Value;
 
-        Debug.Log("ID : " + m_entityData.Id);
-        Debug.Log("名前 : " + m_entityData.Name);
-        Debug.Log("タイプ : " + m_entityData.Type);
-        Debug.Log("レア度 : " + m_entityData.Rarity);
+        //Debug.Log("ID : " + m_entityData.Id);
+        //Debug.Log("名前 : " + m_entityData.Name);
+        //Debug.Log("タイプ : " + m_entityData.Type);
+        //Debug.Log("レア度 : " + m_entityData.Rarity);
 
-        // Sprite表示
-        if (m_entityData.Sprite != null)
-        {
-            m_renderer.sprite = m_entityData.Sprite;
-        }
+        //// Sprite表示
+        //if (m_entityData.Sprite != null)
+        //{
+        //    m_image.sprite = m_entityData.Sprite;
+        //}
 
         m_state = EntityState.Idle;
         m_timer = 3f;
@@ -89,8 +91,14 @@ public class RandomEntityMove : MonoBehaviour
         }
     }
 
-    public EntityDataSO GetEntityData()
+    //public EntityDataSO GetEntityData()
+    //{
+    //    return m_entityData;
+    //}
+
+    public void SetData(MasterCharacterData data)
     {
-        return m_entityData;
+        ID = data.ID;
+        m_image.sprite = data.image;
     }
 }
