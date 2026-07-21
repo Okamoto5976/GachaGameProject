@@ -46,20 +46,22 @@ public class CharaPanel : MonoBehaviour
 
     //---use Gacha chara view---------
 
-    public void SetGachaCharaData(MasterCharacterData data)
-    {
-        ID = data.ID;
-        OnViewImage(data.Texture);
-    }
+    //public void SetGachaCharaData(MasterCharacterData data)
+    //{
+    //    ID = data.ID;
+    //    //OnViewImage(data.Texture);
+    //    m_image.sprite = data.GachaImage;
 
-    public void OnViewImage(Texture2D texture)
-    {
-        Sprite sprite = Sprite.Create(
-            texture,
-            new Rect((texture.width - 300) / 2, 0, 300, texture.height),
-            new Vector2(0.5f, 0.5f)
-            );
+    //}
 
-        m_image.sprite = sprite;
-    }
+    //public void OnViewImage(Texture2D image)
+    //{
+    //    Sprite sprite = Sprite.Create(
+    //        texture,
+    //        new Rect((texture.width - 300) / 2, 0, 300, texture.height),
+    //        new Vector2(0.5f, 0.5f)
+    //        );
+
+    //    m_image.sprite = sprite;
+    //}
 }

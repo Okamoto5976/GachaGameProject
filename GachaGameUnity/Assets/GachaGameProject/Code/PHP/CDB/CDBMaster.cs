@@ -9,13 +9,17 @@ public class PHPGetCharaData
 {
     public int id;
     public string name;
-    public string type;
+    //public string type;
     public string rarity;
     public int value;
     public string image_url;
-    public Texture2D texture;
-    public Sprite gachaImage;
+    public string panelimage_url;
+    public string gachaimage_url;
+    //public Texture2D texture;
     public Sprite image;
+    public Sprite panelImage;
+    public Sprite gachaImage;
+
 }
 
 
@@ -69,6 +73,9 @@ public class CDBMaster : MonoBehaviour
                 //    c.value);
 
                 yield return StartCoroutine(LoadImage(c));
+                yield return StartCoroutine(LoadPanelImage(c));
+                yield return StartCoroutine(LoadGachaImage(c));
+
 
 
                 MasterCharacterData data = new();
@@ -76,14 +83,14 @@ public class CDBMaster : MonoBehaviour
                 data.ID = c.id;
                 data.Name = c.name;
 
-                if (System.Enum.TryParse(c.type, true, out Enum_CharaType typeState))
-                {
-                    data.CharaType = typeState;
-                }
-                else
-                {
-                    Debug.LogWarning($"Failure:'{c.type}'not existent in TestType");
-                }
+                //if (System.Enum.TryParse(c.type, true, out Enum_CharaType typeState))
+                //{
+                //    //data.CharaType = typeState;
+                //}
+                //else
+                //{
+                //    Debug.LogWarning($"Failure:'{c.type}'not existent in TestType");
+                //}
 
                 if (System.Enum.TryParse(c.rarity, true, out Enum_RarityType rarityState))
                 {
@@ -95,8 +102,10 @@ public class CDBMaster : MonoBehaviour
                 }
 
                 data.Value = c.value;
-                data.Texture = c.texture;
-                data.image = c.image;
+                //data.Texture = c.texture;
+                data.Image = c.image;
+                data.PanelImage = c.panelImage;
+                data.GachaImage = c.gachaImage;
 
                 MasterDataList.Add(data);
             }
@@ -160,9 +169,69 @@ public class CDBMaster : MonoBehaviour
 
         Texture2D texture = DownloadHandlerTexture.GetContent(request);
 
-        c.texture = texture;
+        //c.texture = texture;
 
         c.image = Sprite.Create(
+            texture,
+            new Rect(0, 0, texture.width, texture.height),
+            new Vector2(0.5f, 0.5f));
+
+    }
+
+    private IEnumerator LoadPanelImage(PHPGetCharaData c)
+    {
+        string url = c.panelimage_url;
+
+        //Debug.Log("Image URL :" + url);
+
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+        yield return request.SendWebRequest();
+
+        //Debug.Log($"Result : {request.result}");
+        //Debug.Log($"Error  : {request.error}");
+        //Debug.Log($"Code   : {request.responseCode}");
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("API Get Failure:" + request.error);
+            yield break;
+        }
+
+        Texture2D texture = DownloadHandlerTexture.GetContent(request);
+
+        //c.texture = texture;
+
+        c.panelImage = Sprite.Create(
+            texture,
+            new Rect(0, 0, texture.width, texture.height),
+            new Vector2(0.5f, 0.5f));
+
+    }
+
+    private IEnumerator LoadGachaImage(PHPGetCharaData c)
+    {
+        string url = c.gachaimage_url;
+
+        //Debug.Log("Image URL :" + url);
+
+        UnityWebRequest request = UnityWebRequestTexture.GetTexture(url);
+        yield return request.SendWebRequest();
+
+        //Debug.Log($"Result : {request.result}");
+        //Debug.Log($"Error  : {request.error}");
+        //Debug.Log($"Code   : {request.responseCode}");
+
+        if (request.result != UnityWebRequest.Result.Success)
+        {
+            Debug.Log("API Get Failure:" + request.error);
+            yield break;
+        }
+
+        Texture2D texture = DownloadHandlerTexture.GetContent(request);
+
+        //c.texture = texture;
+
+        c.gachaImage = Sprite.Create(
             texture,
             new Rect(0, 0, texture.width, texture.height),
             new Vector2(0.5f, 0.5f));

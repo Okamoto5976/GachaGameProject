@@ -6,7 +6,7 @@ public class GachaManager : MonoBehaviour
 {
     [SerializeField] private List<int> m_gachanumber;
 
-    [SerializeField] private List<CharaPanel> m_gachaPanel;
+    [SerializeField] private List<GachaCharaPanel> m_gachaPanel;
 
     [SerializeField] private int m_pullGacha;
 

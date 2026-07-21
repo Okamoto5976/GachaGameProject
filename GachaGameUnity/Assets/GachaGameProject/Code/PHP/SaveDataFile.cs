@@ -27,7 +27,8 @@ public class SaveDataFile
 
         if (chara != null)
         {
-            chara.Level = data.Level;
+            //chara.Level = data.Level;
+            return;
         }
         else
         {

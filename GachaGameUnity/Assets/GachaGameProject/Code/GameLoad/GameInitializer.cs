@@ -31,6 +31,7 @@ public class GameInitializer : MonoBehaviour
             }
 
             //money set
+            CharacterManager.Instance.SetMoney(m_postSaveFile.LoadSaveDataFile.m_money);
 
         }
         else

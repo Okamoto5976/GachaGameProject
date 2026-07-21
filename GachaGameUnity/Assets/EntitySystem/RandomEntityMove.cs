@@ -104,6 +104,6 @@ public class RandomEntityMove : MonoBehaviour
     public void SetData(MasterCharacterData data)
     {
         m_id = data.ID;
-        m_image.sprite = data.image;
+        m_image.sprite = data.Image;
     }
 }

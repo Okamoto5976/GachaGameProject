@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -29,9 +30,13 @@ public class UIManagerToMain : MonoBehaviour
 
     [SerializeField] private GameObject m_pullGachaUI;
 
+    [SerializeField] private TextMeshProUGUI m_money;
+
     //Event
     [Header("Event")]
     [SerializeField] private CharaUIEventSO m_charaUIEvent;
+
+    [SerializeField] private EventSO m_moneyEvent;
 
     private void Start()
     {
@@ -41,11 +46,19 @@ public class UIManagerToMain : MonoBehaviour
     private void OnEnable()
     {
         m_charaUIEvent.Register(OnViewCharaUI);
+        m_moneyEvent.Register(SetTextMoney);
     }
 
     private void OnDisable()
     {
         m_charaUIEvent.Unregister(OnViewCharaUI);
+        m_moneyEvent.Unregister(SetTextMoney);
+
+    }
+
+    public void SetTextMoney()
+    {
+        m_money.text = CharacterManager.Instance.Money.ToString();
     }
 
     public void OnViewConfigUI()

@@ -8,9 +8,11 @@ public class CharaUIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_nameText;
 
-    [SerializeField] private TextMeshProUGUI m_charaTypeText;
+    //[SerializeField] private TextMeshProUGUI m_charaTypeText;
 
-    [SerializeField] private TextMeshProUGUI m_levelText;
+    //[SerializeField] private TextMeshProUGUI m_levelText;
+
+    [SerializeField] private TextMeshProUGUI m_valueText;
 
     [SerializeField] private Image m_rarityImage;
 
@@ -19,10 +21,14 @@ public class CharaUIManager : MonoBehaviour
 
     [SerializeField] private GameObject m_CharaUI;
 
-    [SerializeField] private GameObject m_Arrow;
+    //[SerializeField] private GameObject m_Arrow;
 
-    [SerializeField] private GameObject m_levelUpButton;
+    //[SerializeField] private GameObject m_levelUpButton;
 
+
+    [SerializeField] private Sprite m_common;
+    [SerializeField] private Sprite m_uncommon;
+    [SerializeField] private Sprite m_rare;
 
     public void OnViewCharaUI(Enum_CharaUIShow type, int id)
     {
@@ -49,23 +55,45 @@ public class CharaUIManager : MonoBehaviour
 
         m_currentID = id;
 
-        m_charaImage.sprite = masterData.image;
+        m_charaImage.sprite = masterData.Image;
 
         m_nameText.text = masterData.Name;
 
-        m_charaTypeText.text = masterData.CharaType.ToString();
+        //m_charaTypeText.text = masterData.CharaType.ToString();
 
-        m_levelText.text = data.Level.ToString();
+        //m_levelText.text = data.Level.ToString();
 
-        switch(type)
+        m_valueText.text = masterData.Value.ToString();
+
+
+        switch(masterData.RarityType)
+        {
+            case Enum_RarityType.C:
+                m_rarityImage.sprite = m_common;
+                break;
+            case Enum_RarityType.U:
+                m_rarityImage.sprite = m_uncommon;
+
+                break;
+            case Enum_RarityType.R:
+                m_rarityImage.sprite = m_rare;
+
+                break;
+            default:
+                m_rarityImage.sprite = m_common;
+
+                break;
+        }
+
+        switch (type)
         {
             case Enum_CharaUIShow.ToMain:
-                OnViewLevelUpUI(true);
+                //OnViewLevelUpUI(true);
 
                 break;
             case Enum_CharaUIShow.ToMember:
-                OnViewLevelUpUI(true);
-                OnViewArrowUI(true);
+                //OnViewLevelUpUI(true);
+                //OnViewArrowUI(true);
                 break;
             case Enum_CharaUIShow.ToChara:
                 break;
@@ -74,12 +102,12 @@ public class CharaUIManager : MonoBehaviour
 
     private void OnViewLevelUpUI(bool value)
     {
-        m_levelUpButton.SetActive(value);   
+        //m_levelUpButton.SetActive(value);   
     }
 
     private void OnViewArrowUI(bool value)
     {
-        m_Arrow.SetActive(value);
+        //m_Arrow.SetActive(value);
     }
 
     public void OnLevelUp()

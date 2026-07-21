@@ -6,8 +6,8 @@ using System.Linq;
 public class CharacterData
 {
     public int ID;
-    public int Level;
-    public Enum_PlaceType PlaceType;
+    //public int Level;
+    //public Enum_PlaceType PlaceType;
 }
 
 [System.Serializable]
@@ -15,13 +15,14 @@ public class MasterCharacterData
 {
     public int ID;
     public string Name;
-    public Enum_CharaType CharaType;
+    //public Enum_CharaType CharaType;
     public Enum_RarityType RarityType;
     public int Value;
-    public Texture2D Texture;
+    //public Texture2D Texture;
     //public Sprite gachaImage;
-    public Sprite image;
+    public Sprite Image;
     public Sprite PanelImage;
+    public Sprite GachaImage;
 }
 
 public class CharacterManager : MonoBehaviour
@@ -32,8 +33,7 @@ public class CharacterManager : MonoBehaviour
 
     public List<MasterCharacterData> m_masterDataList = new();
 
-    //SO
-    [SerializeField] private IntRunTime m_money;
+    [SerializeField] private int m_money;
 
     //placement now set main chara
     [SerializeField] private List<int> m_mainCharacters = new();
@@ -44,6 +44,8 @@ public class CharacterManager : MonoBehaviour
     public List<int> MainCharacters => m_mainCharacters;
 
     public List<MasterCharacterData> MasterDataList => m_masterDataList;
+
+    public int Money => m_money;
     //--------Debug------------
     [SerializeField] private DebugMode m_debug;
 
@@ -54,6 +56,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private EventSO m_initializeEvent;
 
     [SerializeField] private EventSO m_getCharaEvent;
+
+    [SerializeField] private EventSO m_moneyEvent;
 
     private void Awake()
     {
@@ -105,7 +109,7 @@ public class CharacterManager : MonoBehaviour
         CharacterData data = new CharacterData
         {
             ID = id,
-            Level = 1,
+            //Level = 1,
         };
 
         m_dataList.Add(data);
@@ -119,7 +123,7 @@ public class CharacterManager : MonoBehaviour
         Debug.Log("以下持ってるキャラ:");
         foreach(var data in DataList)
         {
-            Debug.Log($"ID:{data.ID} Level:{data.Level}");
+            //Debug.Log($"ID:{data.ID} Level:{data.Level}");
         }
         Debug.Log("以下マスターデータ:");
         foreach(var data in m_masterDataList)
@@ -173,5 +177,11 @@ public class CharacterManager : MonoBehaviour
     public void SetMainCharacters(List<int> list)
     {
         m_mainCharacters = list;
+    }
+
+    public void SetMoney(int value)
+    {
+        m_money = value;
+        m_moneyEvent.Raise();
     }
 }

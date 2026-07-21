@@ -121,12 +121,298 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: PHPGameProject01_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 162
+        width: 196
+        height: 905
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9be191d2e9cedde40860f3a82acce8ef
+      internalID: -351695599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_1
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 167
+        width: 160
+        height: 900
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd1e3bb092953f44b82095726e15194
+      internalID: 1666044472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_2
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 162
+        width: 196
+        height: 905
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed14caedc4b0f7340bc4fafd9650c6c2
+      internalID: 105834467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_3
+      rect:
+        serializedVersion: 2
+        x: 710
+        y: 167
+        width: 160
+        height: 900
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79fb8cb9703c9c74bb0ac606f0c39668
+      internalID: -1528508588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_4
+      rect:
+        serializedVersion: 2
+        x: 922
+        y: 162
+        width: 196
+        height: 905
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96344d51b1ca33b488a27de60c6579c0
+      internalID: 2050940198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_5
+      rect:
+        serializedVersion: 2
+        x: 1186
+        y: 168
+        width: 160
+        height: 900
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e1e3b3d270ba25498fd0918bf07eb46
+      internalID: -172978154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_6
+      rect:
+        serializedVersion: 2
+        x: 1414
+        y: 990
+        width: 126
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e360254d80e40af4cb12634f1d56a5bc
+      internalID: -943760077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_7
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 705
+        width: 277
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 716b0fd4836b1514a842de0299f28495
+      internalID: 1764559936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_8
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 498
+        width: 277
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9dad719242a72864c8573d59aefbf971
+      internalID: 2139691207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_9
+      rect:
+        serializedVersion: 2
+        x: 1606
+        y: 291
+        width: 277
+        height: 161
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b15b7b52a47de1a479852bed4466d67c
+      internalID: -1175383670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_10
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 36
+        width: 107
+        height: 125
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66c74928f0315b2448a68b1c8ee04049
+      internalID: -1246912771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_11
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 38
+        width: 102
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e92a194d9f87ea44dacf238169ca9483
+      internalID: -498207024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject01_12
+      rect:
+        serializedVersion: 2
+        x: 1759
+        y: 41
+        width: 115
+        height: 116
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88bd8a1b52518b346b0d024f45541242
+      internalID: 1748624647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0fa390a14d883634daf2dbe705ecb51d
+    spriteID: b7c1ce1cf50490341bb5ca9cd489a2f4
     internalID: 0
     vertices: []
     indices: 
@@ -136,12 +422,21 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":1,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
-      - key: SpriteEditor.SliceOnImport
-        value: False
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      PHPGameProject01_0: -1349323534
-      PHPGameProject01_1: -321400519
+      PHPGameProject01_0: -351695599
+      PHPGameProject01_1: 1666044472
+      PHPGameProject01_10: -1246912771
+      PHPGameProject01_11: -498207024
+      PHPGameProject01_12: 1748624647
+      PHPGameProject01_2: 105834467
+      PHPGameProject01_3: -1528508588
+      PHPGameProject01_4: 2050940198
+      PHPGameProject01_5: -172978154
+      PHPGameProject01_6: -943760077
+      PHPGameProject01_7: 1764559936
+      PHPGameProject01_8: 2139691207
+      PHPGameProject01_9: -1175383670
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
