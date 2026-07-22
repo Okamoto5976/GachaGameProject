@@ -137,6 +137,8 @@ public class FarmManager : MonoBehaviour
 
     public void SetCharacter(List<int> list)
     {
+
+        return;
         Modifier modifier = new();
 
         for(int i = 0; i < list.Count; i++)

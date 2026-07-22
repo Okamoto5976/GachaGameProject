@@ -138,8 +138,162 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43dd65b7a76d78e419e9f9805a6abf07
-      internalID: -5220146
+      spriteID: 2ca53f8599602eb4f8a96bb5003e6003
+      internalID: -501161656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject04_1
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 885
+        width: 276
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc6aaf7647af651459b9d95a14568c16
+      internalID: 1978802488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject04_2
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 885
+        width: 276
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fa34f3a5cd746d49b5a43e8d96cc541
+      internalID: 588055069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject04_3
+      rect:
+        serializedVersion: 2
+        x: 1195
+        y: 935
+        width: 698
+        height: 114
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e18594d0e07c0d4fbac86d763004775
+      internalID: -592600682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject04_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 702
+        width: 305
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83ca84c0f63a21e4c99ab387a71d6510
+      internalID: -1059237231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject04_5
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 661
+        width: 276
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd8e05d89ed1c154a90d11f0686921e0
+      internalID: 1465269124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject04_6
+      rect:
+        serializedVersion: 2
+        x: 742
+        y: 661
+        width: 276
+        height: 184
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9177e568a9ce35438193f011772e91f
+      internalID: -394811636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PHPGameProject04_7
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 548
+        width: 305
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f21c4a8ed5e9a2b41b51c5b12f65deec
+      internalID: 311006553
       vertices: []
       indices: 
       edges: []
@@ -148,7 +302,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 64b10ec60b87d314aba509ab0f0f6fb4
+    spriteID: f34b1ebfebe9cfe42bc9410b271df593
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +314,14 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      PHPGameProject04_0: -5220146
+      PHPGameProject04_0: -501161656
+      PHPGameProject04_1: 1978802488
+      PHPGameProject04_2: 588055069
+      PHPGameProject04_3: -592600682
+      PHPGameProject04_4: -1059237231
+      PHPGameProject04_5: 1465269124
+      PHPGameProject04_6: -394811636
+      PHPGameProject04_7: 311006553
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

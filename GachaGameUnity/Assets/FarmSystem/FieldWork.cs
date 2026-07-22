@@ -43,7 +43,9 @@ public class FieldWork : MonoBehaviour
     // Reflect the progress in the gauge.
     private void GaugeRender()
     {
+        Debug.Log("Gauge");
         m_gaugeLength = (float)m_farmManager.Progress / m_farmManager.MaxProgress;
+        Debug.Log($"{m_gaugeLength}");
         m_gaugeImage.fillAmount = m_gaugeLength;
 
         //m_gaugeImage.localScale = new Vector2(m_gaugeLength, m_gaugeImage.localScale.y);

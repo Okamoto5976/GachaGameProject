@@ -61,8 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CharaWork
   m_farmManager: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
-  m_gaugeBackgroundImage: {fileID: 8039812089299879072}
-  m_gaugeImage: {fileID: 4090115047622795340}
+  m_gaugeImage: {fileID: 1055470494672899431}
   m_gaugeRateText: {fileID: 5773621281350254006}
 --- !u!1001 &1859056137500734141
 PrefabInstance:
@@ -376,6 +375,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58b8f4fd4baec0441bd74af547bfb9f0, type: 3}
+--- !u!114 &1055470494672899431 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9109889842178015291, guid: 58b8f4fd4baec0441bd74af547bfb9f0, type: 3}
+  m_PrefabInstance: {fileID: 8127058171951287644}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!224 &4090115047622795340 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5190994154064112912, guid: 58b8f4fd4baec0441bd74af547bfb9f0, type: 3}

@@ -57,21 +57,21 @@ MonoBehaviour:
   - ID: 1
     Name: mugi
     RarityType: 0
-    Value: 10
+    Value: 3
     Image: {fileID: 21300000, guid: 3b4d99ea65c9eda4f839105a150badd9, type: 3}
     PanelImage: {fileID: 21300000, guid: c401154b10e1019439d51f1dc382f0bd, type: 3}
     GachaImage: {fileID: 21300000, guid: 3b4d99ea65c9eda4f839105a150badd9, type: 3}
   - ID: 2
     Name: ushi
     RarityType: 0
-    Value: 10
+    Value: 4
     Image: {fileID: 21300000, guid: 1106586cd0d957742a41cf3f5535e1f4, type: 3}
     PanelImage: {fileID: 21300000, guid: 0bca8258a44541e4fa3c24433f46c65a, type: 3}
     GachaImage: {fileID: 21300000, guid: 1106586cd0d957742a41cf3f5535e1f4, type: 3}
   - ID: 3
     Name: neko
     RarityType: 0
-    Value: 10
+    Value: 4
     Image: {fileID: 21300000, guid: dba1d19105bf61e4f9f5625478c25b93, type: 3}
     PanelImage: {fileID: 21300000, guid: c710dadd9c286cf4f91bb0b3879cba40, type: 3}
     GachaImage: {fileID: 21300000, guid: dba1d19105bf61e4f9f5625478c25b93, type: 3}
