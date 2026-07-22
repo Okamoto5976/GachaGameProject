@@ -5,20 +5,19 @@ using UnityEngine.UI;
 public class FieldWork : MonoBehaviour
 {
     [SerializeField] private FarmManager m_farmManager;
-    [SerializeField] private GaugeSO m_gauge;
+    //[SerializeField] private GaugeSO m_gauge;
 
     [Header("GaugeObject")]
-    [SerializeField] private GameObject m_gaugeBackgroundImage;
-    [SerializeField] private GameObject m_gaugeImage;
+    [SerializeField] private RectTransform m_gaugeBackgroundImage;
+    [SerializeField] private RectTransform m_gaugeImage;
     [SerializeField] private TextMeshProUGUI m_gaugeRateText;
-    [SerializeField] private TextMeshProUGUI m_stateText;
-
-    //private Canvas m_canvas;
-    private CharaData m_charaData;
-
-    public CharaData CharaData => m_charaData;
+    //[SerializeField] private TextMeshProUGUI m_stateText;
 
     private float m_progress;
+
+    private float m_gaugeFrameLength;
+    private float m_gaugeMaxLength;
+    private float m_margin;
 
 
     //ƒLƒƒƒ‰ƒŒƒxƒ‹
@@ -34,31 +33,26 @@ public class FieldWork : MonoBehaviour
     //First, set up the CharaWork's m_canvas in FarmManager.
     private void Start()
     {
+        InitializeGaugeSize();
         GaugeRender();
         StateRender();
-        //GetComponent<Image>().sprite = m_charaData.Sprite;
-        //gameObject.transform.SetParent(m_canvas.transform, false);
-    }
-
-    void Update()
-    {
-        
     }
 
     public void UpdateState()
     {
         GaugeRender();
         StateRender();
-        m_progress = m_charaData.Progress;
     }
+
 
     // Reflect the progress in the gauge.
     private void GaugeRender()
     {
-        float _leftAlignetX = -m_gauge.GaugeFrameLength * 0.5f + m_gauge.LeftMargin + m_progress * m_gauge.GaugeMaxLength * 0.5f;
+        m_progress = m_farmManager.Progress;
+        float _leftAlignetX = -m_gaugeFrameLength * 0.5f + m_margin + m_progress * m_gaugeMaxLength * 0.5f;
 
-        m_gaugeImage.transform.localScale = new Vector2(m_progress, m_gaugeImage.transform.localScale.y);
-        m_gaugeImage.transform.localPosition = new Vector2(_leftAlignetX, m_gaugeImage.transform.localPosition.y);
+        m_gaugeImage.localScale = new Vector2(m_progress, m_gaugeImage.localScale.y);
+        m_gaugeImage.localPosition = new Vector2(_leftAlignetX, m_gaugeImage.localPosition.y);
     }
 
     // Display character information above the gauge.
@@ -66,26 +60,22 @@ public class FieldWork : MonoBehaviour
     {
         m_gaugeRateText.text = Mathf.Floor(m_progress * 100).ToString() + " / 100";
         //m_stateText.text = "Lv." + m_charaData.Level.ToString() + "    MPS " + m_charaData.MPS.ToString() + "/s";
-        m_stateText.text = "Value " + m_charaData.CharaWork.Value.ToString();
+        //m_stateText.text = "Value " + m_charaData.CharaWork.Value.ToString();
     }
 
-    public void SetCharaData(CharaData _charaData)
+    private void InitializeGaugeSize()
     {
-        m_charaData = _charaData;
+        m_gaugeFrameLength = m_gaugeBackgroundImage.rect.size.x;
+        m_gaugeMaxLength = m_gaugeImage.rect.size.x;
+        if (m_gaugeFrameLength > m_gaugeMaxLength)
+        {
+            Debug.LogWarning("'m_gaugeFrameLength' must be greater than the value of 'm_gaugeMaxLength'.");
+        }
+        m_margin = (m_gaugeFrameLength - m_gaugeMaxLength) / 2;
     }
 
-    public void Test(int num)
-    {
-        Debug.Log("Test" + num.ToString());
-    }
-
-    public void SetLocalPosition(Vector2 _position)
-    {
-        this.transform.localPosition = _position;
-    }
-
-    //public void SetCanvas(Canvas canvas)
+    //public void SetLocalPosition(Vector2 _position)
     //{
-    //    m_canvas = canvas;
+    //    this.transform.localPosition = _position;
     //}
 }
