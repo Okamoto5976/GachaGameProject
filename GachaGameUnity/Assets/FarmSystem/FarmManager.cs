@@ -1,28 +1,36 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class CharaWork
 {
     [NonSerialized] public int ID;
     public float Value;
-    public bool Owned;
+    //public bool Owned;
 }
 
 [System.Serializable]
 public class Modifier
 {
     public List<CharaWork> m_charaWorkers;
+
+    public Modifier()
+    {
+        m_charaWorkers = new();
+    }
 }
 
 
 public class FarmManager : MonoBehaviour
 {
     public int FPS { get => 60; }
+    [SerializeField] private int m_maxProgress;
 
-    [SerializeField] private MainDataSO m_mainData;
-    [SerializeField] private Modifier m_modifier;
+    //[SerializeField] private MainDataSO m_mainData;
+    private int m_money;
+    [SerializeField] private Modifier m_modifier = new();
     [SerializeField] private FieldWork m_fieldWork;
 
     [Header("Setting")]
@@ -54,10 +62,18 @@ public class FarmManager : MonoBehaviour
         int conpleteCount;
         CalculateProgress(m_modifier.m_charaWorkers, out conpleteCount);
 
-        m_mainData.Money += m_mPW * conpleteCount;
+        m_money = CharacterManager.Instance.Money;
+
+        //m_mainData.Money += m_mPW * conpleteCount;
+        m_money += m_mPW * conpleteCount;
+
+        CharacterManager.Instance.SetMoney(m_money);
+
 
         m_fieldWork.UpdateState();
-        m_checkMoney = m_mainData.Money;    // for check
+        //m_checkMoney = m_mainData.Money;    // for check
+
+
     }
 
     // return true per UpdateIntervalFrame frame.
@@ -103,12 +119,15 @@ public class FarmManager : MonoBehaviour
     //}
 
     // Calculate the progress of the work.
+     //out int completeCount
     private void CalculateProgress(List<CharaWork> charaWorks, out int completeCount)
     {
+
+
         float sum = 0;
         for (int i = 0; i < charaWorks.Count; i++)
         {
-            if (charaWorks[i].Owned == false) continue;
+            //if (charaWorks[i].Owned == false) continue;
             sum += charaWorks[i].Value;
         }
 
@@ -129,23 +148,41 @@ public class FarmManager : MonoBehaviour
 
     //}
 
+
+     //out int completeCount
     public void AddProgress(float value, out int completeCount)
     {
+        Debug.Log($"{value}");
+
+
         float _progress = m_progress + value;
-        completeCount = (int)Mathf.Floor(_progress);    // Mathf.Floor is unnecessary
-        
-        m_progress = _progress % 1.0f;
+        completeCount = (int)(_progress / m_maxProgress);    // Mathf.Floor is unnecessary
+
+        m_progress = _progress % m_maxProgress;
         m_progress = Mathf.Floor(m_progress * 10000) / 10000;   // Eliminate errors in decimal calculations.
     }
 
-    public void AddCharacter(int id)
+    public void SetCharacter(List<int> list)
     {
+        Modifier modifier = new();
 
-    }
+        for(int i = 0; i < list.Count; i++)
+        {
+            if (list[i] == 0) continue;
 
-    public void RemoveCharacter(int id)
-    {
 
+            MasterCharacterData data = CharacterManager.Instance.GetMasterCharaData(list[i]);
+
+            CharaWork charaWork = new CharaWork
+            {
+                ID = data.ID,
+                Value = data.Value,
+            };
+
+            modifier.m_charaWorkers.Add(charaWork);
+        }
+
+        m_modifier = modifier;
     }
 
 

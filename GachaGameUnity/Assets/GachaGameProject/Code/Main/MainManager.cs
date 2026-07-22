@@ -8,6 +8,8 @@ public class MainManager : MonoBehaviour
 
     [SerializeField] private EventSO m_initializeEvent;
 
+    [SerializeField] private FarmManager m_farmManager;
+
 
     //セーブデータで設置ずみのものを設置
 
@@ -46,5 +48,7 @@ public class MainManager : MonoBehaviour
             m_characters[i].SetData(data);
             m_characters[i].gameObject.SetActive(true);
         }
+
+        m_farmManager.SetCharacter(list);
     }
 }
