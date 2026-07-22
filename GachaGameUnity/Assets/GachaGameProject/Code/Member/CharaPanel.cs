@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,25 @@ public class CharaPanel : MonoBehaviour
 
     private Sprite m_sprite;
 
-    
+    [SerializeField] private Image m_frontUI;
+    [SerializeField] private Image m_backUI;
+    [SerializeField] private Image m_rarityUI;
+
+    [System.Serializable]
+    public class UI
+    {
+        [SerializeField] private Sprite m_FrontUI;
+        [SerializeField] private Sprite m_BackUI;
+        [SerializeField] private Sprite m_RarityUI;
+        [SerializeField] private Enum_RarityType m_rarity;
+
+        public Sprite FrontUI => m_FrontUI;
+        public Sprite BackUI => m_BackUI;
+        public Sprite RarityUI => m_RarityUI;
+        public Enum_RarityType RarityType => m_rarity;
+    }
+
+    [SerializeField] private List<UI> m_UIclass = new();
 
     //Back Scene have
 
@@ -41,7 +60,19 @@ public class CharaPanel : MonoBehaviour
     public void SetCharaData(MasterCharacterData data)
     {
         ID = data.ID;
+        OnViewUI(data);
+
         m_image.sprite = data.PanelImage;
+    }
+
+    private void OnViewUI(MasterCharacterData data)
+    {
+
+        UI ui = m_UIclass.Find(x => x.RarityType == data.RarityType);
+
+        m_frontUI.sprite = ui.FrontUI;
+        m_backUI.sprite = ui.BackUI;
+        m_rarityUI.sprite = ui.RarityUI;
     }
 
     //---use Gacha chara view---------
