@@ -45,11 +45,14 @@ public class UIManagerToMain : MonoBehaviour
     [SerializeField] private EventSO m_moneyEvent;
     [SerializeField] private EventSO m_ticketEvent;
 
+    public bool m_IsSetMainChara = false;
+
 
     private void Start()
     {
         OnViewMainUI();
         SetTextMoney();
+        SetTextTicket();
     }
 
     private void OnEnable()
@@ -91,6 +94,9 @@ public class UIManagerToMain : MonoBehaviour
     public void OnViewConfigUI()
     {
         ViewConfigUI(true);
+
+        IsSetMainChara();
+
     }
 
     //public void OnHideConfigUI()
@@ -105,6 +111,9 @@ public class UIManagerToMain : MonoBehaviour
         ViewMemberUI(false);
         ViewPlacementUI(false);
         ViewPullGachaUI(false);
+
+        IsSetMainChara();
+
     }
 
     public void OnViewMemberUI()
@@ -114,6 +123,9 @@ public class UIManagerToMain : MonoBehaviour
         m_memberManager.OnViewPanel();
         ViewPlacementUI(false);
         ViewPullGachaUI(false);
+
+        IsSetMainChara();
+
     }
 
     public void OnViewPlacementUI()
@@ -123,6 +135,9 @@ public class UIManagerToMain : MonoBehaviour
         ViewPlacementUI(true);
         m_placementManager.OnViewPanel();
         ViewPullGachaUI(false);
+
+        IsSetMainChara();
+
     }
 
     public void OnViewGachaUI()
@@ -136,12 +151,26 @@ public class UIManagerToMain : MonoBehaviour
         ViewMemberUI(false);
         ViewPlacementUI(false);
         ViewPullGachaUI(true);
+
+        IsSetMainChara();
     }
 
     public void OnViewCharaUI(Enum_CharaUIShow type, int id)
     {
         ViewCharaUI(true);
         m_charaUIManager.OnViewCharaUI(type, id);
+
+
+    }
+
+    private void IsSetMainChara()
+    {
+        if(m_IsSetMainChara)
+        {
+            //save
+            SaveManager.Instance.OnMainCharaSave();
+            m_IsSetMainChara = false;
+        }
     }
 
     //-----UI SetActive--------------

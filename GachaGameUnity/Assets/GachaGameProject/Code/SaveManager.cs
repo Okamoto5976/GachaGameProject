@@ -109,4 +109,30 @@ public class SaveManager : MonoBehaviour
 
         m_timer = 0f;
     }
+
+    public void OnMainCharaSave()
+    {
+        if (m_debug.debugMode) return;
+
+
+        if (m_saveData != null)
+        {
+            m_saveData = new();
+        }
+
+        foreach (var data in CharacterManager.Instance.DataList)
+        {
+            m_saveData.SaveCharaData(data);
+
+        }
+        m_saveData.SaveMainChara(CharacterManager.Instance.MainCharacters);
+
+
+        m_saveData.SetMoney(CharacterManager.Instance.Money);
+        m_saveData.SetTicket(CharacterManager.Instance.Ticket);
+
+        m_postSaveFile.SaveFile(m_accountData.AccountID, m_saveData);
+
+        m_timer = 0f;
+    }
 }

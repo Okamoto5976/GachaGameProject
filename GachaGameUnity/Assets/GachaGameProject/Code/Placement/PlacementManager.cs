@@ -13,6 +13,8 @@ public class PlacementManager : MonoBehaviour
 
     [SerializeField] private EventSO m_getCharaEvent;
 
+    [SerializeField] private UIManagerToMain m_uiManager;
+
     //----debug--------
     //[SerializeField] private DebugMode m_debug;
 
@@ -120,6 +122,8 @@ public class PlacementManager : MonoBehaviour
         }
 
         CharacterManager.Instance.SetMainCharacters(list);
+
+        m_uiManager.m_IsSetMainChara = true;
     }
 
     //セーブデータから設置済みのキャラをセットする処理
