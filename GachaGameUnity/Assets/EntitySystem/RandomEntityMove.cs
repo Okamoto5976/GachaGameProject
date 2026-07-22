@@ -7,7 +7,10 @@ public class RandomEntityMove : MonoBehaviour
     //[SerializeField] private EntityDataSO m_entityData;
 
     [SerializeField] private int m_id;
-
+    [SerializeField] private float m_minX = -900f;
+    [SerializeField] private float m_maxX = 900f;
+    [SerializeField] private float m_minY = -500f;
+    [SerializeField] private float m_maxY = 500f;
     public int ID => m_id;
 
     private Vector3 m_moveDirection;
@@ -15,6 +18,7 @@ public class RandomEntityMove : MonoBehaviour
     private Image m_image;
 
     private float m_moveSpeed;
+    private RectTransform m_rectTransform;
 
     public enum EntityState
     {
@@ -27,6 +31,7 @@ public class RandomEntityMove : MonoBehaviour
     private void Awake()
     {
         m_image = GetComponent<Image>();
+        m_rectTransform = GetComponent<RectTransform>();
     }
 
     void Start()
@@ -53,7 +58,7 @@ public class RandomEntityMove : MonoBehaviour
 
         m_state = EntityState.Idle;
         m_timer = 3f;
-
+        m_moveSpeed = 300f;
 
     }
 
@@ -82,9 +87,33 @@ public class RandomEntityMove : MonoBehaviour
 
             case EntityState.Move:
 
-                // ˆÚ“®
-                transform.position +=
-                    m_moveDirection * m_moveSpeed * Time.deltaTime;
+                Vector2 pos = m_rectTransform.anchoredPosition;
+                pos += new Vector2(m_moveDirection.x, m_moveDirection.z) * m_moveSpeed * Time.deltaTime;
+
+                // •Ç‚É“–‚½‚Á‚½‚çŒü‚«‚ð•Ï‚¦‚é
+                if (pos.x <= m_minX)
+                {
+                    pos.x = m_minX;
+                    m_moveDirection.x *= -1;
+                }
+                else if (pos.x >= m_maxX)
+                {
+                    pos.x = m_maxX;
+                    m_moveDirection.x *= -1;
+                }
+
+                if (pos.y <= m_minY)
+                {
+                    pos.y = m_minY;
+                    m_moveDirection.z *= -1;
+                }
+                else if (pos.y >= m_maxY)
+                {
+                    pos.y = m_maxY;
+                    m_moveDirection.z *= -1;
+                }
+
+               m_rectTransform.anchoredPosition = pos;
 
                 if (m_timer <= 0f)
                 {
