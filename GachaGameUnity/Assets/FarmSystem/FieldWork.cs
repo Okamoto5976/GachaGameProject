@@ -13,7 +13,7 @@ public class FieldWork : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_gaugeRateText;
     //[SerializeField] private TextMeshProUGUI m_stateText;
 
-    private float m_progress;
+    private float m_gaugeLength;
 
     private float m_gaugeFrameLength;
     private float m_gaugeMaxLength;
@@ -48,17 +48,17 @@ public class FieldWork : MonoBehaviour
     // Reflect the progress in the gauge.
     private void GaugeRender()
     {
-        m_progress = m_farmManager.Progress;
-        float _leftAlignetX = -m_gaugeFrameLength * 0.5f + m_margin + m_progress * m_gaugeMaxLength * 0.5f;
+        m_gaugeLength = (float)m_farmManager.Progress / m_farmManager.MaxProgress;
+        float _leftAlignetX = -m_gaugeFrameLength * 0.5f + m_margin + m_gaugeLength * m_gaugeMaxLength * 0.5f;
 
-        m_gaugeImage.localScale = new Vector2(m_progress, m_gaugeImage.localScale.y);
+        m_gaugeImage.localScale = new Vector2(m_gaugeLength, m_gaugeImage.localScale.y);
         m_gaugeImage.localPosition = new Vector2(_leftAlignetX, m_gaugeImage.localPosition.y);
     }
 
     // Display character information above the gauge.
     private void StateRender()
     {
-        m_gaugeRateText.text = Mathf.Floor(m_progress * 100).ToString() + " / 100";
+        m_gaugeRateText.text = Mathf.Floor(m_gaugeLength * 100).ToString() + " / 100";
         //m_stateText.text = "Lv." + m_charaData.Level.ToString() + "    MPS " + m_charaData.MPS.ToString() + "/s";
         //m_stateText.text = "Value " + m_charaData.CharaWork.Value.ToString();
     }

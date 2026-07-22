@@ -1338,6 +1338,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6587849307045948838, guid: 90df0a721f68ac44288ab56f8623c43c, type: 3}
     - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
+      propertyPath: m_maxProgress
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
       propertyPath: m_characterParam
       value: 
       objectReference: {fileID: 11400000, guid: e2747e485399d1f4199c77a101e544bb, type: 2}
@@ -1371,7 +1375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
       propertyPath: m_modifier.m_charaWorkers.Array.data[0].Value
-      value: 0.3
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
       propertyPath: m_modifier.m_charaWorkers.Array.data[0].m_wPC
@@ -1383,7 +1387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
       propertyPath: m_modifier.m_charaWorkers.Array.data[1].Value
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 51039110815598357, guid: fae85107fc9709a4f9c3e4527a3a4c74, type: 3}
       propertyPath: m_modifier.m_charaWorkers.Array.data[1].m_wPC

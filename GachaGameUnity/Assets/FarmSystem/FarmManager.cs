@@ -7,8 +7,7 @@ using Unity.VisualScripting;
 public class CharaWork
 {
     [NonSerialized] public int ID;
-    public float Value;
-    //public bool Owned;
+    public int Value;
 }
 
 [System.Serializable]
@@ -26,52 +25,42 @@ public class Modifier
 public class FarmManager : MonoBehaviour
 {
     public int FPS { get => 60; }
-    [SerializeField] private int m_maxProgress;
 
-    //[SerializeField] private MainDataSO m_mainData;
     private int m_money;
     [SerializeField] private Modifier m_modifier = new();
     [SerializeField] private FieldWork m_fieldWork;
 
     [Header("Setting")]
     [SerializeField] private int m_mPW;   // Money Per completed Work;
+    [SerializeField] private int m_maxProgress;
 
     [Header("State")]
-    [SerializeField] private float m_progress;
-    [SerializeField] private int m_checkMoney;
+    [SerializeField] private int m_progress;
     //[SerializeField] private float m_fMoney; // Maintained while FarmManager is active
-    //[SerializeField] private int m_saving;  // Uncollected money.
 
-    public float Progress => m_progress;
+    public int Progress => m_progress;
+    public int MaxProgress => m_maxProgress;
 
     private void Awake()
     {
-        //m_fMoney = 0;
-        //m_saving = 0;
-        for (int i = 0; i < m_modifier.m_charaWorkers.Count; i++)
-        {
-            m_modifier.m_charaWorkers[i].ID = i;
-            //m_modifier.m_charaWorkers[i].FieldWork.SetCharaData(m_modifier.m_charaWorkers[i]);
-        }
+        
     }
 
 
     public void OnClick()
     {
 
-        int conpleteCount;
-        CalculateProgress(m_modifier.m_charaWorkers, out conpleteCount);
+        int completeCount;  // Number of times the gauge reached its maximum
+        CalculateProgress(m_modifier, out completeCount);
 
-        m_money = CharacterManager.Instance.Money;
+        //m_money = CharacterManager.Instance.Money;
+        //Debug.Log($"completeCount: {completeCount}");
+        m_money += m_mPW * completeCount;
 
-        //m_mainData.Money += m_mPW * conpleteCount;
-        m_money += m_mPW * conpleteCount;
-
-        CharacterManager.Instance.SetMoney(m_money);
+        //CharacterManager.Instance.SetMoney(m_money);
 
 
         m_fieldWork.UpdateState();
-        //m_checkMoney = m_mainData.Money;    // for check
 
 
     }
@@ -120,46 +109,30 @@ public class FarmManager : MonoBehaviour
 
     // Calculate the progress of the work.
      //out int completeCount
-    private void CalculateProgress(List<CharaWork> charaWorks, out int completeCount)
+    private void CalculateProgress(Modifier modifier, out int completeCount)
     {
 
 
-        float sum = 0;
-        for (int i = 0; i < charaWorks.Count; i++)
+        int sum = 0;
+        for (int i = 0; i < modifier.m_charaWorkers.Count; i++)
         {
             //if (charaWorks[i].Owned == false) continue;
-            sum += charaWorks[i].Value;
+            sum += modifier.m_charaWorkers[i].Value;
         }
 
         AddProgress(sum, out completeCount);
     }
 
-    // Use this only when objects have already been placed in the scene.
-    //public void SetCharacter(int id)
-    //{
-    //    GameObject obj = Instantiate(m_characterParam.CharaPrefab);
-
-    //    CharaWork charaWork = obj.GetComponent<CharaWork>();
-    //    //charaWork.SetCanvas(m_canvas);
-    //    //m_charaWorkList.Add(charaWork);
-
-    //    charaWork.SetCharaData(m_characterParam.CharaDataList[id]);
-    //    m_characterParam.CharaDataList[id].SetLevel(1);   // initialize
-
-    //}
-
 
      //out int completeCount
-    public void AddProgress(float value, out int completeCount)
+    public void AddProgress(int value, out int completeCount)
     {
         Debug.Log($"{value}");
 
-
-        float _progress = m_progress + value;
-        completeCount = (int)(_progress / m_maxProgress);    // Mathf.Floor is unnecessary
+        int _progress = m_progress + value;
+        completeCount = _progress / m_maxProgress;
 
         m_progress = _progress % m_maxProgress;
-        m_progress = Mathf.Floor(m_progress * 10000) / 10000;   // Eliminate errors in decimal calculations.
     }
 
     public void SetCharacter(List<int> list)
@@ -184,12 +157,4 @@ public class FarmManager : MonoBehaviour
 
         m_modifier = modifier;
     }
-
-
-    // Press button to call.
-    //public void CollectedMoney()
-    //{
-    //    m_mainData.Money += m_saving;
-    //    m_saving = 0;
-    //}
 }
