@@ -1,8 +1,8 @@
-using UnityEngine;
+//using UnityEngine;
 
-[CreateAssetMenu(fileName = "MainDataSO", menuName = "Scriptable Objects/MainDataSO")]
+//[CreateAssetMenu(fileName = "MainDataSO", menuName = "Scriptable Objects/MainDataSO")]
 
-public class MainDataSO : ScriptableObject
-{
-    public int Money;
-}
+//public class MainDataSO : ScriptableObject
+//{
+//    public int Money;
+//}
