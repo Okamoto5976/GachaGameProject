@@ -45,7 +45,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1892ec9b90405384bb24b31f65154227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RandomEntityMove
-  m_entityData: {fileID: 11400000, guid: 12e7272a21560094ba72682a06971a16, type: 2}
+  m_id: 0
+  m_minX: -900
+  m_maxX: 900
+  m_minY: -500
+  m_maxY: -100
 --- !u!1 &3098890165373888292
 GameObject:
   m_ObjectHideFlags: 0
