@@ -46,6 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterManager
   m_masterDataList: []
   m_money: 0
+  m_ticket: 0
   m_mainCharacters: 
   m_debug: {fileID: 11400000, guid: 9b2075a9be25d87478f27a6f53095f5c, type: 2}
   m_debugCharacterDataList:
@@ -252,3 +253,4 @@ MonoBehaviour:
   m_initializeEvent: {fileID: 11400000, guid: b33ad178f3ddfd04a9e88ff11d55f8bd, type: 2}
   m_getCharaEvent: {fileID: 11400000, guid: dfe0e0dc9d8153747880ddb94f4c1eb3, type: 2}
   m_moneyEvent: {fileID: 11400000, guid: 5b24fe3f01d8c1b4d8aeeb0c1e68f08e, type: 2}
+  m_ticketEvent: {fileID: 11400000, guid: e99e0e1bcd3d1eb49913bae6e1d08746, type: 2}

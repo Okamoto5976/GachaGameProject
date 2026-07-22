@@ -31,34 +31,61 @@ public class UIManagerToMain : MonoBehaviour
     [SerializeField] private GameObject m_pullGachaUI;
 
     [SerializeField] private TextMeshProUGUI m_money;
+    [SerializeField] private TextMeshProUGUI m_ticket;
+
+
+    [SerializeField] private GameObject m_CanTachPanelUI;
 
     //Event
     [Header("Event")]
     [SerializeField] private CharaUIEventSO m_charaUIEvent;
 
+    [SerializeField] private BoolEventSO m_CanTachUIEvent;
+
     [SerializeField] private EventSO m_moneyEvent;
+    [SerializeField] private EventSO m_ticketEvent;
+
 
     private void Start()
     {
         OnViewMainUI();
+        SetTextMoney();
     }
 
     private void OnEnable()
     {
         m_charaUIEvent.Register(OnViewCharaUI);
         m_moneyEvent.Register(SetTextMoney);
+        m_ticketEvent.Register(SetTextTicket);
+        m_CanTachUIEvent.Register(ViewCanTachPanelUI);
     }
 
     private void OnDisable()
     {
         m_charaUIEvent.Unregister(OnViewCharaUI);
         m_moneyEvent.Unregister(SetTextMoney);
+        m_ticketEvent.Unregister(SetTextTicket);
+        m_CanTachUIEvent.Unregister(ViewCanTachPanelUI);
 
     }
 
     public void SetTextMoney()
     {
         m_money.text = CharacterManager.Instance.Money.ToString();
+    }
+
+    public void SetTextTicket()
+    {
+        m_ticket.text = CharacterManager.Instance.Ticket.ToString();
+    }
+
+    public void DebugAddMoney()
+    {
+        int money = CharacterManager.Instance.Money;
+
+        money += 100;
+
+        CharacterManager.Instance.SetMoney(money);
     }
 
     public void OnViewConfigUI()
@@ -152,5 +179,10 @@ public class UIManagerToMain : MonoBehaviour
     private void ViewPullGachaUI(bool value)
     {
         m_pullGachaUI.SetActive(value);
+    }
+
+    private void ViewCanTachPanelUI(bool value)
+    {
+        m_CanTachPanelUI.SetActive(value);
     }
 }

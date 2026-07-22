@@ -550,3 +550,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
   m_accountData: {fileID: 11400000, guid: e06c20bcd79b6a549ae2ac9f7c5c6ffc, type: 2}
   m_postSaveFile: {fileID: 4355100397475803686}
+  m_autoSaveInterval: 300
+  m_debug: {fileID: 11400000, guid: 9b2075a9be25d87478f27a6f53095f5c, type: 2}

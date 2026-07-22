@@ -35,6 +35,8 @@ public class CharacterManager : MonoBehaviour
 
     [SerializeField] private int m_money;
 
+    [SerializeField] private int m_ticket;
+
     //placement now set main chara
     [SerializeField] private List<int> m_mainCharacters = new();
 
@@ -46,6 +48,9 @@ public class CharacterManager : MonoBehaviour
     public List<MasterCharacterData> MasterDataList => m_masterDataList;
 
     public int Money => m_money;
+
+    public int Ticket => m_ticket;
+
     //--------Debug------------
     [SerializeField] private DebugMode m_debug;
 
@@ -58,6 +63,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private EventSO m_getCharaEvent;
 
     [SerializeField] private EventSO m_moneyEvent;
+    [SerializeField] private EventSO m_ticketEvent;
+
 
     private void Awake()
     {
@@ -96,11 +103,18 @@ public class CharacterManager : MonoBehaviour
         m_dataList.Sort((a,b) => a.ID.CompareTo(b.ID));
     }
 
+    public bool IsTicketMode = false;
+        
+
     public void AddGachaChara(int id)
     {
         if(DataList.Find(x => x.ID == id) != null)
         {
-            Debug.Log("Šù‚ÉŽ‚Á‚Ä‚¢‚Ü‚·");
+            Debug.Log("Šù‚ÉŽ‚Á‚Ä‚¢‚Ü‚· ticket•ÏŠ·");
+
+            if (IsTicketMode) return;
+
+            SetTicket(m_ticket + 1);
             return;
         }
 
@@ -160,9 +174,10 @@ public class CharacterManager : MonoBehaviour
         return null;
     }
 
-    public MasterCharacterData GachaGetChara(Enum_RarityType rarity)
+    public MasterCharacterData DebugGachaGetChara(Enum_RarityType rarity)
     {
-        var dates = MasterDataList.Where(x => x.RarityType != rarity).ToList();
+
+        var dates = MasterDataList.Where(x => x.RarityType == rarity).ToList();
 
         if (dates.Count <= 0) return null;
 
@@ -183,5 +198,11 @@ public class CharacterManager : MonoBehaviour
     {
         m_money = value;
         m_moneyEvent.Raise();
+    }
+
+    public void SetTicket(int value)
+    {
+        m_ticket = value;
+        m_ticketEvent.Raise();
     }
 }

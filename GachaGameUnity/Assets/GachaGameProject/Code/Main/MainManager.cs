@@ -23,7 +23,7 @@ public class MainManager : MonoBehaviour
 
     public void MainInitialize()
     {
-
+        SetCharacter();
     }
 
     public void SetCharacter()

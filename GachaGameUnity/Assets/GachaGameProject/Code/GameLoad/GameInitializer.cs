@@ -32,6 +32,11 @@ public class GameInitializer : MonoBehaviour
 
             //money set
             CharacterManager.Instance.SetMoney(m_postSaveFile.LoadSaveDataFile.m_money);
+            //ticket set
+            CharacterManager.Instance.SetTicket(m_postSaveFile.LoadSaveDataFile.m_ticket);
+
+            //mainchara set
+            CharacterManager.Instance.SetMainCharacters(m_postSaveFile.LoadSaveDataFile.m_mainCharaData);
 
         }
         else
@@ -42,7 +47,6 @@ public class GameInitializer : MonoBehaviour
         //LoadMasterData();
         StartCoroutine(m_masterDB.Post());
 
-        //AutoSaveŠJŽnData
-
+ 
     }
 }

@@ -17,7 +17,9 @@ public class SaveDataFile
 
     public int m_money;
 
+    public int m_ticket;
 
+    public List<int> m_mainCharaData = new();
 
     //Data method==========================
 
@@ -38,7 +40,7 @@ public class SaveDataFile
 
     }
 
-    public void SetCharaData(CharacterData data)
+    private void SetCharaData(CharacterData data)
     {
         //CharacterData newChara = new CharacterData();
 
@@ -51,5 +53,15 @@ public class SaveDataFile
     public void SetMoney(int money)
     {
         m_money = money;
+    }
+
+    public void SetTicket(int ticket)
+    {
+        m_ticket = ticket;
+    }
+
+    public void SaveMainChara(List<int> list)
+    {
+        m_mainCharaData = list;
     }
 }

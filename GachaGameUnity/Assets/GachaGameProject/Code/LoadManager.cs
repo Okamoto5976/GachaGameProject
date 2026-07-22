@@ -124,6 +124,12 @@ public class LoadManager : MonoBehaviour
 
         }
 
+        //オートセーブ開始
+        if(!m_debug.debugMode)
+        {
+            SaveManager.Instance.StartAutoSave();
+        }
+
         m_initializeEvent.Raise();
 
         Time.timeScale = 1f;

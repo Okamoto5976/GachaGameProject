@@ -97,14 +97,16 @@ public class ADBPostSaveFile : MonoBehaviour
             {
                 Debug.Log("get save file");
                 LoadSaveDataFile = result.saveData;
-
+                SaveManager.Instance.SetSaveData(LoadSaveDataFile);
             }
             else
             {
                 Debug.Log("sava file not found, new Data get");
                 LoadSaveDataFile = result.saveData;
+                SaveManager.Instance.SetSaveData(LoadSaveDataFile);
+
             }
-            
+
 
         }
     }

@@ -1,5 +1,7 @@
 using NUnit.Framework;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Android.Gradle.Manifest;
 using UnityEngine;
 
 public class GachaManager : MonoBehaviour
@@ -12,6 +14,19 @@ public class GachaManager : MonoBehaviour
 
     [SerializeField] private GameObject m_gachaUI;
 
+    [SerializeField] private CDBGacha m_CDBGacha;
+
+    [SerializeField] private UIManagerToMain m_UIManager;
+
+
+    //------event
+
+    [SerializeField] private BoolEventSO m_canTachPanelEvent;
+
+    //-----------------
+
+    [SerializeField] private DebugMode m_debug;
+
     public void OnHideGachaUI()
     {
         m_gachaUI.SetActive(false);
@@ -22,7 +37,21 @@ public class GachaManager : MonoBehaviour
         }
     }
 
-    public void GetGachaList(List<int> index)
+    public void CallGetChara(List<int> list)
+    {
+        if(m_debug.debugMode)
+        {
+            Debug.Log("Debug Gacha");
+            DebugGetCharaList(list);
+        }
+        else
+        {
+            StartCoroutine(GetGachaList(list));
+        }
+    }
+
+    //-------------Debug-------------------
+    private void DebugGetCharaList(List<int> index)
     {
         int pull = index.Count;
 
@@ -51,87 +80,81 @@ public class GachaManager : MonoBehaviour
 
             }
 
-            MasterCharacterData data = CharacterManager.Instance.GachaGetChara(rarity);
+            MasterCharacterData data = CharacterManager.Instance.DebugGachaGetChara(rarity);
+
+            Debug.Log($"{data.RarityType}‚ÌƒLƒƒƒ‰‚ª‹A‚Á‚Ä‚«‚½");
 
             list.Add(data);
         }
 
-        GetChara(pull, list);
-
+        DebugGetChara(list);
     }
 
-    public void GetChara(int index, List<MasterCharacterData> list)
+    private void DebugGetChara(List<MasterCharacterData> list)
     {
         //if Debug 
-        for(int i = 0;i < list.Count;i++)
+        for (int i = 0; i < list.Count; i++)
         {
             CharacterManager.Instance.AddGachaChara(list[i].ID);
 
         }
 
-        OnViewChara(index, list);
+        OnViewChara(list);
     }
 
-    public void OnViewChara(int index, List<MasterCharacterData> list)
+    //----------------------
+
+    private IEnumerator GetGachaList(List<int> index)
     {
-        for(int i = 0; i < index; i++)
+
+        yield return StartCoroutine(m_CDBGacha.Post(index));
+
+        List<int> list = m_CDBGacha.Results.results;
+
+        //php‚Å‚â‚Á‚Ä‚é
+        //for (int i = 0; i < list.Count; i++)
+        //{
+        //    CharacterManager.Instance.AddGachaChara(list[i]);
+
+        //}
+
+        SaveManager.Instance.OnGachaSave();
+
+        //save‚ð‹²‚Þ
+        //‰‰o
+        ViewGachaChara(list);
+        
+
+    }
+        
+    public void ViewGachaChara(List<int> list)
+    {
+        List<MasterCharacterData> masterList = new();
+
+
+        for (int i = 0; i < list.Count;i++)
+        {
+            MasterCharacterData data = CharacterManager.Instance.GetMasterCharaData(list[i]);
+
+            masterList.Add(data);
+        }
+
+        OnViewChara(masterList);
+    }
+
+    public void OnViewChara(List<MasterCharacterData> list)
+    {
+        m_UIManager.OnViewGachaUI();
+
+        m_canTachPanelEvent.Raise(false);
+
+
+        for (int i = 0; i < list.Count; i++)
         {
             m_gachaPanel[i].gameObject.SetActive(true);
             m_gachaPanel[i].SetGachaCharaData(list[i]);
         }
     }
 
-    //public void OnDebugClick()
-    //{
-    //    //Debug.Log("gacha");
-    //    OnGacha(m_pullGacha);
-    //}
-
-    //public void OnGacha(int pull)
-    //{
-    //    List<MasterCharacterData> list = new();
-
-    //    for(int i = 0;i < pull;i++)
-    //    {
-    //        int number;
-
-    //        if(m_gachanumber.Count <= 0)
-    //        {
-    //            number = Random.Range(0, 3);
-
-    //        }
-    //        else
-    //        {
-    //            number = m_gachanumber[i];
-    //        }
-
-    //        Enum_RarityType rarity;
-
-    //        switch (number)
-    //        {
-    //            case 0:
-    //                rarity = Enum_RarityType.C;
-    //                break;
-    //            case 1:
-    //                rarity = Enum_RarityType.U;
-    //                break;
-    //            case 2:
-    //                rarity = Enum_RarityType.R;
-    //                break;
-    //            default:
-    //                rarity = Enum_RarityType.C;
-    //                break;
-
-    //        }
-
-    //        MasterCharacterData data = CharacterManager.Instance.GachaGetChara(rarity);
-
-    //        list.Add(data);
-    //    }
-
-    //    OnViewChara(pull, list);
-
-
-    //}
 
 }

@@ -6,9 +6,9 @@ using UnityEngine;
 [System.Serializable]
 public class Rate
 {
-    public float rateC;
-    public float rateU;
-    public float rateR;
+    public int rateC;
+    public int rateU;
+    public int rateR;
 }
 
 public class GachaSysteme : MonoBehaviour
@@ -19,33 +19,40 @@ public class GachaSysteme : MonoBehaviour
 
     [SerializeField] private int m_NeedMoney;
     [SerializeField] private int m_NeedTicket;
-    //SO
-    [SerializeField] private int m_Coine;
-    [SerializeField]private float m_Ticket;
+    
+    //private int m_Coine;
+    //[SerializeField]private float m_Ticket;
 
-    [SerializeField] private GachaManager m_gachaView;
-    [SerializeField] private UIManagerToMain m_UIManager;
+    [SerializeField] private GachaManager m_gachaManager;
+    //[SerializeField] private UIManagerToMain m_UIManager;
+
+    [SerializeField] private BoolEventSO m_canTachPanelEvent;
 
     public void OneGacha()
     {
+        CharacterManager.Instance.IsTicketMode = false;
 
 
-        if (m_NeedTicket <= m_Ticket)
+        int money = CharacterManager.Instance.Money;
+
+        //if (m_NeedTicket <= m_Ticket)
+        //{
+        //    if (!IsCheakTicket(m_NeedTicket))
+        //    {
+        //        Debug.Log("you do not have ticket");
+        //        return;
+        //    }
+        //    GachaGet(1);
+        //}
+
+        if (m_NeedMoney <= money)
         {
-            if (!IsCheakTicket(m_NeedTicket))
-            {
-                Debug.Log("you do not have ticket");
-                return;
-            }
-            GachaGet(1);
-        }
-        else if (m_NeedMoney <= m_Coine)
-        {
-            if (!IsCheakMoney(m_NeedMoney))
-            {
-                Debug.Log("you do not have money");
-                return;
-            }
+            m_canTachPanelEvent.Raise(true);
+
+            money -= m_NeedMoney;
+            
+            CharacterManager.Instance.SetMoney(money);
+
             GachaGet(1);
         }
         else
@@ -57,24 +64,31 @@ public class GachaSysteme : MonoBehaviour
 
     public void TenGacha()
     {
+        CharacterManager.Instance.IsTicketMode = false;
+
+
         //Do you have Money?
         //LotteryTypeTen();
-        if (m_NeedTicket * 10 <= m_Ticket)
+        //if (m_NeedTicket * 10 <= m_Ticket)
+        //{
+        //    if (!IsCheakTicket(m_NeedTicket * 10))
+        //    {
+        //        Debug.Log("you do not have ticket");
+        //        return;
+        //    }
+        //    GachaGet(10);
+        //}
+        int money = CharacterManager.Instance.Money;
+
+
+        if (m_NeedMoney * 10 <= money)
         {
-            if (!IsCheakTicket(m_NeedTicket * 10))
-            {
-                Debug.Log("you do not have ticket");
-                return;
-            }
-            GachaGet(10);
-        }
-        else if (m_NeedMoney * 10 <= m_Coine)
-        {
-            if (!IsCheakMoney(m_NeedMoney * 10))
-            {
-                Debug.Log("you do not have money");
-                return;
-            }
+            m_canTachPanelEvent.Raise(true);
+
+            money -= (m_NeedMoney * 10);
+
+            CharacterManager.Instance.SetMoney(money);
+
             GachaGet(10);
         }
         else
@@ -85,15 +99,41 @@ public class GachaSysteme : MonoBehaviour
 
     }
 
+    public void TenTicketGacha()
+    {
+        CharacterManager.Instance.IsTicketMode = true;
+
+        int ticket = CharacterManager.Instance.Ticket;
+
+
+        if (m_NeedTicket <= ticket)
+        {
+            m_canTachPanelEvent.Raise(true);
+
+
+            ticket -= m_NeedTicket;
+
+            CharacterManager.Instance.SetTicket(ticket);
+
+
+            GachaGet(10);
+        }
+        else
+        {
+            Debug.Log("you do not have to ticket and Coine");
+        }
+    }
+
 
 
     private void GachaGet(int num)
     {
+
         m_RarityList.Clear();
 
         for(int i  = 0; i < num; i++)
         {
-            float randomPoint = Random.Range(0, 100);
+            int randomPoint = Random.Range(0, 100);
             int rarity = 0;
 
 
@@ -110,7 +150,7 @@ public class GachaSysteme : MonoBehaviour
                 rarity = 1;
             }
 
-            Debug.Log($"{randomPoint}");
+            Debug.Log($"random:{randomPoint}, rate{rarity}");
 
             m_RarityList.Add(rarity);
 
@@ -118,42 +158,42 @@ public class GachaSysteme : MonoBehaviour
 
         //Post PHP data "m_RarityList";
 
-        m_gachaView.GetGachaList(m_RarityList);
+        m_gachaManager.CallGetChara(m_RarityList);
 
-        m_UIManager.OnViewGachaUI();
+        //m_UIManager.OnViewGachaUI();
     }
 
-    public void ChiketsGet()
-    {
-        m_Ticket += 1;
+    //public void ChiketsGet()
+    //{
+    //    m_Ticket += 1;
 
-    }
+    //}
 
-    private bool IsCheakMoney(int money)
-    {
-        if(m_Coine < money)
-        {
-            return false;
-        }
-        else
-        {
-            m_Coine -= money;
-            return true;
-        }
-    }
+    //private bool IsCheakMoney(int money)
+    //{
+    //    //if(m_Coine < money)
+    //    //{
+    //    //    return false;
+    //    //}
+    //    //else
+    //    //{
+    //    //    m_Coine -= money;
+    //    //    return true;
+    //    //}
+    //}
 
-    private bool IsCheakTicket(int ticket)
-    {
-        if (m_Ticket < ticket)
-        {
-            return false;
-        }
-        else
-        {
-            m_Ticket -= ticket;
-            return true;
-        }
-    }
+    //private bool IsCheakTicket(int ticket)
+    //{
+    //    if (m_Ticket < ticket)
+    //    {
+    //        return false;
+    //    }
+    //    else
+    //    {
+    //        m_Ticket -= ticket;
+    //        return true;
+    //    }
+    //}
 
 
     //public void PayTicket(int pay)

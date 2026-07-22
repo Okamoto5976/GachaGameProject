@@ -9,6 +9,6 @@ public class testbutton : MonoBehaviour
 
     public void OnClickSave()
     {
-        SaveManager.Instance.OnAutoSave();
+        //SaveManager.Instance.OnAutoSave();
     }
 }
