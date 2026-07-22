@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -28,6 +29,27 @@ public class CharaSetPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private Sprite m_sprite;
 
+    [SerializeField] private Image m_frontUI;
+    [SerializeField] private Image m_backUI;
+    [SerializeField] private Image m_rarityUI;
+    
+    [System.Serializable]
+    public class UI
+    {
+        [SerializeField] private Sprite m_FrontUI;
+        [SerializeField] private Sprite m_BackUI;
+        [SerializeField] private Sprite m_RarityUI;
+        [SerializeField] private Enum_RarityType m_rarity;
+
+        public Sprite FrontUI => m_FrontUI;
+        public Sprite BackUI => m_BackUI;
+        public Sprite RarityUI => m_RarityUI;
+        public Enum_RarityType RarityType => m_rarity;
+    }
+
+    [SerializeField] private List<UI> m_UIclass = new();
+
+
     private float m_pressTime;
     private bool m_isPressing;
 
@@ -35,7 +57,10 @@ public class CharaSetPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     private void Start()
     {
-        m_image.sprite = m_nullSprite;
+        m_backUI.sprite = m_nullSprite;
+        m_frontUI.enabled = false;
+        m_rarityUI.enabled = false;
+        m_image.enabled = false;
     }
 
     public void Initialized(PlacementManager manager)
@@ -87,12 +112,31 @@ public class CharaSetPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     public void SetCharaData(MasterCharacterData data)
     {
         m_id = data.ID;
+        OnViewUI(data);
+
+        m_frontUI.enabled = true;
+        m_rarityUI.enabled = true;
+        m_image.enabled = true;
+
         m_image.sprite = data.PanelImage;
+    }
+
+    private void OnViewUI(MasterCharacterData data)
+    {
+
+        UI ui = m_UIclass.Find(x => x.RarityType == data.RarityType);
+
+        m_frontUI.sprite = ui.FrontUI;
+        m_backUI.sprite = ui.BackUI;
+        m_rarityUI.sprite = ui.RarityUI;
     }
 
     public void ResetData()
     {
-        m_image.sprite = m_nullSprite;
+        m_backUI.sprite = m_nullSprite;
+        m_frontUI.enabled = false;
+        m_rarityUI.enabled = false;
+        m_image.enabled = false;
 
         m_id = 0;
     }

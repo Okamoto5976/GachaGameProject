@@ -53,11 +53,11 @@ public class FarmManager : MonoBehaviour
         int completeCount;  // Number of times the gauge reached its maximum
         CalculateProgress(m_modifier, out completeCount);
 
-        //m_money = CharacterManager.Instance.Money;
+        m_money = CharacterManager.Instance.Money;
         //Debug.Log($"completeCount: {completeCount}");
         m_money += m_mPW * completeCount;
 
-        //CharacterManager.Instance.SetMoney(m_money);
+        CharacterManager.Instance.SetMoney(m_money);
 
 
         m_fieldWork.UpdateState();

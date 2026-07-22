@@ -109,8 +109,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_AnchoredPosition: {x: 80, y: -80}
+  m_SizeDelta: {x: 67, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1868851468532851878
 CanvasRenderer:
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 459316392, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+  m_Sprite: {fileID: -750012947, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -185,7 +185,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1281931717906891374
 CanvasRenderer:
@@ -319,8 +319,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharaPlacePanel
   m_charaUIEvent: {fileID: 11400000, guid: e312b4e6102f3d043a4566993435a280, type: 2}
   m_type: 2
-  m_image: {fileID: 3631100070490057987}
+  m_image: {fileID: 4217943172608833012}
   m_placeSelectSO: {fileID: 11400000, guid: 90abac8938cd29245844f6327b2315da, type: 2}
+  m_frontUI: {fileID: 7200675615537355802}
+  m_backUI: {fileID: 3631100070490057987}
+  m_rarityUI: {fileID: 2288718808459682000}
+  m_UIclass:
+  - m_FrontUI: {fileID: 459316392, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_BackUI: {fileID: -1509682644, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_RarityUI: {fileID: -750012947, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_rarity: 0
+  - m_FrontUI: {fileID: 1135720136, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_BackUI: {fileID: 1182444010, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_RarityUI: {fileID: -1448146852, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_rarity: 1
+  - m_FrontUI: {fileID: 1530624210, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_BackUI: {fileID: -744029109, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_RarityUI: {fileID: -1515350906, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+    m_rarity: 2
   m_longPressTime: 1
 --- !u!114 &8592933497551039001
 MonoBehaviour:

@@ -104,19 +104,20 @@ public class PlacementManager : MonoBehaviour
 
         for(int i = 0; i < m_charaSetPanelList.Count; i++)
         {
-            Debug.Log($"for•¶‚Ì‰‚ß{m_charaSetPanelList[i].ID}");
+            //Debug.Log($"for•¶‚Ì‰‚ß{m_charaSetPanelList[i].ID}");
 
             //“¯‚¶”Ô†‚ÌPanel‚Í–³Ž‹
             if (m_charaSetPanelList[i].Num != num)
             {
                 if (m_charaSetPanelList[i].ID == id)
                 {
+                    Debug.Log("Reset");
                     m_charaSetPanelList[i].ResetData();
                 }
             }
 
             
-            Debug.Log($"for•¶‚Ì’Ç‰Á{m_charaSetPanelList[i].ID}");
+            //Debug.Log($"for•¶‚Ì’Ç‰Á{m_charaSetPanelList[i].ID}");
 
             list.Add(m_charaSetPanelList[i].ID);
         }
