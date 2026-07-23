@@ -27,6 +27,8 @@ public class GameInitializer : MonoBehaviour
                 //    Level = chara.Level,
                 //};
 
+                Debug.Log($"{chara}‚ª‚ ‚é");
+
                 CharacterManager.Instance.AdddataList(chara);
             }
 
@@ -38,6 +40,7 @@ public class GameInitializer : MonoBehaviour
             //mainchara set
             CharacterManager.Instance.SetMainCharacters(m_postSaveFile.LoadSaveDataFile.m_mainCharaData);
 
+            Debug.Log("1 chara data setŠ®—¹");
         }
         else
         {
@@ -45,8 +48,9 @@ public class GameInitializer : MonoBehaviour
         }
 
         //LoadMasterData();
-        StartCoroutine(m_masterDB.Post());
+        yield return StartCoroutine(m_masterDB.Post());
+        Debug.Log("2 master data setŠ®—¹");
 
- 
+
     }
 }

@@ -43,7 +43,17 @@ public class MainManager : MonoBehaviour
         {
             if (list[i] == 0) continue;
 
-            var data = CharacterManager.Instance.GetMasterCharaData(list[i]);
+
+            MasterCharacterData data = CharacterManager.Instance.GetMasterCharaData(list[i]);
+
+            Debug.Log($"{list[i]}‚ª“ü‚Á‚Ä‚émainchara ");
+            
+            if( data == null )
+            {
+                Debug.Log("data‚ª null");
+                continue;
+            }
+
 
             m_characters[i].SetData(data);
             m_characters[i].gameObject.SetActive(true);

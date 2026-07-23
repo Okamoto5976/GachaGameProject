@@ -34,6 +34,8 @@ public class MemberManager : MonoBehaviour
 
         int index = CharacterManager.Instance.DataList.Count;
 
+        Debug.Log($"{index}Å@mamber initialize ÇÃÇ©Ç∏");
+
         for (int i = 0; i < index; i++)
         {
             var obj = Instantiate(m_panelPrefab, m_MemberPanel.transform);
@@ -78,6 +80,16 @@ public class MemberManager : MonoBehaviour
             int ID = CharacterManager.Instance.DataList[i].ID;
 
             MasterCharacterData masterData = CharacterManager.Instance.GetMasterCharaData(ID);
+
+            if(masterData == null)
+            {
+                Debug.Log("masterData null");
+            }
+
+            if (m_PanelList[i] == null)
+            {
+                Debug.Log("Panel null");
+            }
 
             m_PanelList[i].SetCharaData(masterData);
         }

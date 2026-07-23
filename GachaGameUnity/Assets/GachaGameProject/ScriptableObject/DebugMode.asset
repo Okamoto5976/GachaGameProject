@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24672ff97f4f41c4bbe7cbf1e10ff4b3, type: 3}
   m_Name: DebugMode
   m_EditorClassIdentifier: Assembly-CSharp::DebugMode
-  m_debugMode: 1
+  m_debugMode: 0

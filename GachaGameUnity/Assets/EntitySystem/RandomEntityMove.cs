@@ -17,7 +17,7 @@ public class RandomEntityMove : MonoBehaviour
     private float m_timer;
     private Image m_image;
 
-    private float m_moveSpeed;
+    [SerializeField] private float m_moveSpeed = 300f;
     private RectTransform m_rectTransform;
 
     public enum EntityState
@@ -57,8 +57,12 @@ public class RandomEntityMove : MonoBehaviour
         //}
 
         m_state = EntityState.Idle;
-        m_timer = 3f;
-        m_moveSpeed = 300f;
+
+
+
+        m_timer = Random.Range(0f, 3f);
+
+        //m_moveSpeed = 300f;
 
     }
 
@@ -72,15 +76,17 @@ public class RandomEntityMove : MonoBehaviour
 
                 if (m_timer <= 0f)
                 {
-                    // ƒ‰ƒ“ƒ_ƒ€‚È•ûŒü‚ðŒˆ’è
+                    float angle = Random.Range(0f, Mathf.PI * 2f);
+
                     m_moveDirection = new Vector3(
-                        Random.Range(-1f, 1f),
+                        Mathf.Cos(angle),
                         0f,
-                        Random.Range(-1f, 1f)
-                    ).normalized;
+                        Mathf.Sin(angle)
+                    );
 
                     m_state = EntityState.Move;
-                    m_timer = 3f;
+                    m_timer = Random.Range(0f, 3f);
+
                 }
 
                 break;
@@ -88,37 +94,36 @@ public class RandomEntityMove : MonoBehaviour
             case EntityState.Move:
 
                 Vector2 pos = m_rectTransform.anchoredPosition;
-                pos += new Vector2(m_moveDirection.x, m_moveDirection.z) * m_moveSpeed * Time.deltaTime;
 
-                // •Ç‚É“–‚½‚Á‚½‚çŒü‚«‚ð•Ï‚¦‚é
-                if (pos.x <= m_minX)
+                float speedRate = Mathf.Lerp(0.1f, 1.0f, Mathf.Abs(m_moveDirection.x));
+                // x=0 ¨ 0.1
+                // x=1 ¨ 1.0
+
+                Vector2 delta = new Vector2(m_moveDirection.x, m_moveDirection.z) * 
+                    (m_moveSpeed * speedRate) * Time.deltaTime;
+
+                Vector2 nextPos = pos + delta;
+
+                // •Ç‚É“–‚½‚é‚È‚ç”½ŽË
+                if (nextPos.x < m_minX || nextPos.x > m_maxX)
                 {
-                    pos.x = m_minX;
                     m_moveDirection.x *= -1;
                 }
-                else if (pos.x >= m_maxX)
-                {
-                    pos.x = m_maxX;
-                    m_moveDirection.x *= -1;
-                }
 
-                if (pos.y <= m_minY)
+                if (nextPos.y < m_minY || nextPos.y > m_maxY)
                 {
-                    pos.y = m_minY;
-                    m_moveDirection.z *= -1;
-                }
-                else if (pos.y >= m_maxY)
-                {
-                    pos.y = m_maxY;
                     m_moveDirection.z *= -1;
                 }
 
-               m_rectTransform.anchoredPosition = pos;
+                m_rectTransform.anchoredPosition = pos;
 
                 if (m_timer <= 0f)
                 {
                     m_state = EntityState.Idle;
-                    m_timer = 3f;
+
+                    m_timer = Random.Range(0f, 3f);
+
+                    //m_timer = 3f;
                 }
 
                 break;
@@ -132,7 +137,15 @@ public class RandomEntityMove : MonoBehaviour
 
     public void SetData(MasterCharacterData data)
     {
+        if(data == null)
+        {
+            Debug.Log("Data null");
+        }
+
         m_id = data.ID;
         m_image.sprite = data.Image;
+
+        m_timer = Random.Range(0f, 3f);
+
     }
 }

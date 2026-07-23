@@ -124,13 +124,20 @@ public class LoadManager : MonoBehaviour
 
         }
 
+
         //オートセーブ開始
         if(!m_debug.debugMode)
         {
             SaveManager.Instance.StartAutoSave();
         }
 
-        m_initializeEvent.Raise();
+
+        CharacterManager.Instance.CheckHaveCharacter();
+
+        Debug.Log("3 確認完了");
+
+
+        
 
         Time.timeScale = 1f;
 
@@ -140,6 +147,8 @@ public class LoadManager : MonoBehaviour
 
             yield return null;
         }
+
+        m_initializeEvent.Raise();
 
         //1 frame wait
         yield return null;

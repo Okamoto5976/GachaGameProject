@@ -22,12 +22,15 @@ public class PlacementManager : MonoBehaviour
     {
         m_getCharaEvent.Register(AddPlacementPanel);
         m_initializeEvent.Register(PlacementInitialize);
+        m_initializeEvent.Register(SetPanelInitialize);
     }
 
     private void OnDisable()
     {
         m_getCharaEvent.Unregister(AddPlacementPanel);
         m_initializeEvent.Unregister(PlacementInitialize);
+        m_initializeEvent.Unregister(SetPanelInitialize);
+
     }
 
     public void PlacementInitialize()
@@ -95,6 +98,34 @@ public class PlacementManager : MonoBehaviour
         for (int i = 0; i < m_charaSetPanelList.Count; i++)
         {
             m_charaSetPanelList[i].Initialized(this);
+        }
+    }
+
+    public void SetPanelInitialize()
+    {
+        Debug.Log($"MasterData Count : {CharacterManager.Instance.MasterDataList.Count}");
+        Debug.Log($"MainCharacter Count : {CharacterManager.Instance.MainCharacters.Count}");
+
+        foreach (var data in CharacterManager.Instance.MasterDataList)
+        {
+            Debug.Log($"Master ID:{data.ID} Name:{data.Name}");
+        }
+
+        List<int> list = CharacterManager.Instance.MainCharacters;
+
+        for(int i = 0; i < list.Count; i++)
+        {
+            if (list[i] == 0) continue;
+
+            MasterCharacterData masterData = CharacterManager.Instance.GetMasterCharaData(list[i]);
+
+            if(masterData == null)
+            {
+                Debug.LogError("data null");
+            }
+
+
+            m_charaSetPanelList[i].SetCharaData(masterData);
         }
     }
 

@@ -113,9 +113,11 @@ public class CDBMaster : MonoBehaviour
 
 
 
-
+            Debug.Log($"MasterData ì¬” : {MasterDataList.Count}");
 
             CharacterManager.Instance.SetMasterData(MasterDataList);
+
+            Debug.Log("MasterData Set Š®—¹");
 
             //EntityData charaData = new();
 

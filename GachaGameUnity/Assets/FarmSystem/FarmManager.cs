@@ -138,7 +138,6 @@ public class FarmManager : MonoBehaviour
     public void SetCharacter(List<int> list)
     {
 
-        return;
         Modifier modifier = new();
 
         for(int i = 0; i < list.Count; i++)
@@ -147,6 +146,13 @@ public class FarmManager : MonoBehaviour
 
 
             MasterCharacterData data = CharacterManager.Instance.GetMasterCharaData(list[i]);
+
+            if (data == null)
+            {
+                Debug.LogError($"MasterData‚ª‚ ‚è‚Ü‚¹‚ñ ID:{list[i]}");
+                continue;
+            }
+
 
             CharaWork charaWork = new CharaWork
             {

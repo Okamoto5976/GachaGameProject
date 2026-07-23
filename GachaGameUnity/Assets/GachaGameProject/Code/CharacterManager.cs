@@ -29,7 +29,7 @@ public class CharacterManager : MonoBehaviour
 {
     public static CharacterManager Instance;
 
-    private List<CharacterData> m_dataList = new();
+    [SerializeField] private List<CharacterData> m_dataList = new();
 
     public List<MasterCharacterData> m_masterDataList = new();
 
@@ -98,6 +98,12 @@ public class CharacterManager : MonoBehaviour
     //get save file data
     public void AdddataList(CharacterData data)
     {
+        Debug.Log("Add Chara");
+        if(data == null)
+        {
+            Debug.Log("“ü‚ê‚édata‚ª‚È‚¢");
+        }
+
         m_dataList.Add(data);
         //•À‚×‘Ö‚¦‚éiˆê‰j
         m_dataList.Sort((a,b) => a.ID.CompareTo(b.ID));
@@ -186,6 +192,8 @@ public class CharacterManager : MonoBehaviour
 
     public void SetMasterData(List<MasterCharacterData> list)
     {
+        Debug.Log($"ó‚¯æ‚è” : {list.Count}");
+
         m_masterDataList = list;
     }
 

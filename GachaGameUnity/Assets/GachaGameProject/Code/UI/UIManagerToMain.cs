@@ -50,7 +50,7 @@ public class UIManagerToMain : MonoBehaviour
 
     private void Start()
     {
-        OnViewMainUI();
+        OnStartView();
         SetTextMoney();
         SetTextTicket();
     }
@@ -103,6 +103,14 @@ public class UIManagerToMain : MonoBehaviour
     //{
 
     //}
+
+    public void OnStartView()
+    {
+        ViewMainUI(true);
+        ViewMemberUI(false);
+        ViewPlacementUI(false);
+        ViewPullGachaUI(false);
+    }
 
     public void OnViewMainUI()
     {
