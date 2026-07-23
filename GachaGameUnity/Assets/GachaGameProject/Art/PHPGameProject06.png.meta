@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5e5f7589b90e21c49bf91887eac44ebe
+guid: ad1255b59dd1b3a4fac00165a4066635
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PHPGameProject05_0
+      name: PHPGameProject06_0
       rect:
         serializedVersion: 2
         x: 534
@@ -138,8 +138,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c89b69250666e194ba3fb1119e8d622d
-      internalID: -206017070
+      spriteID: d00eea66222cd46448ca56e11c390157
+      internalID: 2031570254
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0d95fca42e65adb4099f3a5510735229
+    spriteID: a1c2017f1f07a364380a3444e2b946fd
     internalID: 0
     vertices: []
     indices: 
@@ -160,7 +160,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      PHPGameProject05_0: -206017070
+      PHPGameProject06_0: 2031570254
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
