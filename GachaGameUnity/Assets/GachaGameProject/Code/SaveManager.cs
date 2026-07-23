@@ -45,6 +45,9 @@ public class SaveManager : MonoBehaviour
             StopCoroutine(m_autoSaveCoroutine);
             m_autoSaveCoroutine = null;
         }
+
+        Debug.Log("AutoSave Stop");
+
     }
 
 
@@ -60,6 +63,13 @@ public class SaveManager : MonoBehaviour
     public void SetSaveData(SaveDataFile data)
     {
         m_saveData = data;
+    }
+
+    public void ResetSaveData()
+    {
+        m_saveData = new();
+        Debug.Log("Save Data Reset");
+
     }
 
     private void OnAutoSave()
@@ -134,5 +144,34 @@ public class SaveManager : MonoBehaviour
         m_postSaveFile.SaveFile(m_accountData.AccountID, m_saveData);
 
         m_timer = 0f;
+    }
+
+    public void OnQuitSave()
+    {
+        if (m_debug.debugMode) return;
+
+
+        if (m_saveData != null)
+        {
+            m_saveData = new();
+        }
+
+        foreach (var data in CharacterManager.Instance.DataList)
+        {
+            m_saveData.SaveCharaData(data);
+
+        }
+        m_saveData.SaveMainChara(CharacterManager.Instance.MainCharacters);
+
+
+        m_saveData.SetMoney(CharacterManager.Instance.Money);
+        m_saveData.SetTicket(CharacterManager.Instance.Ticket);
+
+        m_postSaveFile.SaveFile(m_accountData.AccountID, m_saveData);
+
+        m_timer = 0f;
+
+        Debug.Log("Quit Save Š®—¹");
+
     }
 }

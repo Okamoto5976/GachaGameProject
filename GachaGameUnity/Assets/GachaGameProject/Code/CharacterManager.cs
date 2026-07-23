@@ -95,6 +95,17 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
+    public void ResetData()
+    {
+        m_dataList.Clear();
+        m_masterDataList.Clear();
+        m_money = 0;
+        m_ticket = 0;
+        m_mainCharacters.Clear();
+        Debug.Log("CharacterManager Reset");
+
+    }
+
     //get save file data
     public void AdddataList(CharacterData data)
     {

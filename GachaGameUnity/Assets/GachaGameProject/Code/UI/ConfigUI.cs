@@ -48,6 +48,13 @@ public class ConfigUI : MonoBehaviour
     }
 
 
+    public void OnTitleMove()
+    {
+        PlaySE();
+
+        LoadManager.Instance.OnTitle("TitleScene");
+    }
+
     //---------title scene---------
     public void OnView()
     {

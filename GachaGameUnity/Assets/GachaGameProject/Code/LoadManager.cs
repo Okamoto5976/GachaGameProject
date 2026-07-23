@@ -24,6 +24,8 @@ public class LoadManager : MonoBehaviour
 
     [SerializeField] private EventSO m_initializeEvent;
 
+    [SerializeField] private AccountData m_accountData;
+
     //----Debug--------
     [SerializeField] private DebugMode m_debug;
 
@@ -63,6 +65,15 @@ public class LoadManager : MonoBehaviour
         if (m_loadCoroutine == null)
         {
             m_loadCoroutine = StartCoroutine(LoadSceneCoroutine(scenename));
+            m_PanelObj.SetActive(true);
+        }
+    }
+
+    public void OnTitle(string scenename)
+    {
+        if (m_loadCoroutine == null)
+        {
+            m_loadCoroutine = StartCoroutine(TitleSceneCoroutine(scenename));
             m_PanelObj.SetActive(true);
         }
     }
@@ -192,5 +203,74 @@ public class LoadManager : MonoBehaviour
         m_canvas.alpha = 0;
 
         m_PanelObj.SetActive(false);
+    }
+
+    private IEnumerator TitleSceneCoroutine(string scenename)
+    {
+        yield return StartCoroutine(FadeIn(0.5f));
+
+        //m_IsStartGame.SetValue(false);
+
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scenename);
+
+        asyncLoad.allowSceneActivation = false;
+
+        float timer = 0f;
+
+        float gameStartTimer = 0f;
+
+        while (asyncLoad.progress < 0.9f)
+        {
+            timer += Time.unscaledDeltaTime;
+
+            yield return null;
+        }
+
+        while (timer < 3f)
+        {
+            timer += Time.unscaledDeltaTime;
+
+            yield return null;
+        }
+
+        asyncLoad.allowSceneActivation = true;
+
+       
+
+        if (!m_debug.debugMode)
+        {
+            //GameData save
+            SaveManager.Instance.OnQuitSave();
+            SaveManager.Instance.StopAutoSave();
+            SaveManager.Instance.ResetSaveData();
+            //save class reset 
+            //acountID reset
+
+            m_accountData.ResetData();
+
+            //CharacterManager Reset
+
+            CharacterManager.Instance.ResetData();
+        }
+
+
+        Time.timeScale = 1f;
+
+        while (gameStartTimer < 3f)
+        {
+            gameStartTimer += Time.unscaledDeltaTime;
+
+            yield return null;
+        }
+
+
+        //1 frame wait
+        yield return null;
+
+        //m_IsStartGame.SetValue(true);
+
+        yield return StartCoroutine(FadeOut(0.5f));
+
+        m_loadCoroutine = null;
     }
 }
