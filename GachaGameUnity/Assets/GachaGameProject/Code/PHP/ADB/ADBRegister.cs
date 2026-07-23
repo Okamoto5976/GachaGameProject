@@ -23,18 +23,40 @@ public class ADBRegister : MonoBehaviour
     [SerializeField] private LoginCash m_cash;
     [SerializeField] private AccountData m_accountData;
 
+    [SerializeField] private TextMeshProUGUI m_failurText;
+
+
+
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
+    }
+
     public void OnClick()
     {
-        if(m_userName == null)
+
+        PlaySE();
+
+        m_failurText.text = string.Empty;
+
+        if (string.IsNullOrWhiteSpace(m_userName.text))
         {
             Debug.Log("userName‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            m_failurText.text = "username‚ª‚ ‚è‚Ü‚¹‚ñ";
 
             return;
         }
 
-        if(m_password == null)
+        if(string.IsNullOrWhiteSpace(m_password.text))
         {
             Debug.Log("password‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            m_failurText.text = "password‚ª‚ ‚è‚Ü‚¹‚ñ"; 
+
+            return;
         }
 
         CreateAccount(m_userName.text, m_password.text);
@@ -58,6 +80,7 @@ public class ADBRegister : MonoBehaviour
         if(request.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("Failure: " + request.error);
+            m_failurText.text = "ƒGƒ‰[";
         }
         else
         {
@@ -75,6 +98,7 @@ public class ADBRegister : MonoBehaviour
             else
             {
                 Debug.Log(result.message);
+                m_failurText.text = result.message;
             }
         }
     }

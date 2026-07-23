@@ -23,6 +23,18 @@ public class ADBLogin : MonoBehaviour
     //2,not cash, login or create account
     //3,already cash, but new create account
 
+    [SerializeField] private TextMeshProUGUI m_failurText;
+
+
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
+    }
+
     private void Start()
     {
         LoginData data = m_cash.Load();
@@ -42,6 +54,25 @@ public class ADBLogin : MonoBehaviour
 
     public void OnClick()
     {
+        PlaySE();
+
+        m_failurText.text = string.Empty;
+
+        if (string.IsNullOrWhiteSpace(m_userName.text))
+        {
+            Debug.Log("userName‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            m_failurText.text = "username‚ª‚ ‚è‚Ü‚¹‚ñ";
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(m_password.text))
+        {
+            Debug.Log("password‚ª“ü—Í‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+            m_failurText.text = "password‚ª‚ ‚è‚Ü‚¹‚ñ";
+
+            return;
+        }
+
         OnLogIn(m_userName.text, m_password.text);
     }
 
@@ -100,6 +131,8 @@ public class ADBLogin : MonoBehaviour
         if(request.result != UnityWebRequest.Result.Success)
         {
             Debug.Log("Failure: " +  request.error);
+            m_failurText.text = "ƒGƒ‰[";
+
         }
         else
         {
@@ -118,6 +151,7 @@ public class ADBLogin : MonoBehaviour
             else
             {
                 Debug.Log(result.message);
+                m_failurText.text = result.message;
             }
         }
     }

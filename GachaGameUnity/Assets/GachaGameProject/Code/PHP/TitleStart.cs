@@ -12,6 +12,15 @@ public class TitleStart : MonoBehaviour
 
     [SerializeField] private AudioData m_titleBGM;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
+    }
+
     private void Awake()
     {
         m_accountData.ResetData();
@@ -24,6 +33,8 @@ public class TitleStart : MonoBehaviour
 
     public void OnClick()
     {
+        PlaySE();
+
         if(m_debug.debugMode == true)
         {
             Debug.Log("DebugMode: 強制的に始めます。セーブデータは作られません");
