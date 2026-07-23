@@ -124,6 +124,9 @@ public class PlacementManager : MonoBehaviour
                 Debug.LogError("data null");
             }
 
+            Debug.Log("ƒƒCƒ“ƒLƒƒƒ‰‚ğPlacement‚Å“ü‚ê‚é");
+            
+
 
             m_charaSetPanelList[i].SetCharaData(masterData);
         }

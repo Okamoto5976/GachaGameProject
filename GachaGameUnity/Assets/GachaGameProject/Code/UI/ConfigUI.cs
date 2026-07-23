@@ -35,4 +35,11 @@ public class ConfigUI : MonoBehaviour
     {
         m_ConfigCanvas.SetActive(false);
     }
+
+
+    //---------title scene---------
+    public void OnView()
+    {
+        m_ConfigCanvas.SetActive(true);
+    }
 }

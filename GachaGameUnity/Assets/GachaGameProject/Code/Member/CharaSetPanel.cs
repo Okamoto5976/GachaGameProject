@@ -58,9 +58,9 @@ public class CharaSetPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     private void Start()
     {
         m_backUI.sprite = m_nullSprite;
-        m_frontUI.enabled = false;
-        m_rarityUI.enabled = false;
-        m_image.enabled = false;
+        //m_frontUI.enabled = false;
+        //m_rarityUI.enabled = false;
+        //m_image.enabled = false;
     }
 
     public void Initialized(PlacementManager manager)
