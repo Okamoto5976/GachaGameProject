@@ -25,7 +25,7 @@ public class ADBRegister : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_failurText;
 
-
+    [SerializeField] private AccountView m_accountView;
 
     [Header("Audio")]
     [SerializeField] private AudioEventSO m_SEEvent;
@@ -94,6 +94,8 @@ public class ADBRegister : MonoBehaviour
 
                 //SO save id
                 m_accountData.SetAccountID(result.userId);
+
+                m_accountView.OnSetAccount("‚Æ‚¤‚ë‚­‚Å‚«‚Ü‚µ‚½");
             }
             else
             {

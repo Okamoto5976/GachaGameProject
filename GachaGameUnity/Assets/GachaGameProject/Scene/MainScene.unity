@@ -1500,7 +1500,7 @@ MonoBehaviour:
     m_charaWorkers: []
   m_fieldWork: {fileID: 3021294016710729745}
   m_mPW: 100
-  m_maxProgress: 1000
+  m_maxProgress: 100
   m_progress: 0
   m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
   m_moneySE: {fileID: 11400000, guid: db893a9113b9a924bad6a707259825fd, type: 2}
@@ -8196,71 +8196,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1001 &1512234299
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 958564089541350278, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_Name
-      value: TouchEffect
-      objectReference: {fileID: 0}
-    - target: {fileID: 1735160768387070840, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4067364838150883502, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
-      propertyPath: m_camera
-      value: 
-      objectReference: {fileID: 479078448}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
 --- !u!1 &1519323260
 GameObject:
   m_ObjectHideFlags: 0
@@ -9435,6 +9370,53 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706926999}
   m_CullTransparentMesh: 1
+--- !u!1 &1707496047
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1707496049}
+  - component: {fileID: 1707496048}
+  m_Layer: 0
+  m_Name: TouchEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1707496048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707496047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d5cec18469c80243b62a63af726e6c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TouchEffect
+  m_visualEffectPrefab: {fileID: 8796189761567421263, guid: 14329dabeefd56447afbd9bea77ea2ed, type: 3}
+  m_camera: {fileID: 479078448}
+  m_transform: {fileID: 2859887506212083507, guid: f32bbc5df437ed34db8888ebd6e54606, type: 3}
+--- !u!4 &1707496049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1707496047}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1721527841
 GameObject:
   m_ObjectHideFlags: 0
@@ -13784,4 +13766,4 @@ SceneRoots:
   - {fileID: 1065105660}
   - {fileID: 474429142}
   - {fileID: 371854630}
-  - {fileID: 1512234299}
+  - {fileID: 1707496049}

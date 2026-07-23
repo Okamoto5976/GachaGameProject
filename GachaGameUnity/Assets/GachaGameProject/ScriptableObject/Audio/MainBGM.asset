@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: MainBGM
   m_EditorClassIdentifier: Assembly-CSharp::AudioData
   m_clip: {fileID: 8300000, guid: 549ae33bbe533384aa7f0ef547fbadfb, type: 3}
-  m_loop: 0
+  m_loop: 1

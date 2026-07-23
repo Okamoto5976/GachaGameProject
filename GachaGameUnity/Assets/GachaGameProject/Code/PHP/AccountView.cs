@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class AccountView : MonoBehaviour
@@ -9,6 +10,8 @@ public class AccountView : MonoBehaviour
     [SerializeField] private AudioEventSO m_SEEvent;
     [SerializeField] private AudioData m_peta;
 
+    [SerializeField] private TextMeshProUGUI m_accountText;
+
 
     private void PlaySE()
     {
@@ -18,6 +21,7 @@ public class AccountView : MonoBehaviour
     public void OnViewRegister()
     {
         PlaySE();
+        m_accountText.text = "";
 
 
         m_registerView.SetActive(true);
@@ -26,6 +30,7 @@ public class AccountView : MonoBehaviour
 
     public void OnViewLogin()
     {
+        m_accountText.text = "";
 
         PlaySE();
 
@@ -40,5 +45,13 @@ public class AccountView : MonoBehaviour
 
         m_registerView.SetActive(false);
         m_loginView.SetActive(false);
+    }
+    
+
+    public void OnSetAccount(string text)
+    {
+        m_accountText.text = text;
+        OnHideView();
+
     }
 }

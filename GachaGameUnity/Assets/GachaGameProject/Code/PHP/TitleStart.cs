@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,8 @@ public class TitleStart : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioEventSO m_SEEvent;
     [SerializeField] private AudioData m_peta;
+
+    [SerializeField] private TextMeshProUGUI m_accountText;
 
     private void PlaySE()
     {
@@ -46,6 +49,8 @@ public class TitleStart : MonoBehaviour
         if (m_accountData.AccountID <= -1)
         {
             Debug.Log("ログインできていません");
+
+            m_accountText.text = "ログインできていません";
             return;
         }
 
@@ -53,5 +58,14 @@ public class TitleStart : MonoBehaviour
 
         //SceneManager.LoadScene("MainScene");
         m_loadEventSO.Raise("MainScene");
+    }
+
+    public void OnClickQuit()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
