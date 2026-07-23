@@ -30,6 +30,10 @@ public class CharaUIManager : MonoBehaviour
     [SerializeField] private Sprite m_uncommon;
     [SerializeField] private Sprite m_rare;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
     public void OnViewCharaUI(Enum_CharaUIShow type, int id)
     {
         OnViewArrowUI(false);
@@ -110,6 +114,11 @@ public class CharaUIManager : MonoBehaviour
         //m_Arrow.SetActive(value);
     }
 
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
+    }
+
     public void OnLevelUp()
     {
 
@@ -127,6 +136,8 @@ public class CharaUIManager : MonoBehaviour
 
     public void OnBackButton()
     {
+        PlaySE();
+
         m_CharaUI.SetActive(false);
     }
 }

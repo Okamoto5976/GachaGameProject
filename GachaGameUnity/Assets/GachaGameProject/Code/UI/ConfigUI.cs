@@ -12,6 +12,10 @@ public class ConfigUI : MonoBehaviour
     [SerializeField] private FloatRunTime m_AudioBGMVolume;
     [SerializeField] private FloatRunTime m_AudioSEVolume;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_papeSE;
+
     private void Start()
     {
         m_BGMSlider.value = m_AudioBGMVolume.Value;
@@ -33,13 +37,23 @@ public class ConfigUI : MonoBehaviour
 
     public void OnCancel()
     {
+        PlaySE();
+
         m_ConfigCanvas.SetActive(false);
+    }
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_papeSE);
     }
 
 
     //---------title scene---------
     public void OnView()
     {
+        PlaySE();
+
+
         m_ConfigCanvas.SetActive(true);
     }
 }

@@ -26,8 +26,14 @@ public class GachaManager : MonoBehaviour
 
     [SerializeField] private DebugMode m_debug;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
     public void OnHideGachaUI()
     {
+        PlaySE();
+
         m_gachaUI.SetActive(false);
 
         for(int i = 0; i < m_gachaPanel.Count; i++)
@@ -47,6 +53,11 @@ public class GachaManager : MonoBehaviour
         {
             StartCoroutine(GetGachaList(list));
         }
+    }
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
     }
 
     //-------------Debug-------------------

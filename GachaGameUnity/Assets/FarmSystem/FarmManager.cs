@@ -41,6 +41,15 @@ public class FarmManager : MonoBehaviour
     public int Progress => m_progress;
     public int MaxProgress => m_maxProgress;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_moneySE;
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_moneySE);
+    }
+
     private void Awake()
     {
         
@@ -49,6 +58,7 @@ public class FarmManager : MonoBehaviour
 
     public void OnClick()
     {
+        PlaySE();
 
         int completeCount;  // Number of times the gauge reached its maximum
         CalculateProgress(m_modifier, out completeCount);

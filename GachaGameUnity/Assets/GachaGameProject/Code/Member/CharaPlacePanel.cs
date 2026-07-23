@@ -41,6 +41,15 @@ public class CharaPlacePanel : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     [SerializeField] private float m_longPressTime = 1.0f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
+    }
+
     private void Update()
     {
         if (m_isPressing)
@@ -59,6 +68,7 @@ public class CharaPlacePanel : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public void OnClickViewCharaUI()
     {
+        PlaySE();
 
         switch(m_type)
         {
@@ -107,6 +117,8 @@ public class CharaPlacePanel : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     {
         if (m_pressTime < m_longPressTime)
         {
+            PlaySE();
+
             m_placeSelectSO.GetID(ID);
         }
 

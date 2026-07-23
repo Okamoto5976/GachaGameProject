@@ -55,6 +55,15 @@ public class CharaSetPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     [SerializeField] private float m_longPressTime = 1.0f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
+    }
+
     private void Start()
     {
         m_backUI.sprite = m_nullSprite;
@@ -87,6 +96,7 @@ public class CharaSetPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnClickViewCharaUI()
     {
+        PlaySE();
 
         if (!m_isEnable) return;
 
@@ -151,6 +161,8 @@ public class CharaSetPanel : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
     {
         if (m_pressTime < m_longPressTime)
         {
+            PlaySE();
+
             if (m_placeSelectSO.NowID == 0) return;
 
             int id = m_placeSelectSO.NowID;

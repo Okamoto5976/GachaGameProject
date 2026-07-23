@@ -34,9 +34,18 @@ public class GachaCharaPanel : MonoBehaviour
     [SerializeField] private List<UI> m_UIclass = new();
 
     //Back Scene have
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_peta;
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_peta);
+    }
 
     public void OnClickViewCharaUI()
     {
+        PlaySE();
 
         switch(m_type)
         {

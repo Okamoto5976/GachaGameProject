@@ -711,7 +711,7 @@ RectTransform:
   m_Father: {fileID: 1771600504}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1023,9 +1023,9 @@ RectTransform:
   m_Father: {fileID: 2067693160}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -17}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &223358100
 MonoBehaviour:
@@ -1502,6 +1502,8 @@ MonoBehaviour:
   m_mPW: 100
   m_maxProgress: 100
   m_progress: 0
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_moneySE: {fileID: 11400000, guid: db893a9113b9a924bad6a707259825fd, type: 2}
 --- !u!4 &371854630
 Transform:
   m_ObjectHideFlags: 0
@@ -1535,7 +1537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &422491468
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1807,9 +1809,9 @@ RectTransform:
   - {fileID: 1199784946}
   m_Father: {fileID: 766956195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1460, y: -300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &453561405
@@ -1892,6 +1894,8 @@ MonoBehaviour:
     m_RarityUI: {fileID: -1515350906, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
     m_rarity: 2
   m_longPressTime: 1
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!114 &453561407
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2096,6 +2100,8 @@ MonoBehaviour:
   m_NeedTicket: 10
   m_gachaManager: {fileID: 474429143}
   m_canTachPanelEvent: {fileID: 11400000, guid: 3acac58dca7b2fc4a97f9609a2204b74, type: 2}
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_papeSE: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!4 &474429142
 Transform:
   m_ObjectHideFlags: 0
@@ -2141,6 +2147,8 @@ MonoBehaviour:
   m_UIManager: {fileID: 515231751}
   m_canTachPanelEvent: {fileID: 11400000, guid: 3acac58dca7b2fc4a97f9609a2204b74, type: 2}
   m_debug: {fileID: 11400000, guid: 9b2075a9be25d87478f27a6f53095f5c, type: 2}
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!114 &474429144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2531,6 +2539,8 @@ MonoBehaviour:
   m_moneyEvent: {fileID: 11400000, guid: 5b24fe3f01d8c1b4d8aeeb0c1e68f08e, type: 2}
   m_ticketEvent: {fileID: 11400000, guid: e99e0e1bcd3d1eb49913bae6e1d08746, type: 2}
   m_IsSetMainChara: 0
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_papeSE: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!114 &515231753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2548,6 +2558,8 @@ MonoBehaviour:
   m_ConfigCanvas: {fileID: 965293268}
   m_AudioBGMVolume: {fileID: 11400000, guid: 2f607409e413f7b4bb9af30d2349c9a5, type: 2}
   m_AudioSEVolume: {fileID: 11400000, guid: 454e68b5de823eb41bf5dbb5f6575174, type: 2}
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_papeSE: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!4 &515231754
 Transform:
   m_ObjectHideFlags: 0
@@ -3704,7 +3716,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &664700425
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4846,6 +4858,8 @@ MonoBehaviour:
   m_common: {fileID: -750012947, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
   m_uncommon: {fileID: -1448146852, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
   m_rare: {fileID: -1515350906, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!4 &962177332
 Transform:
   m_ObjectHideFlags: 0
@@ -4898,9 +4912,9 @@ RectTransform:
   - {fileID: 1414870929}
   m_Father: {fileID: 766956195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 460, y: -300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &962260428
@@ -4939,6 +4953,8 @@ MonoBehaviour:
     m_RarityUI: {fileID: -1515350906, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
     m_rarity: 2
   m_longPressTime: 1
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!114 &962260429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5291,7 +5307,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0.000054381715, y: 150}
-  m_SizeDelta: {x: -1600, y: 300}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1032434409
 MonoBehaviour:
@@ -5689,50 +5705,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1065105658}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1102779413
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1102779415}
-  - component: {fileID: 1102779414}
-  m_Layer: 0
-  m_Name: testbutton
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1102779414
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102779413}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69fd73f5b526b00499f8a0b5f8f0185f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::testbutton
---- !u!4 &1102779415
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102779413}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -7602,6 +7574,8 @@ MonoBehaviour:
   - {fileID: 1201190215}
   m_initializeEvent: {fileID: 11400000, guid: b33ad178f3ddfd04a9e88ff11d55f8bd, type: 2}
   m_farmManager: {fileID: 371854629}
+  m_BGMEvent: {fileID: 11400000, guid: ceb9d76903c334d4697bee942600e78f, type: 2}
+  m_mainBGM: {fileID: 11400000, guid: 54af18084f8eac54a958d6c77ca77cf2, type: 2}
 --- !u!4 &1374752068
 Transform:
   m_ObjectHideFlags: 0
@@ -7700,7 +7674,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1102779414}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: testbutton, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
@@ -8364,7 +8338,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1102779414}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: testbutton, Assembly-CSharp
         m_MethodName: OnClickSave
         m_Mode: 1
@@ -8821,9 +8795,9 @@ RectTransform:
   - {fileID: 1951745206}
   m_Father: {fileID: 766956195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1632476347
@@ -8906,6 +8880,8 @@ MonoBehaviour:
     m_RarityUI: {fileID: -1515350906, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
     m_rarity: 2
   m_longPressTime: 1
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!114 &1632476349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10456,9 +10432,9 @@ RectTransform:
   - {fileID: 1063460042}
   m_Father: {fileID: 766956195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 710, y: -300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1936429359
@@ -10541,6 +10517,8 @@ MonoBehaviour:
     m_RarityUI: {fileID: -1515350906, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
     m_rarity: 2
   m_longPressTime: 1
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!114 &1936429361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12031,9 +12009,9 @@ RectTransform:
   - {fileID: 1179228257}
   m_Father: {fileID: 766956195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1210, y: -300}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119522697
@@ -12116,6 +12094,8 @@ MonoBehaviour:
     m_RarityUI: {fileID: -1515350906, guid: f748747ecc6f1c947a79dd0f443c0cef, type: 3}
     m_rarity: 2
   m_longPressTime: 1
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!114 &2119522699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13772,7 +13752,6 @@ SceneRoots:
   - {fileID: 1636694819}
   - {fileID: 327228358}
   - {fileID: 2106236317}
-  - {fileID: 1102779415}
   - {fileID: 922317603}
   - {fileID: 1269532469}
   - {fileID: 155035321}

@@ -317,6 +317,8 @@ MonoBehaviour:
     m_BackUI: {fileID: -172978154, guid: 83f8ed24b64c7f845b4d4292373b1841, type: 3}
     m_RarityUI: {fileID: 1748624647, guid: 83f8ed24b64c7f845b4d4292373b1841, type: 3}
     m_rarity: 2
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_peta: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!1 &7921933129808458706
 GameObject:
   m_ObjectHideFlags: 0

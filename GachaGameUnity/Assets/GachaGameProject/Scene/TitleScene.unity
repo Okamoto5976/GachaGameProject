@@ -3630,6 +3630,8 @@ MonoBehaviour:
   m_accountData: {fileID: 11400000, guid: e06c20bcd79b6a549ae2ac9f7c5c6ffc, type: 2}
   m_loadEventSO: {fileID: 11400000, guid: 69d6df314675b084cad6cb9dbf4cdc4d, type: 2}
   m_debug: {fileID: 11400000, guid: 9b2075a9be25d87478f27a6f53095f5c, type: 2}
+  m_BGMEventSO: {fileID: 11400000, guid: ceb9d76903c334d4697bee942600e78f, type: 2}
+  m_titleBGM: {fileID: 11400000, guid: 124e1954447878b48924732f1d6c830a, type: 2}
 --- !u!4 &1275536857
 Transform:
   m_ObjectHideFlags: 0
@@ -5920,6 +5922,8 @@ MonoBehaviour:
   m_ConfigCanvas: {fileID: 219545239}
   m_AudioBGMVolume: {fileID: 11400000, guid: 2f607409e413f7b4bb9af30d2349c9a5, type: 2}
   m_AudioSEVolume: {fileID: 11400000, guid: 454e68b5de823eb41bf5dbb5f6575174, type: 2}
+  m_SEEvent: {fileID: 11400000, guid: fe0dc0a22ad09cc46971cb6006e95092, type: 2}
+  m_papeSE: {fileID: 11400000, guid: dab09563279bbb44ba346532c17aa60f, type: 2}
 --- !u!4 &2121700317
 Transform:
   m_ObjectHideFlags: 0

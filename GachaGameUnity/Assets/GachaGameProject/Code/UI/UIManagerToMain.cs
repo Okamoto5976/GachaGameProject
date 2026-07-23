@@ -47,6 +47,9 @@ public class UIManagerToMain : MonoBehaviour
 
     public bool m_IsSetMainChara = false;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_papeSE;
 
     private void Start()
     {
@@ -93,6 +96,8 @@ public class UIManagerToMain : MonoBehaviour
 
     public void OnViewConfigUI()
     {
+        PlaySE();
+
         ViewConfigUI(true);
 
         IsSetMainChara();
@@ -114,6 +119,9 @@ public class UIManagerToMain : MonoBehaviour
 
     public void OnViewMainUI()
     {
+        PlaySE();
+
+
         ViewMainUI(true);
         m_mainManager.SetCharacter();
         ViewMemberUI(false);
@@ -126,6 +134,9 @@ public class UIManagerToMain : MonoBehaviour
 
     public void OnViewMemberUI()
     {
+        PlaySE();
+
+
         ViewMainUI(false);
         ViewMemberUI(true);
         m_memberManager.OnViewPanel();
@@ -138,6 +149,9 @@ public class UIManagerToMain : MonoBehaviour
 
     public void OnViewPlacementUI()
     {
+        PlaySE();
+
+
         ViewMainUI(false);
         ViewMemberUI(false);
         ViewPlacementUI(true);
@@ -150,11 +164,15 @@ public class UIManagerToMain : MonoBehaviour
 
     public void OnViewGachaUI()
     {
+
         ViewGachaUI(true);
     }
 
     public void OnViewPullGachaUI()
     {
+        PlaySE();
+
+
         ViewMainUI(false);
         ViewMemberUI(false);
         ViewPlacementUI(false);
@@ -179,6 +197,11 @@ public class UIManagerToMain : MonoBehaviour
             SaveManager.Instance.OnMainCharaSave();
             m_IsSetMainChara = false;
         }
+    }
+
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_papeSE);
     }
 
     //-----UI SetActive--------------

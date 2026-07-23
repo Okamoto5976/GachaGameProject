@@ -8,9 +8,18 @@ public class TitleStart : MonoBehaviour
 
     [SerializeField] private DebugMode m_debug;
 
+    [SerializeField] private AudioEventSO m_BGMEventSO;
+
+    [SerializeField] private AudioData m_titleBGM;
+
     private void Awake()
     {
         m_accountData.ResetData();
+    }
+
+    private void Start()
+    {
+        m_BGMEventSO.Raise(m_titleBGM);
     }
 
     public void OnClick()

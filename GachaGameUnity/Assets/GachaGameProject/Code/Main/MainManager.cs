@@ -13,6 +13,10 @@ public class MainManager : MonoBehaviour
 
     //セーブデータで設置ずみのものを設置
 
+    //audio
+    [SerializeField] private AudioEventSO m_BGMEvent;
+    [SerializeField] private AudioData m_mainBGM;
+
     private void OnEnable()
     {
         m_initializeEvent.Register(MainInitialize);
@@ -21,6 +25,11 @@ public class MainManager : MonoBehaviour
     private void OnDisable()
     {
         m_initializeEvent.Unregister(MainInitialize);
+    }
+
+    private void Start()
+    {
+        m_BGMEvent.Raise(m_mainBGM);
     }
 
     public void MainInitialize()

@@ -28,8 +28,14 @@ public class GachaSysteme : MonoBehaviour
 
     [SerializeField] private BoolEventSO m_canTachPanelEvent;
 
+    [Header("Audio")]
+    [SerializeField] private AudioEventSO m_SEEvent;
+    [SerializeField] private AudioData m_papeSE;
+
     public void OneGacha()
     {
+        PlaySE();
+
         CharacterManager.Instance.IsTicketMode = false;
 
 
@@ -64,6 +70,9 @@ public class GachaSysteme : MonoBehaviour
 
     public void TenGacha()
     {
+        PlaySE();
+
+
         CharacterManager.Instance.IsTicketMode = false;
 
 
@@ -101,6 +110,9 @@ public class GachaSysteme : MonoBehaviour
 
     public void TenTicketGacha()
     {
+        PlaySE();
+
+
         CharacterManager.Instance.IsTicketMode = true;
 
         int ticket = CharacterManager.Instance.Ticket;
@@ -124,7 +136,10 @@ public class GachaSysteme : MonoBehaviour
         }
     }
 
-
+    private void PlaySE()
+    {
+        m_SEEvent.Raise(m_papeSE);
+    }
 
     private void GachaGet(int num)
     {
