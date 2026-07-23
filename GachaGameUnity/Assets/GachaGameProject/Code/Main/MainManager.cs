@@ -17,6 +17,8 @@ public class MainManager : MonoBehaviour
     [SerializeField] private AudioEventSO m_BGMEvent;
     [SerializeField] private AudioData m_mainBGM;
 
+    [SerializeField] private List<RectTransform> m_mainCharaUIList;
+
     private void OnEnable()
     {
         m_initializeEvent.Register(MainInitialize);
@@ -69,5 +71,33 @@ public class MainManager : MonoBehaviour
         }
 
         m_farmManager.SetCharacter(list);
+    }
+
+    //----main chara view
+
+    private float m_sortTimer;
+
+    private void Update()
+    {
+        m_sortTimer += Time.deltaTime;
+
+        if (m_sortTimer >= 0.1f)
+        {
+            m_sortTimer = 0f;
+            SortCharacter();
+        }
+    }
+
+    private void SortCharacter()
+    {
+        m_mainCharaUIList.Sort((a, b) =>
+        {
+            return b.anchoredPosition.y.CompareTo(a.anchoredPosition.y);
+        });
+
+        for (int i = 0; i < m_mainCharaUIList.Count; i++)
+        {
+            m_mainCharaUIList[i].SetSiblingIndex(i);
+        }
     }
 }

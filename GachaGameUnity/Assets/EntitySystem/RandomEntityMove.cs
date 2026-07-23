@@ -115,7 +115,13 @@ public class RandomEntityMove : MonoBehaviour
                     m_moveDirection.z *= -1;
                 }
 
-                m_rectTransform.anchoredPosition = pos;
+                //êßå¿ÇÇ©ÇØÇÈ
+                nextPos.x = Mathf.Clamp(nextPos.x, m_minX, m_maxX);
+                nextPos.y = Mathf.Clamp(nextPos.y, m_minY, m_maxY);
+
+                m_rectTransform.anchoredPosition = nextPos;
+
+                //m_rectTransform.anchoredPosition = pos;
 
                 if (m_timer <= 0f)
                 {
@@ -137,7 +143,14 @@ public class RandomEntityMove : MonoBehaviour
 
     public void SetData(MasterCharacterData data)
     {
-        if(data == null)
+        Vector2 randomPos = new Vector2(
+        Random.Range(m_minX, m_maxX),
+        Random.Range(m_minY, m_maxY)
+        );
+
+        m_rectTransform.anchoredPosition = randomPos;
+
+        if (data == null)
         {
             Debug.Log("Data null");
         }
